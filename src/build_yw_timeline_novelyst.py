@@ -21,7 +21,7 @@ TARGET_FILE = f'{BUILD}yw_timeline_novelyst.py'
 
 
 def main():
-    inliner.run(SOURCE_FILE, TARGET_FILE, 'ywtimelinelib', '../src/')
+    inliner.run(SOURCE_FILE, TARGET_FILE, 'ywtimelinelib', '../../yw-timeline/src/')
     inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../../PyWriter/src/')
     print('Done.')
 

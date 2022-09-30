@@ -14,20 +14,16 @@ File structure:
 │   └── src/
 │       ├── translations.py
 │       └── msgfmt.py
-└── yw-timeline/
+└── yw_timeline_novelyst/
     ├── src/ 
     │   └── translate_de.py
     └── i18n/
         ├── messages.pot
         ├── de.po
-        ├── locale/
-        │   └─ de/
-        │      └─ LC_MESSAGES/
-        │         └─ pywriter.mo
-        └── plugin_locale/
+        └── locale/
             └─ de/
                └─ LC_MESSAGES/
-                  └─ yw-timeline_novelyst.mo
+                  └─ yw_timeline_novelyst.mo
     
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/yw-timeline
@@ -40,20 +36,17 @@ import translations
 from shutil import copyfile
 import msgfmt
 
-APP_NAME = 'yw-timeline'
+APP_NAME = 'yw_timeline_novelyst'
 PO_PATH = '../i18n/de.po'
-MO_PATH = '../i18n/locale/de/LC_MESSAGES/pywriter.mo'
-PLUGIN_NAME = f'{APP_NAME}_novelyst'
-PLUGIN_MO_PATH = f'../i18n/plugin_locale/de/LC_MESSAGES/{PLUGIN_NAME}.mo'
-MO_COPY = f'../../novelyst/src/locale/de/LC_MESSAGES/{PLUGIN_NAME}.mo'
+MO_PATH = '../i18n/locale/de/LC_MESSAGES/yw_timeline_novelyst.mo'
+MO_COPY = f'../../novelyst/src/locale/de/LC_MESSAGES/{APP_NAME}.mo'
 
 
 def main(version='unknown'):
     if translations.main('de', app=APP_NAME, appVersion=version):
         print(f'Writing "{MO_PATH}" ...')
         msgfmt.make(PO_PATH, MO_PATH)
-        copyfile(MO_PATH, PLUGIN_MO_PATH)
-        copyfile(PLUGIN_MO_PATH, MO_COPY)
+        copyfile(MO_PATH, MO_COPY)
     else:
         sys.exit(1)
 

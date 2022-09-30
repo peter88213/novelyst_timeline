@@ -25,7 +25,7 @@ from ywtimelinelib.tl_file import TlFile
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
 CURRENT_LANGUAGE = locale.getdefaultlocale()[0][:2]
 try:
-    t = gettext.translation('yw-timeline_novelyst', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
+    t = gettext.translation('yw_timeline_novelyst', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
     _ = t.gettext
 except:
 

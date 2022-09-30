@@ -5,7 +5,6 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import sys
-import build_yw_timeline as build_application
 import build_yw_timeline_novelyst as build_plugin
 sys.path.insert(0, f'{os.getcwd()}/../../PyWriter/src')
 import pgettext
@@ -15,8 +14,6 @@ POT_FILE = '../i18n/messages.pot'
 
 
 def make_pot(version='unknown'):
-    # Generate a complete script.
-    build_application.main()
     # Generate a complete plugin.
     build_plugin.main()
 
@@ -28,7 +25,6 @@ def make_pot(version='unknown'):
         backedUp = False
     try:
         pot = pgettext.PotFile(POT_FILE, app=APP, appVersion=version)
-        pot.scan_file(build_application.TARGET_FILE)
         pot.scan_file(build_plugin.TARGET_FILE)
         print(f'Writing "{pot.filePath}"...\n')
         pot.write_pot()

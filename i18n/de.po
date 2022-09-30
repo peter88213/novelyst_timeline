@@ -1,11 +1,11 @@
-# yw-timeline Dictionary (English-German)
+# yw_timeline_novelyst Dictionary (English-German)
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.4.1\n"
-"POT-Creation-Date: 2022-09-10 20:31:51\n"
-"PO-Revision-Date: 2022-09-10 20:31:51\n"
+"Project-Id-Version: 0.2.0\n"
+"POT-Creation-Date: 2022-09-30 20:57:30\n"
+"PO-Revision-Date: 2022-09-30 20:57:30\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -52,15 +52,6 @@ msgstr "Information"
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
 
-msgid "New Chapter"
-msgstr "Neues Kapitel"
-
-msgid "New Part"
-msgstr "Neuer Teil"
-
-msgid "New Scene"
-msgstr "Neue Szene"
-
 msgid "New scenes created during conversion."
 msgstr "Während der Konvertierung wurden neue Szenen erzeugt."
 
@@ -70,14 +61,8 @@ msgstr "Keine {0}-Datei für dieses Projekt vorhanden."
 msgid "Novel"
 msgstr "Roman"
 
-msgid "Open"
-msgstr "Öffnen"
-
 msgid "Overwrite existing file \"{}\"?"
 msgstr "Bestehende Datei \"{}\" überschreiben?"
-
-msgid "Quit"
-msgstr "Beenden"
 
 msgid "Save the project and update it?"
 msgstr "Projekt speichern und aktualisieren?"
@@ -85,14 +70,8 @@ msgstr "Projekt speichern und aktualisieren?"
 msgid "Save the project and {} the timeline?"
 msgstr "Projekt sichern und die Zeitleiste {}?"
 
-msgid "Synchronize Timeline and yWriter"
-msgstr "Timeline und yWriter synchronisieren"
-
 msgid "Update the project"
 msgstr "Das Projekt aktualisieren"
-
-msgid "WARNING"
-msgstr "WARNUNG"
 
 msgid "create"
 msgstr "erzeugen"
@@ -105,12 +84,6 @@ msgstr "älter"
 
 msgid "update"
 msgstr "aktualisieren"
-
-msgid "yWriter 7 project"
-msgstr "yWriter 7-Projekt"
-
-msgid "yWriter seems to be open. Please close first"
-msgstr "yWriter scheint offen zu sein. Bitte schließen"
 
 msgid "{0} file is {1} than the yWriter project.\n (last saved on {2})"
 msgstr "{0}-Datei ist {1} als das yWriter-Projekt.\n (zuletzt gespeichert: {2})"

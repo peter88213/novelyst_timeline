@@ -2,7 +2,6 @@ The [Timeline Project](http://thetimelineproj.sourceforge.net/) application
 can be used to visualize the course of the narrative time in a 
 [yWriter](http://spacejock.com/yWriter7.html) project.
 
-[![Screenshot: Example](Screenshots/screen01.png)](https://raw.githubusercontent.com/peter88213/yw-timeline/main/docs/Screenshots/screen01.png)
 ## Features
 
 - Generate a *yWriter* project from an outline created with *Timeline*.
@@ -22,12 +21,22 @@ can be used to visualize the course of the narrative time in a
 
 ## Download and install
 
-[Download the latest release (version 0.99.0)](https://raw.githubusercontent.com/peter88213/yw-timeline/main/dist/yw-timeline_v0.99.0.zip)
+[Download the latest release (version 0.99.0)](https://raw.githubusercontent.com/peter88213/yw_timeline_novelyst/main/dist/yw-timeline_v0.99.0.zip)
 
-- Unzip the downloaded zipfile "yw-timeline_v0.99.0.zip" into a new folder.
-- Move into this new folder and launch **setup.pyw**. This installs the script for the local user.
-- Create a shortcut on the desktop when asked.
-- Open "README.md" for usage instructions.
+- Unzip the downloaded zipfile "yw_timeline_novelyst_v0.99.0.zip" into a new folder.
+- Move into this new folder and launch **setup.pyw**. This installs the plugin.
+
+### Launch from novelyst
+
+If [novelyst](https://peter88213.github.io/novelyst/) is installed, the setup script offers the installation of a *Timeline* plugin.
+The plugin adds a *Timeline* submenu to the *novelyst* main menu. The submenu has the following entries:
+
+- Information (compare yWriter and timeline file dates)
+- Update timeline from yWriter
+- Update yWriter from timeline
+- Edit timeline (launch Timeline)
+
+If you install *novelyst* at a later time, you can always install the plugin afterwards by running the *yw-timeline* setup script again.
 
 ### Note for Linux users
 

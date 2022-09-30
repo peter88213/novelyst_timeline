@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.4.1\n"
-"POT-Creation-Date: 2022-09-10 20:31:51\n"
+"Project-Id-Version: 0.2.0\n"
+"POT-Creation-Date: 2022-09-30 20:57:30\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -53,15 +53,6 @@ msgstr ""
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr ""
 
-msgid "New Chapter"
-msgstr ""
-
-msgid "New Part"
-msgstr ""
-
-msgid "New Scene"
-msgstr ""
-
 msgid "New scenes created during conversion."
 msgstr ""
 
@@ -71,13 +62,7 @@ msgstr ""
 msgid "Novel"
 msgstr ""
 
-msgid "Open"
-msgstr ""
-
 msgid "Overwrite existing file \"{}\"?"
-msgstr ""
-
-msgid "Quit"
 msgstr ""
 
 msgid "Save the project and update it?"
@@ -86,13 +71,7 @@ msgstr ""
 msgid "Save the project and {} the timeline?"
 msgstr ""
 
-msgid "Synchronize Timeline and yWriter"
-msgstr ""
-
 msgid "Update the project"
-msgstr ""
-
-msgid "WARNING"
 msgstr ""
 
 msgid "create"
@@ -105,12 +84,6 @@ msgid "older"
 msgstr ""
 
 msgid "update"
-msgstr ""
-
-msgid "yWriter 7 project"
-msgstr ""
-
-msgid "yWriter seems to be open. Please close first"
 msgstr ""
 
 msgid "{0} file is {1} than the yWriter project.\n (last saved on {2})"
