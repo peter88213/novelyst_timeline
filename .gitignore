@@ -1,0 +1,6 @@
+/test/yw7/
+/test/yw_timeline.pyw
+/build/
+/Timeline-snippets/
+*.pyc
+*.bak
