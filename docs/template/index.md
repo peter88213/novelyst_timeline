@@ -21,7 +21,7 @@ can be used to visualize the course of the narrative time in a
 
 ## Download and install
 
-[Download the latest release (version 0.99.0)](https://raw.githubusercontent.com/peter88213/yw_timeline_novelyst/main/dist/yw-timeline_v0.99.0.zip)
+[Download the latest release (version 0.99.0)](https://raw.githubusercontent.com/peter88213/yw_timeline_novelyst/main/dist/yw_timeline_novelyst_v0.99.0.zip)
 
 - Unzip the downloaded zipfile "yw_timeline_novelyst_v0.99.0.zip" into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
