@@ -1,22 +1,18 @@
-The [Timeline Project](http://thetimelineproj.sourceforge.net/) application 
-can be used to visualize the course of the narrative time in a 
-[yWriter](http://spacejock.com/yWriter7.html) project.
+# yw_timeline_novelyst
 
 ## Features
 
-- Generate a *yWriter* project from an outline created with *Timeline*.
 - Generate a *Timeline* project from a *yWriter* project.
 - Synchronize *yWriter* scenes with corresponding *Timeline* events in both directions.
 - When synchronizing a yWriter project with a timeline, optionally change unspecific scene "Day/Hour/Minute" to specific "date/time" and vice versa.
-- Launch via drag/drop or Windows context menu.
-- Optionally, a [novelyst](https://peter88213.github.io/novelyst/) plugin can be installed.
-
+ 
+ For more information, see the [yw-timeline project page](https://peter88213.github.io/yw-timeline)
  
 ## Requirements
 
 - [Python 3.7 or above](https://www.python.org). 
-- [yWriter 7](http://spacejock.com/yWriter7.html). Recent versions 5 or 6 might also work if they save in .yw7 file format.
 - [Timeline 2.4 or 2.5](https://sourceforge.net/projects/thetimelineproj/). Versions below 2.4 do not support labels, which are necessary for synchronization with yWriter.
+- [novelyst v0.42+](https://peter88213.github.io/novelyst) 
 
 
 ## Download and install
@@ -26,10 +22,13 @@ can be used to visualize the course of the narrative time in a
 - Unzip the downloaded zipfile "yw_timeline_novelyst_v0.99.0.zip" into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
 
+*Note: If you install *novelyst* at a later time, you can always install the plugin afterwards by running the *yw_timeline_novelyst* setup script again.*
+
 ### Launch from novelyst
 
-If [novelyst](https://peter88213.github.io/novelyst/) is installed, the setup script offers the installation of a *Timeline* plugin.
-The plugin adds a *Timeline* submenu to the *novelyst* main menu. The submenu has the following entries:
+The plugin's features are accessible via the **Tools > Timeline** submenu in *novelyst*.
+
+The submenu has the following entries:
 
 - Information (compare yWriter and timeline file dates)
 - Update timeline from yWriter
@@ -46,18 +45,9 @@ Please make sure that your Python3 installation has the *tkinter* module. On Ubu
 
 [Changelog](changelog)
 
-## Usage and conventions
-
-See the [instructions for use](usage)
-
-## Credits
-
-- Frederik Lundh published the [xml pretty print algorithm](http://effbot.org/zone/element-lib.htm#prettyprint).
-
-
 ## License
 
-yw-timeline is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+yw_timeline_novelyst is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
 
 
  
