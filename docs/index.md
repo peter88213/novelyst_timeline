@@ -17,9 +17,9 @@
 
 ## Download and install
 
-[Download the latest release (version 0.2.0)](https://raw.githubusercontent.com/peter88213/yw_timeline_novelyst/main/dist/yw_timeline_novelyst_v0.2.0.zip)
+[Download the latest release (version 0.4.0)](https://raw.githubusercontent.com/peter88213/yw_timeline_novelyst/main/dist/yw_timeline_novelyst_v0.4.0.zip)
 
-- Unzip the downloaded zipfile "yw_timeline_novelyst_v0.2.0.zip" into a new folder.
+- Unzip the downloaded zipfile "yw_timeline_novelyst_v0.4.0.zip" into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
 
 *Note: If you install *novelyst* at a later time, you can always install the plugin afterwards by running the *yw_timeline_novelyst* setup script again.*

@@ -46,6 +46,10 @@ class Plugin():
         enable_menu() -- enable menu entries when a project is open.
         
     """
+    VERSION = '@release'
+    DESCRIPTION = 'Synchronize with Timeline'
+    URL = 'https://peter88213.github.io/yw_timeline_novelyst'
+
     SETTINGS = dict(
         scene_label='Scene',
         default_date_time='2021-07-26 00:00:00',
