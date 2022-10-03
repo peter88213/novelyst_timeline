@@ -47,6 +47,7 @@ class Plugin():
         
     """
     VERSION = '@release'
+    NOVELYST_API = '1.0'
     DESCRIPTION = 'Synchronize with Timeline'
     URL = 'https://peter88213.github.io/novelyst_timeline'
 
@@ -61,7 +62,7 @@ class Plugin():
         datetime_to_dhm=False,
     )
 
-    def __init__(self, ui):
+    def install(self, ui):
         """Add a submenu to the main menu.
         
         Positional arguments:
