@@ -37,7 +37,7 @@ except:
 
 PLUGIN = 'novelyst_timeline.py'
 OLD_PLUGIN = 'yw_timeline_novelyst.py'
-APPNAME = 'novelyst_timeline'
+APPNAME = 'yw-timeline'
 VERSION = ' @release'
 APP = f'{APPNAME}.py'
 INI_FILE = f'{APPNAME}.ini'
