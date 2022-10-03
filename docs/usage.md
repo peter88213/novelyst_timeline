@@ -1,11 +1,11 @@
-# The yw_timeline_novelyst plugin
+# The novelyst_timeline plugin
 
 ## How to install
 
 - Unzip the downloaded zipfile into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
 
-*Note: If you install *novelyst* at a later time, you can always install the plugin afterwards by running the *yw_timeline_novelyst* setup script again.*
+*Note: If you install *novelyst* at a later time, you can always install the plugin afterwards by running the *novelyst_timeline* setup script again.*
 
 ### Launch from novelyst
 

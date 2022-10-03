@@ -14,7 +14,7 @@ File structure:
 │   └── src/
 │       ├── translations.py
 │       └── msgfmt.py
-└── yw_timeline_novelyst/
+└── novelyst_timeline/
     ├── src/ 
     │   └── translate_de.py
     └── i18n/
@@ -23,7 +23,7 @@ File structure:
         └── locale/
             └─ de/
                └─ LC_MESSAGES/
-                  └─ yw_timeline_novelyst.mo
+                  └─ novelyst_timeline.mo
     
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/yw-timeline
@@ -36,9 +36,9 @@ import translations
 from shutil import copyfile
 import msgfmt
 
-APP_NAME = 'yw_timeline_novelyst'
+APP_NAME = 'novelyst_timeline'
 PO_PATH = '../i18n/de.po'
-MO_PATH = '../i18n/locale/de/LC_MESSAGES/yw_timeline_novelyst.mo'
+MO_PATH = '../i18n/locale/de/LC_MESSAGES/novelyst_timeline.mo'
 MO_COPY = f'../../novelyst/src/locale/de/LC_MESSAGES/{APP_NAME}.mo'
 
 

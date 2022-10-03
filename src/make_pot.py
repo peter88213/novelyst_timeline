@@ -5,7 +5,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import os
 import sys
-import build_yw_timeline_novelyst as build_plugin
+import build_novelyst_timeline as build_plugin
 sys.path.insert(0, f'{os.getcwd()}/../../PyWriter/src')
 import pgettext
 

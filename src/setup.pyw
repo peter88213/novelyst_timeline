@@ -35,7 +35,9 @@ except:
     def _(message):
         return message
 
-APPNAME = 'yw_timeline_novelyst'
+PLUGIN = 'novelyst_timeline.py'
+OLD_PLUGIN = 'yw_timeline_novelyst.py'
+APPNAME = 'novelyst_timeline'
 VERSION = ' @release'
 APP = f'{APPNAME}.py'
 INI_FILE = f'{APPNAME}.ini'
@@ -98,14 +100,18 @@ def install(pywriterPath):
 
 def install_plugin(pywriterPath):
     """Install a novelyst plugin if novelyst is installed."""
-    plugin = f'yw_timeline_novelyst.py'
-    if os.path.isfile(f'./{plugin}'):
+    if os.path.isfile(f'./{PLUGIN}'):
         novelystDir = f'{pywriterPath}novelyst'
-        pluginDir = f'{novelystDir}/plugin'
+        pluginDir = f'{novelystDir}/PLUGIN'
         output(f'Installing novelyst plugin at "{os.path.normpath(pluginDir)}"')
         os.makedirs(pluginDir, exist_ok=True)
-        copyfile(plugin, f'{pluginDir}/{plugin}')
-        output(f'Copying "{plugin}"')
+        try:
+            os.remove(f'{pluginDir}/{OLD_PLUGIN}')
+            output('Removing old version')
+        except:
+            pass
+        copyfile(PLUGIN, f'{pluginDir}/{PLUGIN}')
+        output(f'Copying "{PLUGIN}"')
     else:
         output('Error: novelyst plugin file not found.')
 

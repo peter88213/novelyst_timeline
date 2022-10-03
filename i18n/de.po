@@ -1,11 +1,11 @@
-# yw_timeline_novelyst Dictionary (English-German)
+# novelyst_timeline Dictionary (English-German)
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.4.0\n"
-"POT-Creation-Date: 2022-10-02 11:36:08\n"
-"PO-Revision-Date: 2022-10-02 11:36:08\n"
+"Project-Id-Version: 0.5.0\n"
+"POT-Creation-Date: 2022-10-03 10:05:28\n"
+"PO-Revision-Date: 2022-10-03 10:05:29\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"

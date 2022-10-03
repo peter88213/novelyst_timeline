@@ -1,4 +1,4 @@
-# yw_timeline_novelyst
+# novelyst_timeline
 
 ## Features
 
@@ -17,12 +17,12 @@
 
 ## Download and install
 
-[Download the latest release (version 0.4.0)](https://raw.githubusercontent.com/peter88213/yw_timeline_novelyst/main/dist/yw_timeline_novelyst_v0.4.0.zip)
+[Download the latest release (version 0.5.0)](https://raw.githubusercontent.com/peter88213/novelyst_timeline/main/dist/novelyst_timeline_v0.5.0.zip)
 
-- Unzip the downloaded zipfile "yw_timeline_novelyst_v0.4.0.zip" into a new folder.
+- Unzip the downloaded zipfile "novelyst_timeline_v0.5.0.zip" into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
 
-*Note: If you install *novelyst* at a later time, you can always install the plugin afterwards by running the *yw_timeline_novelyst* setup script again.*
+*Note: If you install *novelyst* at a later time, you can always install the plugin afterwards by running the *novelyst_timeline* setup script again.*
 
 ### Launch from novelyst
 
@@ -47,7 +47,7 @@ Please make sure that your Python3 installation has the *tkinter* module. On Ubu
 
 ## License
 
-yw_timeline_novelyst is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+novelyst_timeline is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
 
 
  

@@ -25,7 +25,7 @@ from ywtimelinelib.tl_file import TlFile
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
 CURRENT_LANGUAGE = locale.getdefaultlocale()[0][:2]
 try:
-    t = gettext.translation('yw_timeline_novelyst', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
+    t = gettext.translation('novelyst_timeline', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
     _ = t.gettext
 except:
 
@@ -48,7 +48,7 @@ class Plugin():
     """
     VERSION = '@release'
     DESCRIPTION = 'Synchronize with Timeline'
-    URL = 'https://peter88213.github.io/yw_timeline_novelyst'
+    URL = 'https://peter88213.github.io/novelyst_timeline'
 
     SETTINGS = dict(
         scene_label='Scene',
