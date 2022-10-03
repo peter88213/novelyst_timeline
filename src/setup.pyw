@@ -102,7 +102,7 @@ def install_plugin(pywriterPath):
     """Install a novelyst plugin if novelyst is installed."""
     if os.path.isfile(f'./{PLUGIN}'):
         novelystDir = f'{pywriterPath}novelyst'
-        pluginDir = f'{novelystDir}/PLUGIN'
+        pluginDir = f'{novelystDir}/plugin'
         output(f'Installing novelyst plugin at "{os.path.normpath(pluginDir)}"')
         os.makedirs(pluginDir, exist_ok=True)
         try:
