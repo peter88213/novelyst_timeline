@@ -69,7 +69,7 @@ class Plugin():
             ui -- reference to the NovelystTk instance of the application.
         """
         self._ui = ui
-        self._converter = YwCnvUi()
+        self._converter = Converter()
         self._converter.ui = ui
 
         # Create a submenu
@@ -141,18 +141,23 @@ class Plugin():
         """
         if self._ui.ywPrj:
             timelinePath = f'{os.path.splitext(self._ui.ywPrj.filePath)[0]}{TlFile.EXTENSION}'
-            if os.path.isfile(timelinePath):
-                if self._ui.ask_yes_no(_('Save the project and update it?')):
-                    self._ui.save_project()
-                    kwargs = self._get_configuration(timelinePath)
-                    sourceFile = TlFile(timelinePath, **kwargs)
-                    sourceFile.ywProject = self._ui.ywPrj
-                    self._converter.import_to_yw(sourceFile, self._ui.ywPrj)
-                    message = self._ui.infoHowText
-                    self._ui.reload_project()
-                    self._ui.set_info_how(message)
-            else:
+            if not os.path.isfile(timelinePath):
                 self._ui.set_info_how(_('{0}No {1} file available for this project.').format(ERROR, APPLICATION))
+                return
+
+            if self._ui.ask_yes_no(_('Save the project and update it?')):
+                self._ui.save_project()
+                kwargs = self._get_configuration(timelinePath)
+                sourceFile = TlFile(timelinePath, **kwargs)
+                sourceFile.ywProject = self._ui.ywPrj
+                self._converter.import_to_yw(sourceFile, self._ui.ywPrj)
+                message = self._ui.infoHowText
+
+                # Reopen the project.
+                self._ui.reloading = True
+                # avoid popup message (novelyst v0.52+)
+                self._ui.open_project(self._ui.ywPrj.filePath)
+                self._ui.set_info_how(message)
 
     def _get_configuration(self, sourcePath):
         #--- Try to get persistent configuration data
@@ -172,4 +177,22 @@ class Plugin():
         kwargs.update(configuration.settings)
         kwargs.update(configuration.options)
         return kwargs
+
+
+class Converter(YwCnvUi):
+    """A file converter class that overwrites without asking. 
+
+    Public methods:
+        convert(sourceFile, targetFile) -- Convert sourceFile into targetFile.
+    """
+
+    def _confirm_overwrite(self, fileName):
+        """Return boolean permission to overwrite the target file.
+        
+        Positional argument:
+            fileName -- path to the target file.
+        
+        Overrides the superclass method.
+        """
+        return True
 
