@@ -1,18 +1,20 @@
 # novelyst_timeline
 
+The [novelyst](https://peter88213.github.io/novelyst/) Python program helps authors organize novels.  
+
+The *novelyst_timeline* plugin synchronizes projects with [Timeline](https://peter88213.github.io/yw-timeline).
+
 ## Features
 
 - Generate a *Timeline* project from a *yWriter* project.
 - Synchronize *yWriter* scenes with corresponding *Timeline* events in both directions.
 - When synchronizing a yWriter project with a timeline, optionally change unspecific scene "Day/Hour/Minute" to specific "date/time" and vice versa.
  
- For more information, see the [yw-timeline project page](https://peter88213.github.io/yw-timeline)
- 
 ## Requirements
 
 - [Python 3.7 or above](https://www.python.org). 
 - [Timeline 2.4 or 2.5](https://sourceforge.net/projects/thetimelineproj/). Versions below 2.4 do not support labels, which are necessary for synchronization with yWriter.
-- [novelyst v0.42+](https://peter88213.github.io/novelyst) 
+- [novelyst](https://peter88213.github.io/novelyst/) version 1.0.0+
 
 
 ## Download and install
@@ -47,7 +49,9 @@ Please make sure that your Python3 installation has the *tkinter* module. On Ubu
 
 ## License
 
-novelyst_timeline is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+This is Open Source software, and the *novelyst_timeline* plugin is licenced under GPLv3. See the
+[GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
+details, or consult the [LICENSE](https://github.com/peter88213/novelyst_timeline/blob/main/LICENSE.md) file.
 
 
  

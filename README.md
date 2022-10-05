@@ -39,4 +39,6 @@ For more information, see the [project homepage](https://peter88213.github.io/no
 
 ## License
 
-novelyst_timeline is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+This is Open Source software, and the *novelyst_timeline* plugin is licenced under GPLv3. See the
+[GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
+details, or consult the [LICENSE](https://github.com/peter88213/novelyst_timeline/blob/main/LICENSE.md) file.
