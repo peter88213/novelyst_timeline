@@ -102,7 +102,7 @@ class Plugin():
                 self._ui.set_info_how(_('{0}No {1} file available for this project.').format(ERROR, APPLICATION))
 
     def _export_from_yw(self):
-        """Update timeline from yWriter.
+        """Update timeline from novelyst.
         """
         if self._ui.ywPrj:
             timelinePath = f'{os.path.splitext(self._ui.ywPrj.filePath)[0]}{TlFile.EXTENSION}'
@@ -129,7 +129,7 @@ class Plugin():
                     else:
                         cmp = _('older')
                     fileDate = datetime.fromtimestamp(timestamp).replace(microsecond=0).isoformat(sep=' ')
-                    message = _('{0} file is {1} than the yWriter project.\n (last saved on {2})').format(APPLICATION, cmp, fileDate)
+                    message = _('{0} file is {1} than the novelyst project.\n (last saved on {2})').format(APPLICATION, cmp, fileDate)
                 except:
                     message = _('Cannot determine file date.')
             else:
@@ -137,7 +137,7 @@ class Plugin():
             messagebox.showinfo(PLUGIN, message)
 
     def _import_to_yw(self):
-        """Update yWriter from timeline.
+        """Update novelyst from timeline.
         """
         if self._ui.ywPrj:
             timelinePath = f'{os.path.splitext(self._ui.ywPrj.filePath)[0]}{TlFile.EXTENSION}'

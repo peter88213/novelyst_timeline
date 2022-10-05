@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Install the yw-timeline script and set up the registry files
-for extending the yWriter and Timeline context menus. 
+for extending the novelyst and Timeline context menus. 
 
 Version @release
 
@@ -137,10 +137,6 @@ if __name__ == '__main__':
     # Run the installation.
     homePath = str(Path.home()).replace('\\', '/')
     pywriterPath = f'{homePath}/.pywriter/'
-    try:
-        install(pywriterPath)
-    except Exception as ex:
-        output(str(ex))
     novelystDir = f'{pywriterPath}novelyst'
     if os.path.isdir(novelystDir):
         try:

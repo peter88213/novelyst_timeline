@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.6.0\n"
-"POT-Creation-Date: 2022-10-05 15:35:45\n"
-"PO-Revision-Date: 2022-10-05 15:35:45\n"
+"Project-Id-Version: 1.0.0\n"
+"POT-Creation-Date: 2022-10-05 19:36:45\n"
+"PO-Revision-Date: 2022-10-05 19:36:45\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -85,8 +85,8 @@ msgstr "älter"
 msgid "update"
 msgstr "aktualisieren"
 
-msgid "{0} file is {1} than the yWriter project.\n (last saved on {2})"
-msgstr "{0}-Datei ist {1} als das yWriter-Projekt.\n (zuletzt gespeichert: {2})"
+msgid "{0} file is {1} than the novelyst project.\n (last saved on {2})"
+msgstr "{0}-Datei ist {1} als das novelyst-Projekt.\n (zuletzt gespeichert: {2})"
 
 msgid "{0}No {1} file available for this project."
 msgstr "{0}Keine {1}-Datei für dieses Projekt verfügbar."
