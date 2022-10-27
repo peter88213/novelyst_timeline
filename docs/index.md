@@ -10,7 +10,6 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 
 ## Requirements
 
-- [Python 3.7 or above](https://www.python.org). 
 - [Timeline 2.4+](https://sourceforge.net/projects/thetimelineproj/). Versions below 2.4 do not support labels, which are necessary for synchronization with yWriter.
 - [novelyst](https://peter88213.github.io/novelyst/) version 1.0.0+
 
