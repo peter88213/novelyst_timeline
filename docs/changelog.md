@@ -8,6 +8,14 @@
 
 See the [GitHub "features" project](https://github.com/peter88213/yw-timeline/projects/1).
 
+### v1.1.0
+
+Code optimization and library update. 
+
+Compatibility: novelyst v1.0.0 API
+Based on PyWriter v8.0.0
+Based on yw-timeline v1.5.0
+
 ### v1.0.0
 
 - Revise the wording: use "novelyst project" instead of "yWriter project."
