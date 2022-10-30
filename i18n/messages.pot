@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.1.0\n"
-"POT-Creation-Date: 2022-10-29 23:24:33\n"
+"Project-Id-Version: 2.0.0\n"
+"POT-Creation-Date: 2022-10-30 08:46:21\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -13,6 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: PyWriter pgettext.py 0.3\n"
 
+
+msgid "!No {} file available for this project."
+msgstr ""
 
 msgid "Action canceled by user"
 msgstr ""
@@ -56,7 +59,7 @@ msgstr ""
 msgid "New scenes created during conversion."
 msgstr ""
 
-msgid "No {0} file available for this project."
+msgid "No {} file available for this project."
 msgstr ""
 
 msgid "Novel"
@@ -87,7 +90,4 @@ msgid "update"
 msgstr ""
 
 msgid "{0} file is {1} than the novelyst project.\n (last saved on {2})"
-msgstr ""
-
-msgid "{0}No {1} file available for this project."
 msgstr ""

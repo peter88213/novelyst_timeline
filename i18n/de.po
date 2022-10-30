@@ -3,15 +3,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.1.0\n"
-"POT-Creation-Date: 2022-10-29 23:24:33\n"
-"PO-Revision-Date: 2022-10-29 23:24:33\n"
+"Project-Id-Version: 2.0.0\n"
+"POT-Creation-Date: 2022-10-30 08:46:21\n"
+"PO-Revision-Date: 2022-10-30 08:46:21\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+
+msgid "!No {} file available for this project."
+msgstr "!Keine {}-Datei für dieses Projekt vorhanden."
 
 msgid "Action canceled by user"
 msgstr "Vorgang vom Benutzer abgebrochen"
@@ -55,8 +58,8 @@ msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
 msgid "New scenes created during conversion."
 msgstr "Während der Konvertierung wurden neue Szenen erzeugt."
 
-msgid "No {0} file available for this project."
-msgstr "Keine {0}-Datei für dieses Projekt vorhanden."
+msgid "No {} file available for this project."
+msgstr "Keine {}-Datei für dieses Projekt vorhanden."
 
 msgid "Novel"
 msgstr "Roman"
@@ -87,7 +90,4 @@ msgstr "aktualisieren"
 
 msgid "{0} file is {1} than the novelyst project.\n (last saved on {2})"
 msgstr "{0}-Datei ist {1} als das novelyst-Projekt.\n (zuletzt gespeichert: {2})"
-
-msgid "{0}No {1} file available for this project."
-msgstr "{0}Keine {1}-Datei für dieses Projekt verfügbar."
 
