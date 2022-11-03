@@ -19,7 +19,7 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 [Download the latest release (version 2.0.1)](https://raw.githubusercontent.com/peter88213/novelyst_timeline/main/dist/novelyst_timeline_v2.0.1.zip)
 
 - Unzip the downloaded zipfile "novelyst_timeline_v2.0.1.zip" into a new folder.
-- Move into this new folder and launch **setup.pyw**. This installs the plugin.
+- Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
 
 *Note: If you install novelyst at a later time, you can always install the plugin afterwards by running the novelyst_timeline setup script again.*
 
