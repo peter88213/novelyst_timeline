@@ -1,7 +1,6 @@
 """Timeline sync plugin for novelyst.
 
 Version @release
-Compatibility: novelyst v2.0 API 
 Requires Python 3.6+
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/aeon2yw
@@ -47,7 +46,7 @@ class Plugin():
         
     """
     VERSION = '@release'
-    NOVELYST_API = '2.0'
+    NOVELYST_API = '3.0'
     DESCRIPTION = 'Synchronize with Timeline'
     URL = 'https://peter88213.github.io/novelyst_timeline'
 
@@ -114,7 +113,6 @@ class Plugin():
                 self._ui.save_project()
                 kwargs = self._get_configuration(self._ui.prjFile.filePath)
                 targetFile = TlFile(timelinePath, **kwargs)
-                targetFile.ywProject = self._ui.prjFile
                 self._converter.export_from_yw(self._ui.prjFile, targetFile)
 
     def _info(self):
@@ -149,7 +147,6 @@ class Plugin():
                 self._ui.save_project()
                 kwargs = self._get_configuration(timelinePath)
                 sourceFile = TlFile(timelinePath, **kwargs)
-                sourceFile.ywProject = self._ui.prjFile
                 self._converter.import_to_yw(sourceFile, self._ui.prjFile)
                 message = self._ui.infoHowText
 
