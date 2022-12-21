@@ -1,7 +1,6 @@
 """Timeline sync plugin for novelyst.
 
 Version @release
-Compatibility: novelyst v2.0 API 
 Requires Python 3.6+
 Copyright (c) 2022 Peter Triesberger
 For further information see https://github.com/peter88213/aeon2yw
@@ -18,6 +17,7 @@ from datetime import datetime
 from pywriter.pywriter_globals import *
 from pywriter.config.configuration import Configuration
 from pywriter.file.doc_open import open_document
+from pywriter.yw.yw7_file import Yw7File
 from pywriter.converter.yw_cnv_ui import YwCnvUi
 from ywtimelinelib.tl_file import TlFile
 
@@ -47,7 +47,7 @@ class Plugin():
         
     """
     VERSION = '@release'
-    NOVELYST_API = '2.0'
+    NOVELYST_API = '4.0'
     DESCRIPTION = 'Synchronize with Timeline'
     URL = 'https://peter88213.github.io/novelyst_timeline'
 
@@ -112,10 +112,12 @@ class Plugin():
                 action = _('create')
             if self._ui.ask_yes_no(_('Save the project and {} the timeline?').format(action)):
                 self._ui.save_project()
-                kwargs = self._get_configuration(self._ui.prjFile.filePath)
+                sourceFile = Yw7File(self._ui.prjFile.filePath)
+                sourceFile.read()
+                kwargs = self._get_configuration(sourceFile.filePath)
                 targetFile = TlFile(timelinePath, **kwargs)
-                targetFile.ywProject = self._ui.prjFile
-                self._converter.export_from_yw(self._ui.prjFile, targetFile)
+                targetFile.ywProject = sourceFile
+                self._converter.export_from_yw(sourceFile, targetFile)
 
     def _info(self):
         """Show information about the Timeline file."""
@@ -148,9 +150,11 @@ class Plugin():
             if self._ui.ask_yes_no(_('Save the project and update it?')):
                 self._ui.save_project()
                 kwargs = self._get_configuration(timelinePath)
+                targetFile = Yw7File(self._ui.prjFile.filePath)
+                targetFile.read()
                 sourceFile = TlFile(timelinePath, **kwargs)
-                sourceFile.ywProject = self._ui.prjFile
-                self._converter.import_to_yw(sourceFile, self._ui.prjFile)
+                sourceFile.ywProject = targetFile
+                self._converter.import_to_yw(sourceFile, targetFile)
                 message = self._ui.infoHowText
 
                 # Reopen the project.
