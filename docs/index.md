@@ -37,7 +37,7 @@ Please make sure that your Python3 installation has the *tkinter* module. On Ubu
 
 ## License
 
-This is Open Source software, and the *novelyst_timeline* plugin is licenced under GPLv3. See the
+This is Open Source software, and the *novelyst_timeline* plugin is licensed under GPLv3. See the
 [GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
 details, or consult the [LICENSE](https://github.com/peter88213/novelyst_timeline/blob/main/LICENSE) file.
 
