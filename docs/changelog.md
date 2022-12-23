@@ -8,6 +8,14 @@
 
 See the [GitHub "features" project](https://github.com/peter88213/yw-timeline/projects/1).
 
+### v2.0.3
+
+Downgrade from v4.0.1 due to a regression that takes some time to fix.
+
+Compatibility: novelyst v4.0 API
+Based on PyWriter v8.0.10
+Based on yw-timeline v2.0.3
+
 ### v4.0.1
 
 - Make the setup script run with Python 3.11 under Windows.
