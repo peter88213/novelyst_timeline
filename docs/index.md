@@ -11,14 +11,14 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 ## Requirements
 
 - [Timeline 2.4+](https://sourceforge.net/projects/thetimelineproj/). Versions below 2.4 do not support labels, which are necessary for synchronization with yWriter.
-- [novelyst](https://peter88213.github.io/novelyst/) version 4.0.0+
+- [novelyst](https://peter88213.github.io/novelyst/) version 4.0+
 
 
 ## Download and install
 
-[Download the latest release (version 2.0.3)](https://raw.githubusercontent.com/peter88213/novelyst_timeline/main/dist/novelyst_timeline_v2.0.3.zip)
+[Download the latest release (version 4.0.1)](https://raw.githubusercontent.com/peter88213/novelyst_timeline/main/dist/novelyst_timeline_v4.0.1.zip)
 
-- Unzip the downloaded zipfile "novelyst_timeline_v2.0.3.zip" into a new folder.
+- Unzip the downloaded zipfile "novelyst_timeline_v4.0.1.zip" into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
 
 *Note: If you install novelyst at a later time, you can always install the plugin afterwards by running the novelyst_timeline setup script again.*
@@ -37,7 +37,7 @@ Please make sure that your Python3 installation has the *tkinter* module. On Ubu
 
 ## License
 
-This is Open Source software, and the *novelyst_timeline* plugin is licenced under GPLv3. See the
+This is Open Source software, and the *novelyst_timeline* plugin is licensed under GPLv3. See the
 [GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
 details, or consult the [LICENSE](https://github.com/peter88213/novelyst_timeline/blob/main/LICENSE) file.
 
