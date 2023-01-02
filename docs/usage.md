@@ -1,13 +1,27 @@
-# The novelyst_timeline plugin
+[Project homepage](https://peter88213.github.io/novelyst_timeline)
 
-## How to install
+--- 
+
+A [novelyst](https://peter88213.github.io/novelyst/) plugin providing synchronization with [Timeline](https://peter88213.github.io/yw-timeline). 
+
+---
+
+# Installation
 
 - Unzip the downloaded zipfile into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
 
 *Note: If you install novelyst at a later time, you can always install the plugin afterwards by running the novelyst_timeline setup script again.*
 
-### Launch from novelyst
+The plugin adds a **Timeline** entry to the *novelyst* **Tools** menu, and an **Timeline plugin Online Help** entry to the **Help** menu. 
+
+---
+
+# Operation
+
+---
+
+## Launch the converter
 
 The plugin's features are accessible via the **Tools > Timeline** submenu in *novelyst*.
 
@@ -17,6 +31,12 @@ The submenu has the following entries:
 - Update timeline from novelyst
 - Update novelyst from timeline
 - Edit timeline (launch Timeline)
+
+---
+
+# Control conversion
+
+---
 
 ## Custom configuration
 
@@ -93,12 +113,11 @@ datetime_to_dhm = No
 
 ```
 
-
 ### How to reset the configuration to defaults
 
 Just delete your global and local configuration files.
 
-
+---
 
 ## Conventions
 
@@ -144,8 +163,9 @@ The other way around (Timeline to novelyst), there are three options:
 
 D/H/M refers to the default date/time stamp that can be set in the configuration.
 
+---
 
-### Known limitations
+## Known limitations
 
 - Scene events that begin before 0100-01-01 in the timeline, will not be synchronized with novelyst, because novelyst can not handle these dates.
 - The same applies to the scene duration in this case, i.e. the event duration in Timeline and the scene duration in novelyst may differ.
@@ -153,8 +173,12 @@ D/H/M refers to the default date/time stamp that can be set in the configuration
 - If a scene event ends after 9999-12-31 in the timeline, the scene duration is not synchronized with novelyst.
 
 
-## See also:
+---
 
-Home page of the novelyst application: https://peter88213.github.io/novelyst
+# License
+
+This is Open Source software, and the *novelyst_timeline* plugin is licensed under GPLv3. See the
+[GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
+details, or consult the [LICENSE](https://github.com/peter88213/novelyst_timeline/blob/main/LICENSE) file.
 
 

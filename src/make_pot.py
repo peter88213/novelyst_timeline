@@ -9,7 +9,7 @@ import build_novelyst_timeline as build_plugin
 sys.path.insert(0, f'{os.getcwd()}/../../PyWriter/src')
 import pgettext
 
-APP = 'yw-timeline'
+APP = 'novelyst_timeline'
 POT_FILE = '../i18n/messages.pot'
 
 

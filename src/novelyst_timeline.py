@@ -12,6 +12,7 @@ from pathlib import Path
 import tkinter as tk
 import locale
 import gettext
+import webbrowser
 from tkinter import messagebox
 from datetime import datetime
 from pywriter.pywriter_globals import *
@@ -50,6 +51,7 @@ class Plugin():
     NOVELYST_API = '4.0'
     DESCRIPTION = 'Synchronize with Timeline'
     URL = 'https://peter88213.github.io/novelyst_timeline'
+    _HELP_URL = 'https://peter88213.github.io/novelyst_timeline/usage'
 
     SETTINGS = dict(
         scene_label='Scene',
@@ -72,7 +74,7 @@ class Plugin():
         self._converter = Converter()
         self._converter.ui = ui
 
-        # Create a submenu
+        # Create a submenu in the Tools menu.
         self._pluginMenu = tk.Menu(self._ui.toolsMenu, tearoff=0)
         self._ui.toolsMenu.add_cascade(label=APPLICATION, menu=self._pluginMenu)
         self._ui.toolsMenu.entryconfig(APPLICATION, state='disabled')
@@ -82,6 +84,9 @@ class Plugin():
         self._pluginMenu.add_command(label=_('Update the project'), command=self._import_to_yw)
         self._pluginMenu.add_separator()
         self._pluginMenu.add_command(label=_('Edit the timeline'), command=self._launch_application)
+
+        # Add an entry to the Help menu.
+        self._ui.helpMenu.add_command(label=_('Timeline plugin Online help'), command=lambda: webbrowser.open(self._HELP_URL))
 
     def disable_menu(self):
         """Disable menu entries when no project is open."""

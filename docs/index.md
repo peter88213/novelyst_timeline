@@ -16,9 +16,9 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 
 ## Download and install
 
-[Download the latest release (version 2.0.4)](https://raw.githubusercontent.com/peter88213/novelyst_timeline/main/dist/novelyst_timeline_v2.0.4.zip)
+[Download the latest release (version 2.1.0)](https://raw.githubusercontent.com/peter88213/novelyst_timeline/main/dist/novelyst_timeline_v2.1.0.zip)
 
-- Unzip the downloaded zipfile "novelyst_timeline_v2.0.4.zip" into a new folder.
+- Unzip the downloaded zipfile "novelyst_timeline_v2.1.0.zip" into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
 
 *Note: If you install novelyst at a later time, you can always install the plugin afterwards by running the novelyst_timeline setup script again.*
@@ -26,10 +26,6 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 ## Usage and conventions
 
 See the [instructions for use](usage)
-
-### Note for Linux users
-
-Please make sure that your Python3 installation has the *tkinter* module. On Ubuntu, for example, it is not available out of the box and must be installed via a separate package. 
 
 ------------------------------------------------------------------
 

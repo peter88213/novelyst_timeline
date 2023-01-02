@@ -27,10 +27,6 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 
 See the [instructions for use](usage)
 
-### Note for Linux users
-
-Please make sure that your Python3 installation has the *tkinter* module. On Ubuntu, for example, it is not available out of the box and must be installed via a separate package. 
-
 ------------------------------------------------------------------
 
 [Changelog](changelog)
