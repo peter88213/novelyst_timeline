@@ -16,6 +16,7 @@ File structure:
 │       └── msgfmt.py
 └── novelyst_timeline/
     ├── src/ 
+    ├── tools/ 
     │   └── translate_de.py
     └── i18n/
         ├── messages.pot

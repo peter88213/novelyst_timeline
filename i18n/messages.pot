@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.0\n"
-"POT-Creation-Date: 2023-01-02 18:15:01\n"
+"Project-Id-Version: 2.1.1\n"
+"POT-Creation-Date: 2023-01-05 11:18:12\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -41,9 +41,6 @@ msgstr ""
 msgid "Edit the timeline"
 msgstr ""
 
-msgid "File"
-msgstr ""
-
 msgid "File already exists"
 msgstr ""
 
@@ -62,10 +59,22 @@ msgstr ""
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr ""
 
+msgid "New Chapter"
+msgstr ""
+
+msgid "New Part"
+msgstr ""
+
+msgid "New Scene"
+msgstr ""
+
 msgid "New scenes created during conversion."
 msgstr ""
 
 msgid "No {} file available for this project."
+msgstr ""
+
+msgid "Novel"
 msgstr ""
 
 msgid "Overwrite existing file \"{}\"?"
