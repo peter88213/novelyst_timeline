@@ -8,6 +8,14 @@
 
 See the [GitHub "features" project](https://github.com/peter88213/yw-timeline/projects/1).
 
+### v4.0.3
+
+- Update for new libraries.
+
+Compatibility: novelyst v4.0 API
+Based on PyWriter v11.0.2
+Based on yw-timeline v3.0.3
+
 ### v2.1.1
 
 Rebuild with restructured build environment and defined dependencies.
