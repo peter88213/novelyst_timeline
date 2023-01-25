@@ -8,7 +8,7 @@
 
 See the [GitHub "features" project](https://github.com/peter88213/yw-timeline/projects/1).
 
-### v4.0.3
+### v4.0.2
 
 - Update for new libraries.
 
