@@ -1,6 +1,6 @@
 The [novelyst](https://peter88213.github.io/novelyst/) Python program helps authors organize novels.  
 
-The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](https://peter88213.github.io/yw-timeline).
+The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](http://thetimelineproj.sourceforge.net/).
 
 ## Features
 
