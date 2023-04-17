@@ -4,6 +4,14 @@
 
 ## Changelog
 
+### v4.0.4
+
+- Library update.
+
+Compatibility: novelyst v4.0 API
+Based on PyWriter v12.4.1
+Based on yw-timeline v3.0.5
+
 ### v4.0.3
 
 - Reduce the memory use by discarding the docstrings on building.
