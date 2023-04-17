@@ -1,3 +1,5 @@
+# novelyst_timeline
+
 The [novelyst](https://peter88213.github.io/novelyst/) Python program helps authors organize novels.  
 
 The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](http://thetimelineproj.sourceforge.net/).
@@ -18,18 +20,16 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 
 [Download the latest release (version 0.99.0)](https://raw.githubusercontent.com/peter88213/novelyst_timeline/main/dist/novelyst_timeline_v0.99.0.zip)
 
-- Unzip the downloaded zipfile "novelyst_timeline_v0.99.0.zip" into a new folder.
-- Move into this new folder and launch **setup.pyw**. This installs the plugin.
+- Extract the "novelyst_timeline_v0.99.0" folder from the downloaded zipfile "novelyst_timeline_v0.99.0.zip".
+- Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
 
-*Note: If you install novelyst at a later time, you can always install the plugin afterwards by running the novelyst_timeline setup script again.*
+---
+
+[Changelog](changelog)
 
 ## Usage and conventions
 
 See the [instructions for use](usage)
-
-------------------------------------------------------------------
-
-[Changelog](changelog)
 
 ## License
 
