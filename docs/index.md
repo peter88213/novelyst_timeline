@@ -18,7 +18,7 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 
 ## Download and install
 
-[Download the latest release (version 4.0.4)](https://raw.githubusercontent.com/peter88213/novelyst_timeline/main/dist/novelyst_timeline_v4.0.4.zip)
+[Download the latest release (version 4.0.4)](https://github.com/peter88213/novelyst_timeline/raw/main/dist/novelyst_timeline_v4.0.4.zip)
 
 - Extract the "novelyst_timeline_v4.0.4" folder from the downloaded zipfile "novelyst_timeline_v4.0.4.zip".
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
