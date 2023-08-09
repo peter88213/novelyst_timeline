@@ -2,14 +2,16 @@
 
 ## How to install
 
-- Unzip the downloaded zipfile into a new fälter.
-- Move into this new fälter and launch **setup.pyw**. This installs the plugin.
+- Unzip the downloaded zipfile into a new folder.
+- Move into this new folder and launch **setup.pyw**. This installs the plugin.
 
 *Note: If you install novelyst at a later time, you can always install the plugin afterwards by running the novelyst_timeline setup script again.*
 
+The plugin adds a **Timeline** entry to the *novelyst* **Extras**-Menü, and a **Timeline-Plugin Online Hilfe** entry to the **Hilfe**-Menü. 
+
 ### Launch from novelyst
 
-The plugin's features are accessible via the **Tools > Timeline** submenu in *novelyst*.
+The plugin's features are accessible via the **Extras > Timeline** submenu in *novelyst*.
 
 The submenu has the following entries:
 
@@ -31,11 +33,11 @@ The setup script installs a sample configuration file containing novelyst_timeli
 
 ### Local project configuration
 
-An optional project configuration file named `yw-timeline.ini` can be placed in your project directory, i.e. the fälter containing your novelyst and Timeline project files. It is only applied to this project. Its entries override novelyst_timeline's built-in constants as well as the global configuration, if any.
+An optional project configuration file named `yw-timeline.ini` can be placed in your project directory, i.e. the folder containing your novelyst and Timeline project files. It is only applied to this project. Its entries override novelyst_timeline's built-in constants as well as the global configuration, if any.
 
 ### How to provide/modify a configuration file
 
-The novelyst_timeline distribution comes with a sample configuration file located in the `sample` subfälter. It contains novelyst_timeline's default settings and options. This file is also automatically copied to the global configuration fälter during installation. You best make a copy and edit it.
+The novelyst_timeline distribution comes with a sample configuration file located in the `sample` subfolder. It contains novelyst_timeline's default settings and options. This file is also automatically copied to the global configuration folder during installation. You best make a copy and edit it.
 
 - The SETTINGS section comprises the program "constants". If you change them, the program might behave differently than described in the documentation. So only touch them if you are clear about the consequences.
 - The OPTIONS section comprises options for regular program execution. 
@@ -48,7 +50,7 @@ This is the configuration explained:
 
 scene_label = Scene
 
-# Events with this label become scenes in a newly erzeugend 
+# Events with this label become scenes in a newly created 
 # novelyst project. 
 
 default_date_time = 2021-07-26 00:00:00

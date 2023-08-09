@@ -7,6 +7,8 @@
 
 *Note: If you install novelyst at a later time, you can always install the plugin afterwards by running the novelyst_timeline setup script again.*
 
+The plugin adds a **Timeline** entry to the *novelyst* **Tools** menu, and a **Timeline plugin Online Help** entry to the **Help** menu. 
+
 ### Launch from novelyst
 
 The plugin's features are accessible via the **Tools > Timeline** submenu in *novelyst*.
