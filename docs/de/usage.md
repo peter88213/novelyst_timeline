@@ -1,13 +1,19 @@
-# The novelyst_timeline plugin
+[Projekt-Homepage](https://peter88213.github.io/novelyst_timeline) > Gebrauchsanleitung
 
-## How to install
+--- 
+
+Ein [novelyst](https://peter88213.github.io/novelyst/)-Plugin providing synchronization with Timeline. 
+
+---
+
+# Installation
 
 - Unzip the downloaded zipfile into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
 
 *Note: If you install novelyst at a later time, you can always install the plugin afterwards by running the novelyst_timeline setup script again.*
 
-The plugin adds a **Timeline** entry to the *novelyst* **Extras**-Menü, and a **Timeline-Plugin Online Hilfe** entry to the **Hilfe**-Menü. 
+Das Plugin hängt einen **Timeline**-Eintrag an das *novelyst* **Extras**-Menü, und einen **Timeline-Plugin Online Hilfe**-Eintrag an das **Hilfe**-Menü an. 
 
 ### Launch from novelyst
 
@@ -155,8 +161,8 @@ D/H/M refers to the default date/time stamp that can be set in the configuration
 - If a scene event ends after 9999-12-31 in the timeline, the scene duration is not synchronized with novelyst.
 
 
-## See also:
+---
 
-Home page of the novelyst application: https://peter88213.github.io/novelyst
+# Lizenz
 
-
+Dies ist quelloffene Software, und das *novelyst_timeline*-Plugin steht unter der GPLv3-Lizenz. Für mehr Details besuchen Sie die[Website der GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.de.html), oder schauen Sie sich die [LICENSE](https://github.com/peter88213/novelyst_timeline/blob/main/LICENSE)-Datei an.

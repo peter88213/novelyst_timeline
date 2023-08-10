@@ -1,6 +1,12 @@
-# The novelyst_timeline plugin
+[Project homepage](https://peter88213.github.io/novelyst_timeline) > Instructions for use
 
-## How to install
+--- 
+
+A [novelyst](https://peter88213.github.io/novelyst/) plugin providing synchronization with Timeline. 
+
+---
+
+# Installation
 
 - Unzip the downloaded zipfile into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin.
@@ -154,9 +160,11 @@ D/H/M refers to the default date/time stamp that can be set in the configuration
 - Scenes that begin before 0100-01-01 in the timeline, can not have the D/H/M information converted to a date/time stamp and vice versa.
 - If a scene event ends after 9999-12-31 in the timeline, the scene duration is not synchronized with novelyst.
 
+---
 
-## See also:
+# License
 
-Home page of the novelyst application: https://peter88213.github.io/novelyst
-
+This is Open Source software, and the *novelyst_timeline* plugin is licensed under GPLv3. See the
+[GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
+details, or consult the [LICENSE](https://github.com/peter88213/novelyst_timeline/blob/main/LICENSE) file.
 
