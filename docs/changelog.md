@@ -4,6 +4,16 @@
 
 ## Changelog
 
+
+### v4.1.0
+
+- Add a menu entry for the online help.
+
+Compatibility: novelyst v4.0 API
+Based on PyWriter v12.14.0
+Based on yw-timeline v3.0.5
+
+
 ### v4.0.4
 
 - Library update.

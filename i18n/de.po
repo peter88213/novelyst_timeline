@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.4\n"
-"POT-Creation-Date: 2023-04-17 15:12:10\n"
-"PO-Revision-Date: 2023-04-17 15:12:10\n"
+"Project-Id-Version: 4.1.0\n"
+"POT-Creation-Date: 2023-08-27 18:13:59\n"
+"PO-Revision-Date: 2023-08-27 18:13:59\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -75,6 +75,9 @@ msgstr "Projekt speichern und aktualisieren?"
 
 msgid "Save the project and {} the timeline?"
 msgstr "Projekt sichern und die Zeitleiste {}?"
+
+msgid "Timeline plugin Online help"
+msgstr "Timeline-Plugin Online-Hilfe"
 
 msgid "Update the project"
 msgstr "Das Projekt aktualisieren"
