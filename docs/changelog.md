@@ -7,7 +7,7 @@
 
 ### v4.1.1
 
-- Update german translations.
+- Update German translations.
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v12.14.0
