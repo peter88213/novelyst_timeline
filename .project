@@ -3,8 +3,7 @@
 	<name>novelyst_timeline</name>
 	<comment></comment>
 	<projects>
-		<project>PyWriter</project>
-		<project>yw-timeline</project>
+		<project>novxlib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

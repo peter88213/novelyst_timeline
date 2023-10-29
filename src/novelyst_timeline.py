@@ -25,11 +25,11 @@ import gettext
 import webbrowser
 from tkinter import messagebox
 from datetime import datetime
-from pywriter.pywriter_globals import *
-from pywriter.config.configuration import Configuration
-from pywriter.file.doc_open import open_document
-from pywriter.converter.yw_cnv_ui import YwCnvUi
-from ywtimelinelib.tl_file import TlFile
+from novxlib.novx_globals import *
+from novxlib.config.configuration import Configuration
+from novxlib.file.doc_open import open_document
+from novxlib.converter.converter import Converter
+from nvtimelinelib.tl_file import TlFile
 
 # Initialize localization.
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
@@ -45,7 +45,7 @@ except:
 APPLICATION = 'Timeline'
 PLUGIN = f'{APPLICATION} plugin v@release'
 INI_FILENAME = 'yw-timeline.ini'
-INI_FILEPATH = '.pywriter/yw-timeline/config'
+INI_FILEPATH = '.kalliope/yw-timeline/config'
 
 
 class Plugin():
@@ -57,7 +57,7 @@ class Plugin():
         
     """
     VERSION = '@release'
-    NOVELYST_API = '4.0'
+    NOVELYST_API = '5.0'
     DESCRIPTION = 'Synchronize with Timeline'
     URL = 'https://peter88213.github.io/novelyst_timeline'
     _HELP_URL = 'https://peter88213.github.io/novelyst_timeline/usage'
@@ -89,8 +89,8 @@ class Plugin():
         self._ui.toolsMenu.entryconfig(APPLICATION, state='disabled')
         self._pluginMenu.add_command(label=_('Information'), command=self._info)
         self._pluginMenu.add_separator()
-        self._pluginMenu.add_command(label=_('Create or update the timeline'), command=self._export_from_yw)
-        self._pluginMenu.add_command(label=_('Update the project'), command=self._import_to_yw)
+        self._pluginMenu.add_command(label=_('Create or update the timeline'), command=self._export_from_novx)
+        self._pluginMenu.add_command(label=_('Update the project'), command=self._import_to_novx)
         self._pluginMenu.add_separator()
         self._pluginMenu.add_command(label=_('Edit the timeline'), command=self._launch_application)
 
@@ -115,7 +115,7 @@ class Plugin():
             else:
                 self._ui.set_info_how(_('!No {} file available for this project.').format(APPLICATION))
 
-    def _export_from_yw(self):
+    def _export_from_novx(self):
         """Update timeline from novelyst.
         """
         if self._ui.prjFile:
@@ -128,7 +128,7 @@ class Plugin():
                 self._ui.save_project()
                 kwargs = self._get_configuration(self._ui.prjFile.filePath)
                 targetFile = TlFile(timelinePath, **kwargs)
-                self._converter.export_from_yw(self._ui.prjFile, targetFile)
+                self._converter.export_from_novx(self._ui.prjFile, targetFile)
 
     def _info(self):
         """Show information about the Timeline file."""
@@ -149,7 +149,7 @@ class Plugin():
                 message = _('No {} file available for this project.').format(APPLICATION)
             messagebox.showinfo(PLUGIN, message)
 
-    def _import_to_yw(self):
+    def _import_to_novx(self):
         """Update novelyst from timeline.
         """
         if self._ui.prjFile:
@@ -162,7 +162,7 @@ class Plugin():
                 self._ui.save_project()
                 kwargs = self._get_configuration(timelinePath)
                 sourceFile = TlFile(timelinePath, **kwargs)
-                self._converter.import_to_yw(sourceFile, self._ui.prjFile)
+                self._converter.import_to_novx(sourceFile, self._ui.prjFile)
                 message = self._ui.infoHowText
 
                 # Reopen the project.
@@ -191,7 +191,7 @@ class Plugin():
         return kwargs
 
 
-class Converter(YwCnvUi):
+class Converter(Converter):
     """A file converter class that overwrites without asking. 
 
     Public methods:
