@@ -1,4 +1,4 @@
-# yw-timeline Dictionary
+# nv-timeline Dictionary
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""

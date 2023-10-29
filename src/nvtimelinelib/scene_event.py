@@ -1,7 +1,7 @@
 """Provide a class for Timeline scene event representation.
 
 Copyright (c) 2023 Peter Triesberger
-For further information see https://github.com/peter88213/yw-timeline
+For further information see https://github.com/peter88213/nv-timeline
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import xml.etree.ElementTree as ET

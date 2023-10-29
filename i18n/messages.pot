@@ -1,17 +1,17 @@
 # novelyst_timeline Dictionary
-# Copyright (C) 2022 Peter Triesberger
+# Copyright (C) 2023 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.1.1\n"
-"POT-Creation-Date: 2023-09-04 19:09:24\n"
+"Project-Id-Version: unknown\n"
+"POT-Creation-Date: 2023-10-29 10:44:04\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: PyWriter pgettext.py 0.3\n"
+"Generated-By: novxlib pgettext.py 0.3\n"
 
 
 msgid "!No {} file available for this project."
@@ -20,28 +20,16 @@ msgstr ""
 msgid "Action canceled by user"
 msgstr ""
 
-msgid "Can not process file"
-msgstr ""
-
 msgid "Cannot determine file date."
 msgstr ""
 
-msgid "Cannot overwrite file"
-msgstr ""
-
-msgid "Cannot write file"
-msgstr ""
-
-msgid "Create a yWriter project file from {0}\nNew project: \"{1}\""
+msgid "Create a novelyst project file from {0}\nNew project: \"{1}\""
 msgstr ""
 
 msgid "Create or update the timeline"
 msgstr ""
 
 msgid "Edit the timeline"
-msgstr ""
-
-msgid "File"
 msgstr ""
 
 msgid "File already exists"
@@ -62,13 +50,16 @@ msgstr ""
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr ""
 
-msgid "New scenes created during conversion."
+msgid "New scenes created during conversion"
 msgstr ""
 
 msgid "No {} file available for this project."
 msgstr ""
 
 msgid "Overwrite existing file \"{}\"?"
+msgstr ""
+
+msgid "Please close the document first"
 msgstr ""
 
 msgid "Save the project and update it?"

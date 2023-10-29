@@ -44,8 +44,8 @@ except:
 
 APPLICATION = 'Timeline'
 PLUGIN = f'{APPLICATION} plugin v@release'
-INI_FILENAME = 'yw-timeline.ini'
-INI_FILEPATH = '.kalliope/yw-timeline/config'
+INI_FILENAME = 'nv-timeline.ini'
+INI_FILEPATH = '.kalliope/nv-timeline/config'
 
 
 class Plugin():

@@ -11,7 +11,7 @@
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v12.14.0
-Based on yw-timeline v3.0.5
+Based on nv-timeline v3.0.5
 
 ### v4.1.0
 
@@ -19,7 +19,7 @@ Based on yw-timeline v3.0.5
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v12.14.0
-Based on yw-timeline v3.0.5
+Based on nv-timeline v3.0.5
 
 ### v4.0.4
 
@@ -27,7 +27,7 @@ Based on yw-timeline v3.0.5
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v12.4.1
-Based on yw-timeline v3.0.5
+Based on nv-timeline v3.0.5
 
 ### v4.0.3
 
@@ -35,7 +35,7 @@ Based on yw-timeline v3.0.5
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v12.1.2
-Based on yw-timeline v3.0.3
+Based on nv-timeline v3.0.3
 
 ### v4.0.2
 
@@ -43,7 +43,7 @@ Based on yw-timeline v3.0.3
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v11.0.2
-Based on yw-timeline v3.0.3
+Based on nv-timeline v3.0.3
 
 ### v2.1.1
 
@@ -51,7 +51,7 @@ Rebuild with restructured build environment and defined dependencies.
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v8.0.11
-Based on yw-timeline v2.0.4
+Based on nv-timeline v2.0.4
 
 ### v2.1.0
 
@@ -59,7 +59,7 @@ Based on yw-timeline v2.0.4
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v8.0.11
-Based on yw-timeline v2.0.4
+Based on nv-timeline v2.0.4
 
 ### v2.0.4
 
@@ -68,7 +68,7 @@ Based on yw-timeline v2.0.4
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v8.0.11
-Based on yw-timeline v2.0.4
+Based on nv-timeline v2.0.4
 
 ### v2.0.3
 
@@ -76,7 +76,7 @@ Downgrade from v4.0.1 due to a regression that takes some time to fix.
 
 Compatibility: novelyst v4.0 API
 Based on PyWriter v8.0.10
-Based on yw-timeline v2.0.3
+Based on nv-timeline v2.0.3
 
 ### v4.0.1
 
@@ -96,7 +96,7 @@ Compatibility: novelyst v4.0 API
 
 Compatibility: novelyst v3.0 API
 Based on PyWriter v9.0.4
-Based on yw-timeline v3.0.1
+Based on nv-timeline v3.0.1
 
 ### v2.0.2
 
@@ -105,7 +105,7 @@ Based on yw-timeline v3.0.1
 
 Compatibility: novelyst v2.0 API
 Based on PyWriter v8.0.8
-Based on yw-timeline v2.0.2
+Based on nv-timeline v2.0.2
 
 ### v1.0.0
 
@@ -115,7 +115,7 @@ Based on yw-timeline v2.0.2
 
 Compatibility: novelyst v1.0.0 API
 Based on PyWriter v7.4.9
-Based on yw-timeline v1.4.1
+Based on nv-timeline v1.4.1
 
 ### v0.6.0
 
@@ -123,7 +123,7 @@ Based on yw-timeline v1.4.1
 
 Compatibility: novelyst v1.0.0 API
 Based on PyWriter v7.4.9
-Based on yw-timeline v1.4.1
+Based on nv-timeline v1.4.1
 
 ### v0.4.0 Beta test release
 
@@ -131,12 +131,12 @@ Based on yw-timeline v1.4.1
 
 Compatibility: novelyst v0.46 API
 Based on PyWriter v7.4.9
-Based on yw-timeline v1.4.1
+Based on nv-timeline v1.4.1
 
 ### v0.2.0 Beta test release
 
-Set up the project from yw-timeline v1.4.1
+Set up the project from nv-timeline v1.4.1
 
 Based on PyWriter v7.4.9
-Based on yw-timeline v1.4.1
+Based on nv-timeline v1.4.1
 

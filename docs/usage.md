@@ -33,13 +33,13 @@ You can override the default settings by providing a configuration file. Be alwa
 ### Global configuration
 
 An optional global configuration file can be placed in the configuration directory in your user profile. It is applied to any project. Its entries override novelyst_timeline's built-in constants. This is the path:
-`c:\Users\<user name>\.pywriter\yw-timeline\config\yw-timeline.ini`
+`c:\Users\<user name>\.novelyst\config\timeline.ini`
   
 The setup script installs a sample configuration file containing novelyst_timeline's default values. You can modify or delete it. 
 
 ### Local project configuration
 
-An optional project configuration file named `yw-timeline.ini` can be placed in your project directory, i.e. the folder containing your novelyst and Timeline project files. It is only applied to this project. Its entries override novelyst_timeline's built-in constants as well as the global configuration, if any.
+An optional project configuration file named `yw-nv-timelinei` can be placed in your project directory, i.e. the folder containing your novelyst and Timeline project files. It is only applied to this project. Its entries override novelyst_timeline's built-in constants as well as the global configuration, if any.
 
 ### How to provide/modify a configuration file
 

@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.1.1\n"
-"POT-Creation-Date: 2023-09-04 19:09:24\n"
-"PO-Revision-Date: 2023-09-04 19:09:24\n"
+"Project-Id-Version: unknown\n"
+"POT-Creation-Date: 2023-10-29 10:44:04\n"
+"PO-Revision-Date: 2023-10-29 10:44:10\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -19,29 +19,17 @@ msgstr "!Keine {}-Datei für dieses Projekt vorhanden."
 msgid "Action canceled by user"
 msgstr "Vorgang vom Benutzer abgebrochen"
 
-msgid "Can not process file"
-msgstr "Kann Datei nicht verarbeiten"
-
 msgid "Cannot determine file date."
 msgstr "Das Dateidatum ist nicht zu ermitteln."
 
-msgid "Cannot overwrite file"
-msgstr "Kann Datei nicht überschreiben"
-
-msgid "Cannot write file"
-msgstr "Kann Datei nicht schreiben"
-
-msgid "Create a yWriter project file from {0}\nNew project: \"{1}\""
-msgstr "Erzeuge eine yWriter-Projektdatei aus {0}\nNeues Projekt: \"{1}\""
+msgid "Create a novelyst project file from {0}\nNew project: \"{1}\""
+msgstr "Erzeuge eine novelyst-Projektdatei aus {0}\nNeues Projekt: \"{1}\""
 
 msgid "Create or update the timeline"
 msgstr "Die Zeitleiste erzeugen oder aktualisieren"
 
 msgid "Edit the timeline"
 msgstr "Die Zeitleiste bearbeiten"
-
-msgid "File"
-msgstr "Datei"
 
 msgid "File already exists"
 msgstr "Datei existiert bereits"
@@ -61,14 +49,17 @@ msgstr "Information"
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
 
-msgid "New scenes created during conversion."
-msgstr "Während der Konvertierung wurden neue Abschnitte erzeugt."
+msgid "New scenes created during conversion"
+msgstr "Während der Konvertierung wurden neue Abschnitte erzeugt"
 
 msgid "No {} file available for this project."
 msgstr "Keine {}-Datei für dieses Projekt vorhanden."
 
 msgid "Overwrite existing file \"{}\"?"
 msgstr "Bestehende Datei \"{}\" überschreiben?"
+
+msgid "Please close the document first"
+msgstr "Bitte zuerst das Dokument schließen"
 
 msgid "Save the project and update it?"
 msgstr "Projekt speichern und aktualisieren?"

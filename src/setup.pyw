@@ -20,7 +20,7 @@ except ModuleNotFoundError:
 
 PLUGIN = 'novelyst_timeline.py'
 OLD_PLUGIN = 'yw_timeline_novelyst.py'
-APPNAME = 'yw-timeline'
+APPNAME = 'nv-timeline'
 VERSION = ' @release'
 APP = f'{APPNAME}.py'
 INI_FILE = f'{APPNAME}.ini'
@@ -59,12 +59,12 @@ def open_folder(installDir):
                 pass
 
 
-def install(pywriterPath):
+def install(novxlibPath):
     """Install the script."""
 
-    # Create a general PyWriter installation directory, if necessary.
-    os.makedirs(pywriterPath, exist_ok=True)
-    installDir = f'{pywriterPath}{APPNAME}'
+    # Create a general novxlib installation directory, if necessary.
+    os.makedirs(novxlibPath, exist_ok=True)
+    installDir = f'{novxlibPath}{APPNAME}'
     cnfDir = f'{installDir}{INI_PATH}'
     os.makedirs(cnfDir, exist_ok=True)
 
@@ -81,10 +81,10 @@ def install(pywriterPath):
         pass
 
 
-def install_plugin(pywriterPath):
+def install_plugin(novxlibPath):
     """Install a novelyst plugin if novelyst is installed."""
     if os.path.isfile(f'./{PLUGIN}'):
-        novelystDir = f'{pywriterPath}novelyst'
+        novelystDir = f'{novxlibPath}novelyst'
         pluginDir = f'{novelystDir}/plugin'
         output(f'Installing novelyst plugin at "{os.path.normpath(pluginDir)}"')
         os.makedirs(pluginDir, exist_ok=True)
@@ -119,12 +119,12 @@ if __name__ == '__main__':
 
     # Run the installation.
     homePath = str(Path.home()).replace('\\', '/')
-    pywriterPath = f'{homePath}/.pywriter/'
-    novelystDir = f'{pywriterPath}novelyst'
+    novxlibPath = f'{homePath}/.novxlib/'
+    novelystDir = f'{novxlibPath}novelyst'
     if os.path.isdir(novelystDir):
         try:
-            install_plugin(pywriterPath)
-            install(pywriterPath)
+            install_plugin(novxlibPath)
+            install(novxlibPath)
         except Exception as ex:
             output(str(ex))
     else:
