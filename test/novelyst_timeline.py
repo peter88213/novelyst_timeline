@@ -289,7 +289,7 @@ class Novel(BasicElement):
 
         self.chapters = {}
         self.scenes = {}
-        self.arcPoints = {}
+        self.turningPoints = {}
         self.languages = None
         self.arcs = {}
         self.locations = {}
@@ -511,14 +511,14 @@ class Novel(BasicElement):
 
     def update_scene_arcs(self):
         for scId in self.scenes:
-            self.scenes[scId].scArcPoints = {}
+            self.scenes[scId].scTurningPoints = {}
             self.scenes[scId].scArcs = []
             for acId in self.arcs:
                 if scId in self.arcs[acId].scenes:
                     self.scenes[scId].scArcs.append(acId)
-                    for apId in self.tree.get_children(acId):
-                        if self.arcPoints[apId].sceneAssoc == scId:
-                            self.scenes[scId].scArcPoints[apId] = acId
+                    for tpId in self.tree.get_children(acId):
+                        if self.turningPoints[tpId].sceneAssoc == scId:
+                            self.scenes[scId].scTurningPoints[tpId] = acId
                             break
 
     def get_languages(self):
@@ -573,7 +573,7 @@ class NvTree:
             AC_ROOT:[],
             }
         self.srtScenes = {}
-        self.srtArcPoints = {}
+        self.srtTurningPoints = {}
 
     def append(self, parent, iid):
         if parent in self.roots:
@@ -581,7 +581,7 @@ class NvTree:
             if parent == CH_ROOT:
                 self.srtScenes[iid] = []
             elif parent == AC_ROOT:
-                self.srtArcPoints[iid] = []
+                self.srtTurningPoints[iid] = []
         elif parent.startswith(CHAPTER_PREFIX):
             try:
                 self.srtScenes[parent].append(iid)
@@ -589,9 +589,9 @@ class NvTree:
                 self.srtScenes[parent] = [iid]
         elif parent.startswith(ARC_PREFIX):
             try:
-                self.srtArcPoints[parent].append(iid)
+                self.srtTurningPoints[parent].append(iid)
             except:
-                self.srtArcPoints[parent] = [iid]
+                self.srtTurningPoints[parent] = [iid]
 
     def delete_children(self, parent):
         if parent in self.roots:
@@ -599,11 +599,11 @@ class NvTree:
             if parent == CH_ROOT:
                 self.srtScenes = {}
             elif parent == AC_ROOT:
-                self.srtArcPoints = {}
+                self.srtTurningPoints = {}
         elif parent.startswith(CHAPTER_PREFIX):
             self.srtScenes[parent] = []
         elif parent.startswith(ARC_PREFIX):
-            self.srtArcPoints[parent] = []
+            self.srtTurningPoints[parent] = []
 
     def get_children(self, item):
         if item in self.roots:
@@ -613,7 +613,7 @@ class NvTree:
             return self.srtScenes.get(item, [])
 
         elif item.startswith(ARC_PREFIX):
-            return self.srtArcPoints.get(item, [])
+            return self.srtTurningPoints.get(item, [])
 
     def insert(self, parent, index, iid):
         if parent in self.roots:
@@ -621,7 +621,7 @@ class NvTree:
             if parent == CH_ROOT:
                 self.srtScenes[iid] = []
             elif parent == AC_ROOT:
-                self.srtArcPoints[iid] = []
+                self.srtTurningPoints[iid] = []
         elif parent.startswith(CHAPTER_PREFIX):
             try:
                 self.srtScenes[parent].insert(index, iid)
@@ -629,15 +629,15 @@ class NvTree:
                 self.srtScenes[parent] = [iid]
         elif parent.startswith(ARC_PREFIX):
             try:
-                self.srtArcPoints.insert(index, iid)
+                self.srtTurningPoints.insert(index, iid)
             except:
-                self.srtArcPoints[parent] = [iid]
+                self.srtTurningPoints[parent] = [iid]
 
     def reset(self):
         for item in self.roots:
             self.roots[item] = []
         self.srtScenes = {}
-        self.srtArcPoints = {}
+        self.srtTurningPoints = {}
 
     def set_children(self, item, newchildren):
         if item in self.roots:
@@ -645,11 +645,11 @@ class NvTree:
             if item == CH_ROOT:
                 self.srtScenes = {}
             elif item == AC_ROOT:
-                self.srtArcPoints = {}
+                self.srtTurningPoints = {}
         elif item.startswith(CHAPTER_PREFIX):
             self.srtScenes[item] = newchildren[:]
         elif item.startswith(ARC_PREFIX):
-            self.srtArcPoints[item] = newchildren[:]
+            self.srtTurningPoints[item] = newchildren[:]
 
 
 
