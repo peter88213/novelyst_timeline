@@ -38,7 +38,7 @@ __all__ = [
     'ARC_PREFIX',
     'ARC_POINT_PREFIX',
     'CHAPTER_PREFIX',
-    'SCENE_PREFIX',
+    'SECTION_PREFIX',
     'CHARACTER_PREFIX',
     'LOCATION_PREFIX',
     'ITEM_PREFIX',
@@ -51,7 +51,7 @@ __all__ = [
 ROOT_PREFIX = 'rt'
 CHAPTER_PREFIX = 'ch'
 ARC_PREFIX = 'ac'
-SCENE_PREFIX = 'sc'
+SECTION_PREFIX = 'sc'
 ARC_POINT_PREFIX = 'ap'
 CHARACTER_PREFIX = 'cr'
 LOCATION_PREFIX = 'lc'
