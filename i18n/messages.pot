@@ -50,7 +50,7 @@ msgstr ""
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr ""
 
-msgid "New scenes created during conversion"
+msgid "New sections created during conversion"
 msgstr ""
 
 msgid "No {} file available for this project."

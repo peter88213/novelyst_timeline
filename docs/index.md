@@ -7,8 +7,8 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 ## Features
 
 - Generate a *Timeline* project from a *novelyst* project.
-- Synchronize *novelyst* scenes with corresponding *Timeline* events in both directions.
-- When synchronizing a novelyst project with a timeline, optionally change unspecific scene "Day/Hour/Minute" to specific "date/time" and vice versa.
+- Synchronize *novelyst* sections with corresponding *Timeline* events in both directions.
+- When synchronizing a novelyst project with a timeline, optionally change unspecific section "Day/Hour/Minute" to specific "date/time" and vice versa.
 
 ## Requirements
 

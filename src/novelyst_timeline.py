@@ -63,9 +63,9 @@ class Plugin():
     _HELP_URL = 'https://peter88213.github.io/novelyst_timeline/usage'
 
     SETTINGS = dict(
-        scene_label='Scene',
+        section_label='Section',
         default_date_time='2021-07-26 00:00:00',
-        scene_color='170,240,160',
+        section_color='170,240,160',
     )
     OPTIONS = dict(
         ignore_unspecific=False,

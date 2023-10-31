@@ -54,31 +54,31 @@ This is the configuration explained:
 ```
 [SETTINGS]
 
-scene_label = Scene
+section_label = Section
 
-# Events with this label become scenes in a newly created 
+# Events with this label become sections in a newly created 
 # novelyst project. 
 
 default_date_time = 2021-07-26 00:00:00
 
-# Date/time stamp for imported novelyst scenes without
+# Date/time stamp for imported novelyst sections without
 # date/time set. When converting between specific
 # date/time and unspecific D/H/M, this time stamp is used
 # as a reference.
 
-scene_color = 170,240,160
+section_color = 170,240,160
 
-# Color for events imported as scenes from novelyst.
+# Color for events imported as sections from novelyst.
 
 [OPTIONS]
 
 ignore_unspecific = No
 
-# No:  Transfer all Scenes from novelyst to Timeline. Events
-#      assigned to scenes having no specific date/time stamp
+# No:  Transfer all Sections from novelyst to Timeline. Events
+#      assigned to sections having no specific date/time stamp
 #      get the default date plus the unspecific 'D' as start
 #      date, and 'H':'M' as start time.
-# Yes: Only transfer Scenes with a specific date/time stamp
+# Yes: Only transfer Sections with a specific date/time stamp
 #      from novelyst to Timeline.
 
 dhm_to_datetime = No
@@ -95,7 +95,7 @@ datetime_to_dhm = No
 # Yes: Convert novelyst spcific date/time to unspecific D/H/M
 #      when synchronizing from Timeline. Use the date from
 #      default_date_time as a reference. H, M are taken from
-#      the scene time.
+#      the section time.
 # Precondition:
 #      dhm_to_datetime = No
 
@@ -119,26 +119,26 @@ Just delete your global and local configuration files.
 
 ### On the novelyst side
 
-- Only normal scenes are synchronized with Timeline, or exported to Timeline. Unused scenes, "Notes" scenes, and "Todo" scenes will not show up in the timeline.
-- Optionally, scenes with an unspecific time stamp (day, hours, minutes) are not transferred to the timeline.
-- Changes to the scene date/time affect the event start date/time during synchronization.
-- Changes to the scene title affect the event text during synchronization.
-- Changes to the scene description affect the event description during synchronization.
-- Changes to the scene type may add or remove the corresponding event during synchronization.
-- Adding or removing scenes will add or remove the corresponding event during synchronization.
+- Only normal sections are synchronized with Timeline, or exported to Timeline. Unused sections, "Notes" sections, and "Todo" sections will not show up in the timeline.
+- Optionally, sections with an unspecific time stamp (day, hours, minutes) are not transferred to the timeline.
+- Changes to the section date/time affect the event start date/time during synchronization.
+- Changes to the section title affect the event text during synchronization.
+- Changes to the section description affect the event description during synchronization.
+- Changes to the section type may add or remove the corresponding event during synchronization.
+- Adding or removing sections will add or remove the corresponding event during synchronization.
 
 
 ### On the Timeline side
 
-- A scene ID is a string looking like "ScID:1". It is auto-generated and must not be changed manually.
-- Only events with a label containing the string "Scene" (user input) or a scene ID (auto-generated) are exported as scenes to a new novelyst project.
-- When generating a new novelyst project from a timeline the first time, "Scene" labels are replaced with scene ID labels.
-- If a new novelyst project is generated again with the same timeline, the scene ID labels may change.
-- Only events with a label containing a scene ID are synchronized with an existing novelyst project.
-- Changes to the event start date/time affect the scene date/time during synchronization.
-- Changes to the event text affect the scene title during synchronization.
-- Changes to the event description affect the scene description during synchronization.
-- The scene structure of an existing novelyst project can not be changed in Timeline. Adding/removing events, or adding/removing scene IDs from event labels will *not* add or remove the corresponding scene during synchronization. 
+- A section ID is a string looking like "ScID:1". It is auto-generated and must not be changed manually.
+- Only events with a label containing the string "Section" (user input) or a section ID (auto-generated) are exported as sections to a new novelyst project.
+- When generating a new novelyst project from a timeline the first time, "Section" labels are replaced with section ID labels.
+- If a new novelyst project is generated again with the same timeline, the section ID labels may change.
+- Only events with a label containing a section ID are synchronized with an existing novelyst project.
+- Changes to the event start date/time affect the section date/time during synchronization.
+- Changes to the event text affect the section title during synchronization.
+- Changes to the event description affect the section description during synchronization.
+- The section structure of an existing novelyst project can not be changed in Timeline. Adding/removing events, or adding/removing section IDs from event labels will *not* add or remove the corresponding section during synchronization. 
 
 ### Synchronization of unspecific date/time in novelyst with specific date/time in Timeline.
 
@@ -146,7 +146,7 @@ Day/Hour/Minute is converted to specific Timeline start/end date/time stamps, us
 
 The other way around (Timeline to novelyst), there are three options:
 
-- Retain each scene's date/time mode (default).
+- Retain each section's date/time mode (default).
 - Overwrite D/H/M with specific date/time stamps (**dhm_to_datetime** option).
 - Convert specific Timeline date/time stamps to D/H/M (**datetime_to_dhm** option)
 
@@ -155,10 +155,10 @@ D/H/M refers to the default date/time stamp that can be set in the configuration
 
 ### Known limitations
 
-- Scene events that begin before 0100-01-01 in the timeline, will not be synchronized with novelyst, because novelyst can not handle these dates.
-- The same applies to the scene duration in this case, i.e. the event duration in Timeline and the scene duration in novelyst may differ.
-- Scenes that begin before 0100-01-01 in the timeline, can not have the D/H/M information converted to a date/time stamp and vice versa.
-- If a scene event ends after 9999-12-31 in the timeline, the scene duration is not synchronized with novelyst.
+- Section events that begin before 0100-01-01 in the timeline, will not be synchronized with novelyst, because novelyst can not handle these dates.
+- The same applies to the section duration in this case, i.e. the event duration in Timeline and the section duration in novelyst may differ.
+- Sections that begin before 0100-01-01 in the timeline, can not have the D/H/M information converted to a date/time stamp and vice versa.
+- If a section event ends after 9999-12-31 in the timeline, the section duration is not synchronized with novelyst.
 
 ---
 

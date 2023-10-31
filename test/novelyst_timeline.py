@@ -288,7 +288,7 @@ class Novel(BasicElement):
         self._customChrGoals = customChrGoals
 
         self.chapters = {}
-        self.scenes = {}
+        self.sections = {}
         self.turningPoints = {}
         self.languages = None
         self.arcs = {}
@@ -509,16 +509,16 @@ class Novel(BasicElement):
             self._customChrGoals = newVal
             self.on_element_change()
 
-    def update_scene_arcs(self):
-        for scId in self.scenes:
-            self.scenes[scId].scTurningPoints = {}
-            self.scenes[scId].scArcs = []
+    def update_section_arcs(self):
+        for scId in self.sections:
+            self.sections[scId].scTurningPoints = {}
+            self.sections[scId].scArcs = []
             for acId in self.arcs:
-                if scId in self.arcs[acId].scenes:
-                    self.scenes[scId].scArcs.append(acId)
+                if scId in self.arcs[acId].sections:
+                    self.sections[scId].scArcs.append(acId)
                     for tpId in self.tree.get_children(acId):
-                        if self.turningPoints[tpId].sceneAssoc == scId:
-                            self.scenes[scId].scTurningPoints[tpId] = acId
+                        if self.turningPoints[tpId].sectionAssoc == scId:
+                            self.sections[scId].scTurningPoints[tpId] = acId
                             break
 
     def get_languages(self):
@@ -532,8 +532,8 @@ class Novel(BasicElement):
                     m = LANGUAGE_TAG.search(text)
 
         self.languages = []
-        for scId in self.scenes:
-            text = self.scenes[scId].sceneContent
+        for scId in self.sections:
+            text = self.sections[scId].sectionContent
             if text:
                 for language in languages(text):
                     if not language in self.languages:
@@ -572,21 +572,21 @@ class NvTree:
             IT_ROOT:[],
             AC_ROOT:[],
             }
-        self.srtScenes = {}
+        self.srtSections = {}
         self.srtTurningPoints = {}
 
     def append(self, parent, iid):
         if parent in self.roots:
             self.roots[parent].append(iid)
             if parent == CH_ROOT:
-                self.srtScenes[iid] = []
+                self.srtSections[iid] = []
             elif parent == AC_ROOT:
                 self.srtTurningPoints[iid] = []
         elif parent.startswith(CHAPTER_PREFIX):
             try:
-                self.srtScenes[parent].append(iid)
+                self.srtSections[parent].append(iid)
             except:
-                self.srtScenes[parent] = [iid]
+                self.srtSections[parent] = [iid]
         elif parent.startswith(ARC_PREFIX):
             try:
                 self.srtTurningPoints[parent].append(iid)
@@ -597,11 +597,11 @@ class NvTree:
         if parent in self.roots:
             self.roots[parent] = []
             if parent == CH_ROOT:
-                self.srtScenes = {}
+                self.srtSections = {}
             elif parent == AC_ROOT:
                 self.srtTurningPoints = {}
         elif parent.startswith(CHAPTER_PREFIX):
-            self.srtScenes[parent] = []
+            self.srtSections[parent] = []
         elif parent.startswith(ARC_PREFIX):
             self.srtTurningPoints[parent] = []
 
@@ -610,7 +610,7 @@ class NvTree:
             return self.roots[item]
 
         elif item.startswith(CHAPTER_PREFIX):
-            return self.srtScenes.get(item, [])
+            return self.srtSections.get(item, [])
 
         elif item.startswith(ARC_PREFIX):
             return self.srtTurningPoints.get(item, [])
@@ -619,14 +619,14 @@ class NvTree:
         if parent in self.roots:
             self.roots[parent].insert(index, iid)
             if parent == CH_ROOT:
-                self.srtScenes[iid] = []
+                self.srtSections[iid] = []
             elif parent == AC_ROOT:
                 self.srtTurningPoints[iid] = []
         elif parent.startswith(CHAPTER_PREFIX):
             try:
-                self.srtScenes[parent].insert(index, iid)
+                self.srtSections[parent].insert(index, iid)
             except:
-                self.srtScenes[parent] = [iid]
+                self.srtSections[parent] = [iid]
         elif parent.startswith(ARC_PREFIX):
             try:
                 self.srtTurningPoints.insert(index, iid)
@@ -636,18 +636,18 @@ class NvTree:
     def reset(self):
         for item in self.roots:
             self.roots[item] = []
-        self.srtScenes = {}
+        self.srtSections = {}
         self.srtTurningPoints = {}
 
     def set_children(self, item, newchildren):
         if item in self.roots:
             self.roots[item] = newchildren[:]
             if item == CH_ROOT:
-                self.srtScenes = {}
+                self.srtSections = {}
             elif item == AC_ROOT:
                 self.srtTurningPoints = {}
         elif item.startswith(CHAPTER_PREFIX):
-            self.srtScenes[item] = newchildren[:]
+            self.srtSections[item] = newchildren[:]
         elif item.startswith(ARC_PREFIX):
             self.srtTurningPoints[item] = newchildren[:]
 
@@ -719,8 +719,8 @@ class Converter:
         else:
             message = f'{_("File written")}: "{norm_path(target.filePath)}".'
             self.newFile = target.filePath
-            if source.scenesSplit:
-                message = f'{message} - {_("New scenes created during conversion")}.'
+            if source.sectionsSplit:
+                message = f'{message} - {_("New sections created during conversion")}.'
         finally:
             self.ui.set_info_how(f'{message}')
 
@@ -783,9 +783,9 @@ class Plugin():
     _HELP_URL = 'https://peter88213.github.io/novelyst_timeline/usage'
 
     SETTINGS = dict(
-        scene_label='Scene',
+        section_label='Section',
         default_date_time='2021-07-26 00:00:00',
-        scene_color='170,240,160',
+        section_color='170,240,160',
     )
     OPTIONS = dict(
         ignore_unspecific=False,

@@ -1,4 +1,4 @@
-"""Provide a class for Timeline scene event representation.
+"""Provide a class for Timeline section event representation.
 
 Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/nv-timeline
@@ -8,51 +8,51 @@ import xml.etree.ElementTree as ET
 from datetime import date
 from datetime import datetime
 from datetime import timedelta
-from novxlib.model.scene import Scene
+from novxlib.model.section import Section
 
 
-class SceneEvent(Scene):
-    """Timeline scene event representation.
+class SectionEvent(Section):
+    """Timeline section event representation.
 
     Public methods:
         set_date_time(startDateTime, endDateTime, isUnspecific) -- set date/time and, if applicable, duration.
-        merge_date_time(source) -- get date/time related variables from a novelyst-generated source scene.
+        merge_date_time(source) -- get date/time related variables from a novelyst-generated source section.
         build_subtree(xmlEvent, scId, dtMin, dtMax) -- build a Timeline XML event subtree. 
 
     Public instance variables:
         contId: str -- container ID.
     """
     defaultDateTime = '2021-07-26 00:00:00'
-    sceneColor = '170,240,160'
+    sectionColor = '170,240,160'
 
-    def __init__(self, scene):
+    def __init__(self, section):
         """Initialize instance variables.     
         
         Extends the superclass method, defining a container ID.
         """
         super().__init__()
-        self.sceneContent = scene.sceneContent
-        self.scType = scene.scType
-        self.scPacing = scene.scPacing
-        self.status = scene.status
-        self.notes = scene.notes
-        self.tags = scene.tags
-        self.appendToPrev = scene.appendToPrev
-        self.goal = scene.goal
-        self.conflict = scene.conflict
-        self.outcome = scene.outcome
-        self.characters = scene.characters
-        self.locations = scene.locations
-        self.items = scene.items
-        self.date = scene.date
-        self.time = scene.time
-        self.day = scene.day
-        self.lastsMinutes = scene.lastsMinutes
-        self.lastsHours = scene.lastsHours
-        self.lastsDays = scene.lastsDays
-        self.image = scene.image
-        self.arcs = scene.arcs
-        self.scMode = scene.scMode
+        self.sectionContent = section.sectionContent
+        self.scType = section.scType
+        self.scPacing = section.scPacing
+        self.status = section.status
+        self.notes = section.notes
+        self.tags = section.tags
+        self.appendToPrev = section.appendToPrev
+        self.goal = section.goal
+        self.conflict = section.conflict
+        self.outcome = section.outcome
+        self.characters = section.characters
+        self.locations = section.locations
+        self.items = section.items
+        self.date = section.date
+        self.time = section.time
+        self.day = section.day
+        self.lastsMinutes = section.lastsMinutes
+        self.lastsHours = section.lastsHours
+        self.lastsDays = section.lastsDays
+        self.image = section.image
+        self.arcs = section.arcs
+        self.scMode = section.scMode
 
         self.contId = None
         self._startDateTime = None
@@ -88,43 +88,43 @@ class SceneEvent(Scene):
             startYear = int(dt[0].split('-')[0])
         if startYear < 100:
             # Substitute date/time, so novelyst would not prefix them with '19' or '20'.
-            self.date = Scene.NULL_DATE
-            self.time = Scene.NULL_TIME
+            self.date = Section.NULL_DATE
+            self.time = Section.NULL_TIME
             dtIsValid = False
             # Two-figure year.
         else:
             self.date = dt[0]
             self.time = dt[1]
         if dtIsValid:
-            # Calculate duration of scenes that begin after 99-12-31.
-            sceneStart = datetime.fromisoformat(startDateTime)
-            sceneEnd = datetime.fromisoformat(endDateTime)
-            sceneDuration = sceneEnd - sceneStart
-            lastsHours = sceneDuration.seconds // 3600
-            lastsMinutes = (sceneDuration.seconds % 3600) // 60
-            self.lastsDays = str(sceneDuration.days)
+            # Calculate duration of sections that begin after 99-12-31.
+            sectionStart = datetime.fromisoformat(startDateTime)
+            sectionEnd = datetime.fromisoformat(endDateTime)
+            sectionDuration = sectionEnd - sectionStart
+            lastsHours = sectionDuration.seconds // 3600
+            lastsMinutes = (sectionDuration.seconds % 3600) // 60
+            self.lastsDays = str(sectionDuration.days)
             self.lastsHours = str(lastsHours)
             self.lastsMinutes = str(lastsMinutes)
             if isUnspecific:
                 # Convert date to day
                 try:
-                    sceneDate = date.fromisoformat(self.date)
+                    sectionDate = date.fromisoformat(self.date)
                     referenceDate = date.fromisoformat(self.defaultDateTime.split(' ')[0])
-                    self.day = str((sceneDate - referenceDate).days)
+                    self.day = str((sectionDate - referenceDate).days)
                 except:
                     # Do not synchronize.
                     self.day = None
                 self.date = None
 
     def merge_date_time(self, source):
-        """Set date/time related variables from a novelyst-generated source scene.
+        """Set date/time related variables from a novelyst-generated source section.
                 
         Positional arguments:
-            source -- Scene instance with date/time to merge.
+            source -- Section instance with date/time to merge.
         
         """
         #--- Set start date/time.
-        if source.date is not None and source.date != Scene.NULL_DATE:
+        if source.date is not None and source.date != Section.NULL_DATE:
             # The date is not "BC", so synchronize it.
             if source.time:
                 self._startDateTime = f'{source.date} {source.time}'
@@ -140,9 +140,9 @@ class SceneEvent(Scene):
                 startTime = source.time
             else:
                 startTime = '00:00:00'
-            sceneDelta = timedelta(days=dayInt)
+            sectionDelta = timedelta(days=dayInt)
             defaultDate = self.defaultDateTime.split(' ')[0]
-            startDate = (date.fromisoformat(defaultDate) + sceneDelta).isoformat()
+            startDate = (date.fromisoformat(defaultDate) + sectionDelta).isoformat()
             self._startDateTime = f'{startDate} {startTime}'
         elif self._startDateTime is None:
             self._startDateTime = self.defaultDateTime
@@ -151,12 +151,12 @@ class SceneEvent(Scene):
             pass
 
         #--- Set end date/time.
-        if source.date is not None and source.date == Scene.NULL_DATE:
+        if source.date is not None and source.date == Section.NULL_DATE:
             # The year is two-figure, so do not synchronize.
             if self._endDateTime is None:
                 self._endDateTime = self._startDateTime
         else:
-            # Calculate end date from source scene duration.
+            # Calculate end date from source section duration.
             if source.lastsDays:
                 lastsDays = int(source.lastsDays)
             else:
@@ -167,10 +167,10 @@ class SceneEvent(Scene):
                 lastsSeconds = 0
             if source.lastsMinutes:
                 lastsSeconds += int(source.lastsMinutes) * 60
-            sceneDuration = timedelta(days=lastsDays, seconds=lastsSeconds)
-            sceneStart = datetime.fromisoformat(self._startDateTime)
-            sceneEnd = sceneStart + sceneDuration
-            self._endDateTime = sceneEnd.isoformat(' ')
+            sectionDuration = timedelta(days=lastsDays, seconds=lastsSeconds)
+            sectionStart = datetime.fromisoformat(self._startDateTime)
+            sectionEnd = sectionStart + sectionDuration
+            self._endDateTime = sectionEnd.isoformat(' ')
         # Tribute to defensive programming.
         if self._startDateTime > self._endDateTime:
             self._endDateTime = self._startDateTime
@@ -180,7 +180,7 @@ class SceneEvent(Scene):
         
         Positional arguments:
             xmlEvent: elementTree.SubElement -- Timeline event XML subtree.
-            scId: str -- scene ID.
+            scId: str -- section ID.
             dtMin: str -- lower date/time limit.
             dtMax: str -- upper date/time limit.
             
@@ -206,7 +206,7 @@ class SceneEvent(Scene):
             dtMax = self._endDateTime
         scIndex += 1
         if not self.title:
-            self.title = f'Unnamed scene ID{scId}'
+            self.title = f'Unnamed section ID{scId}'
         try:
             xmlEvent.find('text').text = self.title
         except(AttributeError):
@@ -247,5 +247,5 @@ class SceneEvent(Scene):
         if xmlEvent.find('labels') is None:
             ET.SubElement(xmlEvent, 'labels').text = f'ScID:{scId}'
         if xmlEvent.find('default_color') is None:
-            ET.SubElement(xmlEvent, 'default_color').text = self.sceneColor
+            ET.SubElement(xmlEvent, 'default_color').text = self.sectionColor
         return dtMin, dtMax

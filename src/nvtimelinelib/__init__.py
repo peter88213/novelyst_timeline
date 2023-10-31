@@ -3,7 +3,7 @@
 Modules:
 
 tl_file -- Provide a class for Timeline project file representation.
-scene_event -- Provide a class for Timeline scene event representation.
+section_event -- Provide a class for Timeline section event representation.
 dt_helper -- Provide helper functions for date/time processing.
 tl_converter -- Provide a converter class for novelyst and Timeline.
 

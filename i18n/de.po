@@ -49,7 +49,7 @@ msgstr "Information"
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
 
-msgid "New scenes created during conversion"
+msgid "New sections created during conversion"
 msgstr "Während der Konvertierung wurden neue Abschnitte erzeugt"
 
 msgid "No {} file available for this project."

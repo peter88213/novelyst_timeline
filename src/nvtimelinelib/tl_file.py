@@ -14,7 +14,7 @@ from novxlib.file.file import File
 from novxlib.model.novel import Novel
 from novxlib.model.chapter import Chapter
 from novxlib.novx.xml_indent import indent
-from nvtimelinelib.scene_event import SceneEvent
+from nvtimelinelib.section_event import SectionEvent
 from nvtimelinelib.dt_helper import fix_iso_dt
 
 
@@ -34,24 +34,24 @@ class TlFile(File):
     SUFFIX = None
 
     def __init__(self, filePath, **kwargs):
-        """Initialize instance variables and SceneEvent class variables.
+        """Initialize instance variables and SectionEvent class variables.
 
         Positional arguments:
             filePath: str -- path to the file represented by the Novel instance.
             
         Required keyword arguments:
-            scene_label: str -- event label marking "scene" events.
-            ignore_unspecific: bool -- ignore novelyst scenes with unspecific date/time. 
+            section_label: str -- event label marking "section" events.
+            ignore_unspecific: bool -- ignore novelyst sections with unspecific date/time. 
             datetime_to_dhm: bool -- convert novelyst specific date/time to unspecific D/H/M.
             dhm_to_datetime: bool -- convert novelyst unspecific D/H/M to specific date/time.
-            default_date_time: str -- date/time stamp for undated novelyst scenes.
-            scene_color: str -- color for events imported as scenes from novelyst.
+            default_date_time: str -- date/time stamp for undated novelyst sections.
+            section_color: str -- color for events imported as sections from novelyst.
         
-        If ignore_unspecific is True, only transfer Scenes with a specific 
+        If ignore_unspecific is True, only transfer Sections with a specific 
             date/time stamp from novelyst to Timeline.
             
-        If ignore_unspecific is False, transfer all Scenes from novelyst to Timeline. 
-            Events assigned to scenes having no specific date/time stamp
+        If ignore_unspecific is False, transfer all Sections from novelyst to Timeline. 
+            Events assigned to sections having no specific date/time stamp
             get the default date plus the unspecific 'D' as start date, 
             and 'H':'M' as start time.
             
@@ -67,12 +67,12 @@ class TlFile(File):
         """
         super().__init__(filePath, **kwargs)
         self._tree = None
-        self._sceneMarker = kwargs['scene_label']
+        self._sectionMarker = kwargs['section_label']
         self._ignoreUnspecific = kwargs['ignore_unspecific']
         self._dateTimeToDhm = kwargs['datetime_to_dhm']
         self._dhmToDateTime = kwargs['dhm_to_datetime']
-        SceneEvent.defaultDateTime = kwargs['default_date_time']
-        SceneEvent.sceneColor = kwargs['scene_color']
+        SectionEvent.defaultDateTime = kwargs['default_date_time']
+        SectionEvent.sectionColor = kwargs['section_color']
         # The existing novelyst target project, if any.
         # To be set by the calling converter class.
 
@@ -87,7 +87,7 @@ class TlFile(File):
             """Separate container ID from event title.
             
             Positional arguments:
-                event -- SceneEvent to update.
+                event -- SectionEvent to update.
                 text: str -- event title.         
             
             If text comes with a Container ID, remove it 
@@ -104,7 +104,7 @@ class TlFile(File):
 
         #--- Parse the Timeline file.
 
-        if not self.novel.scenes:
+        if not self.novel.sections:
             isOutline = True
         else:
             isOutline = False
@@ -114,45 +114,45 @@ class TlFile(File):
         except:
             raise Error(f'{_("Can not process file")}: "{norm_path(self.filePath)}".')
         root = self._tree.getroot()
-        sceneCount = 0
+        sectionCount = 0
         scIdsByDate = {}
         for event in root.iter('event'):
             scId = None
-            sceneMatch = None
+            sectionMatch = None
             if event.find('labels') is not None:
                 labels = event.find('labels').text
-                sceneMatch = re.search('ScID\:([0-9]+)', labels)
-                if isOutline and sceneMatch is None:
-                    sceneMatch = re.search(self._sceneMarker, labels)
-            if sceneMatch is None:
+                sectionMatch = re.search('ScID\:([0-9]+)', labels)
+                if isOutline and sectionMatch is None:
+                    sectionMatch = re.search(self._sectionMarker, labels)
+            if sectionMatch is None:
                 continue
 
-            # The event is labeled as a scene.
-            sceneDate = None
+            # The event is labeled as a section.
+            sectionDate = None
             if isOutline:
-                sceneCount += 1
-                sceneMarker = sceneMatch.group()
-                scId = str(sceneCount)
-                event.find('labels').text = labels.replace(sceneMarker, f'ScID:{scId}')
-                self.novel.scenes[scId] = SceneEvent()
-                self.novel.scenes[scId].status = 1
+                sectionCount += 1
+                sectionMarker = sectionMatch.group()
+                scId = str(sectionCount)
+                event.find('labels').text = labels.replace(sectionMarker, f'ScID:{scId}')
+                self.novel.sections[scId] = SectionEvent()
+                self.novel.sections[scId].status = 1
             else:
                 try:
-                    scId = sceneMatch.group(1)
-                    sceneDate = self.novel.scenes[scId].date
-                    self.novel.scenes[scId] = SceneEvent(self.novel.scenes[scId])
+                    scId = sectionMatch.group(1)
+                    sectionDate = self.novel.sections[scId].date
+                    self.novel.sections[scId] = SectionEvent(self.novel.sections[scId])
                 except:
                     continue
 
             try:
                 title = event.find('text').text
-                title = remove_contId(self.novel.scenes[scId], title)
+                title = remove_contId(self.novel.sections[scId], title)
                 title = self._convert_to_novelyst(title)
-                self.novel.scenes[scId].title = title
+                self.novel.sections[scId].title = title
             except:
-                self.novel.scenes[scId].title = f'Scene {scId}'
+                self.novel.sections[scId].title = f'Section {scId}'
             try:
-                self.novel.scenes[scId].desc = event.find('description').text
+                self.novel.sections[scId].desc = event.find('description').text
             except:
                 pass
 
@@ -165,27 +165,27 @@ class TlFile(File):
                 isUnspecific = True
             elif self._dhmToDateTime and not self._dateTimeToDhm:
                 isUnspecific = False
-            elif not isOutline and sceneDate is None:
+            elif not isOutline and sectionDate is None:
                 isUnspecific = True
             else:
                 isUnspecific = False
-            self.novel.scenes[scId].set_date_time(startDateTime, endDateTime, isUnspecific)
+            self.novel.sections[scId].set_date_time(startDateTime, endDateTime, isUnspecific)
             if not startDateTime in scIdsByDate:
                 scIdsByDate[startDateTime] = []
             scIdsByDate[startDateTime].append(scId)
 
-        # Sort scenes by date/time
-        srtScenes = sorted(scIdsByDate.items())
+        # Sort sections by date/time
+        srtSections = sorted(scIdsByDate.items())
         if isOutline:
-            # Create a single chapter and assign all scenes to it.
+            # Create a single chapter and assign all sections to it.
             chId = '1'
             self.novel.chapters[chId] = Chapter()
             self.novel.chapters[chId].title = 'Chapter 1'
             self.novel.srtChapters = [chId]
-            for __, scList in srtScenes:
+            for __, scList in srtSections:
                 for scId in scList:
-                    self.novel.chapters[chId].srtScenes.append(scId)
-            # Rewrite the timeline with scene IDs inserted.
+                    self.novel.chapters[chId].srtSections.append(scId)
+            # Rewrite the timeline with section IDs inserted.
             os.replace(self.filePath, f'{self.filePath}.bak')
             try:
                 self._tree.write(self.filePath, xml_declaration=True, encoding='utf-8')
@@ -214,7 +214,7 @@ class TlFile(File):
                 dtMax: str -- upper date/time limit.
             """
             if dtMin is None:
-                dtMin = SceneEvent.defaultDateTime
+                dtMin = SectionEvent.defaultDateTime
             if dtMax is None:
                 dtMax = dtMin
             TIME_LIMIT = '0100-01-01 00:00:00'
@@ -266,37 +266,37 @@ class TlFile(File):
             self.novel.chapters[chId] = Chapter()
             self.novel.srtChapters.append(chId)
             for scId in source.get_tree_elements(chId):
-                if self._ignoreUnspecific and source.scenes[scId].date is None and source.scenes[scId].time is None:
-                    # Skip scenes with unspecific date/time stamps.
+                if self._ignoreUnspecific and source.sections[scId].date is None and source.sections[scId].time is None:
+                    # Skip sections with unspecific date/time stamps.
                     continue
 
-                if not scId in self.novel.scenes:
-                    self.novel.scenes[scId] = SceneEvent()
-                self.novel.chapters[chId].srtScenes.append(scId)
-                if source.scenes[scId].title:
-                    title = source.scenes[scId].title
+                if not scId in self.novel.sections:
+                    self.novel.sections[scId] = SectionEvent()
+                self.novel.chapters[chId].srtSections.append(scId)
+                if source.sections[scId].title:
+                    title = source.sections[scId].title
                     title = self._convert_from_novelyst(title)
-                    title = add_contId(self.novel.scenes[scId], title)
-                    self.novel.scenes[scId].title = title
-                self.novel.scenes[scId].desc = source.scenes[scId].desc
-                self.novel.scenes[scId].merge_date_time(source.scenes[scId])
-                self.novel.scenes[scId].scType = source.scenes[scId].scType
-        scenes = list(self.novel.scenes)
-        for scId in scenes:
-            if not scId in source.scenes:
-                del self.novel.scenes[scId]
+                    title = add_contId(self.novel.sections[scId], title)
+                    self.novel.sections[scId].title = title
+                self.novel.sections[scId].desc = source.sections[scId].desc
+                self.novel.sections[scId].merge_date_time(source.sections[scId])
+                self.novel.sections[scId].scType = source.sections[scId].scType
+        sections = list(self.novel.sections)
+        for scId in sections:
+            if not scId in source.sections:
+                del self.novel.sections[scId]
 
         #--- Begin writing
         dtMin = None
         dtMax = None
 
-        # List all scenes to be exported.
-        # Note: self.novel.scenes may also contain orphaned ones.
-        srtScenes = []
+        # List all sections to be exported.
+        # Note: self.novel.sections may also contain orphaned ones.
+        srtSections = []
         for chId in self.novel.tree.get_children(CH_ROOT):
             for scId in self.novel.tree.get_children(chId):
-                if self.novel.scenes[scId].scType == 0:
-                    srtScenes.append(scId)
+                if self.novel.sections[scId].scType == 0:
+                    srtSections.append(scId)
         if self._tree is not None:
             #--- Update an existing XML _tree.
             root = self._tree.getroot()
@@ -304,28 +304,28 @@ class TlFile(File):
             trash = []
             scIds = []
 
-            # Update events that are assigned to scenes.
+            # Update events that are assigned to sections.
             for event in events.iter('event'):
                 if event.find('labels') is not None:
                     labels = event.find('labels').text
-                    sceneMatch = re.search('ScID\:([0-9]+)', labels)
+                    sectionMatch = re.search('ScID\:([0-9]+)', labels)
                 else:
                     continue
 
-                if sceneMatch is not None:
-                    scId = sceneMatch.group(1)
-                    if scId in srtScenes:
+                if sectionMatch is not None:
+                    scId = sectionMatch.group(1)
+                    if scId in srtSections:
                         scIds.append(scId)
-                        dtMin, dtMax = self.novel.scenes[scId].build_subtree(event, scId, dtMin, dtMax)
+                        dtMin, dtMax = self.novel.sections[scId].build_subtree(event, scId, dtMin, dtMax)
                     else:
                         trash.append(event)
 
             # Add new events.
-            for scId in srtScenes:
+            for scId in srtSections:
                 if not scId in scIds:
                     event = ET.SubElement(events, 'event')
-                    dtMin, dtMax = self.novel.scenes[scId].build_subtree(event, scId, dtMin, dtMax)
-            # Remove events that are assigned to missing scenes.
+                    dtMin, dtMax = self.novel.sections[scId].build_subtree(event, scId, dtMin, dtMax)
+            # Remove events that are assigned to missing sections.
             for event in trash:
                 events.remove(event)
 
@@ -342,9 +342,9 @@ class TlFile(File):
             ET.SubElement(root, 'timetype').text = 'gregoriantime'
             ET.SubElement(root, 'categories')
             events = ET.SubElement(root, 'events')
-            for scId in srtScenes:
+            for scId in srtSections:
                 event = ET.SubElement(events, 'event')
-                dtMin, dtMax = self.novel.scenes[scId].build_subtree(event, scId, dtMin, dtMax)
+                dtMin, dtMax = self.novel.sections[scId].build_subtree(event, scId, dtMin, dtMax)
 
             # Set the view range.
             dtMin, dtMax = set_view_range(dtMin, dtMax)
@@ -372,7 +372,7 @@ class TlFile(File):
             raise Error(f'{_("Cannot write file")}: "{norm_path(self.filePath)}".')
 
     def _convert_to_novelyst(self, text):
-        """Unmask brackets in novelyst scene titles.
+        """Unmask brackets in novelyst section titles.
         
         Positional arguments:
             text -- string to convert.
@@ -388,7 +388,7 @@ class TlFile(File):
         return text
 
     def _convert_from_novelyst(self, text, quick=False):
-        """Mask brackets in novelyst scene titles.
+        """Mask brackets in novelyst section titles.
         
         Positional arguments:
             text -- string to convert.
