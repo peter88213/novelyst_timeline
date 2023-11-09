@@ -5,9 +5,7 @@ For further information see https://github.com/peter88213/nv-timeline
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import xml.etree.ElementTree as ET
-from datetime import date
-from datetime import datetime
-from datetime import timedelta
+from datetime import date, datetime, timedelta, MINYEAR
 from novxlib.model.section import Section
 
 
@@ -66,7 +64,7 @@ class SectionEvent(Section):
             endDateTime: str -- event end date/time as stored in Timeline.
             isUnspecific: str -- if True, convert date to Day.
         
-        Because novelyst can not process two-figure years, 
+        Because novelyst can not process years before 1, 
         they are saved for Timeline use and replaced with 
         a 'default negative date' for novelyst use.
         """
@@ -86,7 +84,7 @@ class SectionEvent(Section):
             # "BC" year (yWriter won't process it).
         else:
             startYear = int(dt[0].split('-')[0])
-        if startYear < 100:
+        if startYear < MINYEAR:
             # Substitute date/time, so novelyst would not prefix them with '19' or '20'.
             self.date = Section.NULL_DATE
             self.time = Section.NULL_TIME
