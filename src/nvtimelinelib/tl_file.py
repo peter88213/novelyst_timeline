@@ -13,7 +13,7 @@ from novxlib.novx_globals import *
 from novxlib.file.file import File
 from novxlib.model.novel import Novel
 from novxlib.model.chapter import Chapter
-from novxlib.novx.xml_indent import indent
+from novxlib.xml.xml_indent import indent
 from nvtimelinelib.section_event import SectionEvent
 from nvtimelinelib.dt_helper import fix_iso_dt
 
