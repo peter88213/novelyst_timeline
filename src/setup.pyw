@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Install the novelyst_timeline blugin. 
+"""Install the nv_timeline blugin. 
 
 Version @release
 
 Copyright (c) 2021 Peter Triesberger
-For further information see https://github.com/peter88213/novelyst_timeline
+For further information see https://github.com/peter88213/noveltree_timeline
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import sys
@@ -18,7 +18,7 @@ except ModuleNotFoundError:
     print('The tkinter module is missing. Please install the tk support package for your python3 version.')
     sys.exit(1)
 
-PLUGIN = 'novelyst_timeline.py'
+PLUGIN = 'nv_timeline.py'
 OLD_PLUGIN = 'yw_timeline_novelyst.py'
 APPNAME = 'nv-timeline'
 VERSION = ' @release'

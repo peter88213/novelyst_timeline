@@ -166,5 +166,5 @@ D/H/M refers to the default date/time stamp that can be set in the configuration
 
 This is Open Source software, and the *novelyst_timeline* plugin is licensed under GPLv3. See the
 [GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
-details, or consult the [LICENSE](https://github.com/peter88213/novelyst_timeline/blob/main/LICENSE) file.
+details, or consult the [LICENSE](https://github.com/peter88213/noveltree_timeline/blob/main/LICENSE) file.
 

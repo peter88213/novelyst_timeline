@@ -18,7 +18,7 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 
 ## Download and install
 
-[Download the latest release (version 0.99.0)](https://github.com/peter88213/novelyst_timeline/raw/main/dist/novelyst_timeline_v0.99.0.zip)
+[Download the latest release (version 0.99.0)](https://github.com/peter88213/noveltree_timeline/raw/main/dist/novelyst_timeline_v0.99.0.zip)
 
 - Extract the "novelyst_timeline_v0.99.0" folder from the downloaded zipfile "novelyst_timeline_v0.99.0.zip".
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
@@ -35,7 +35,7 @@ See the [instructions for use](usage)
 
 This is Open Source software, and the *novelyst_timeline* plugin is licensed under GPLv3. See the
 [GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
-details, or consult the [LICENSE](https://github.com/peter88213/novelyst_timeline/blob/main/LICENSE) file.
+details, or consult the [LICENSE](https://github.com/peter88213/noveltree_timeline/blob/main/LICENSE) file.
 
 
  
