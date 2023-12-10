@@ -755,7 +755,7 @@ from nvtimelinelib.tl_file import TlFile
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
 CURRENT_LANGUAGE = locale.getlocale()[0][:2]
 try:
-    t = gettext.translation('novelyst_timeline', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
+    t = gettext.translation('nv_timeline', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
     _ = t.gettext
 except:
 
@@ -777,7 +777,7 @@ class Plugin():
         
     """
     VERSION = '@release'
-    NOVELYST_API = '5.0'
+    NOVELYST_API = '0.1'
     DESCRIPTION = 'Synchronize with Timeline'
     URL = 'https://peter88213.github.io/novelyst_timeline'
     _HELP_URL = 'https://peter88213.github.io/novelyst_timeline/usage'

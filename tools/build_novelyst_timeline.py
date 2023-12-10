@@ -17,8 +17,8 @@ import inliner
 
 SRC = '../src/'
 BUILD = '../test/'
-SOURCE_FILE = f'{SRC}novelyst_timeline.py'
-TARGET_FILE = f'{BUILD}novelyst_timeline.py'
+SOURCE_FILE = f'{SRC}nv_timeline.py'
+TARGET_FILE = f'{BUILD}nv_timeline.py'
 
 
 def main():

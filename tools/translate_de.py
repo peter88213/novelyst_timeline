@@ -36,7 +36,7 @@ import translations
 from shutil import copyfile
 import msgfmt
 
-APP_NAME = 'novelyst_timeline'
+APP_NAME = 'nv_timeline'
 PO_PATH = '../i18n/de.po'
 MO_PATH = '../i18n/locale/de/LC_MESSAGES/novelyst_timeline.mo'
 MO_COPY = f'../../kalliope/src/locale/de/LC_MESSAGES/{APP_NAME}.mo'
