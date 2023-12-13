@@ -107,8 +107,8 @@ class Plugin():
 
     def _launch_application(self):
         """Launch Timeline with the current project."""
-        if self._ui.prjFile:
-            timelinePath = f'{os.path.splitext(self._ui.prjFile.filePath)[0]}{TlFile.EXTENSION}'
+        if self._ui.model:
+            timelinePath = f'{os.path.splitext(self._ui.model.filePath)[0]}{TlFile.EXTENSION}'
             if os.path.isfile(timelinePath):
                 if self._ui.lock():
                     open_document(timelinePath)
@@ -118,26 +118,26 @@ class Plugin():
     def _export_from_novx(self):
         """Update timeline from novelyst.
         """
-        if self._ui.prjFile:
-            timelinePath = f'{os.path.splitext(self._ui.prjFile.filePath)[0]}{TlFile.EXTENSION}'
+        if self._ui.model:
+            timelinePath = f'{os.path.splitext(self._ui.model.filePath)[0]}{TlFile.EXTENSION}'
             if os.path.isfile(timelinePath):
                 action = _('update')
             else:
                 action = _('create')
             if self._ui.ask_yes_no(_('Save the project and {} the timeline?').format(action)):
                 self._ui.save_project()
-                kwargs = self._get_configuration(self._ui.prjFile.filePath)
+                kwargs = self._get_configuration(self._ui.model.filePath)
                 targetFile = TlFile(timelinePath, **kwargs)
-                self._converter.export_from_novx(self._ui.prjFile, targetFile)
+                self._converter.export_from_novx(self._ui.model, targetFile)
 
     def _info(self):
         """Show information about the Timeline file."""
-        if self._ui.prjFile:
-            timelinePath = f'{os.path.splitext(self._ui.prjFile.filePath)[0]}{TlFile.EXTENSION}'
+        if self._ui.model:
+            timelinePath = f'{os.path.splitext(self._ui.model.filePath)[0]}{TlFile.EXTENSION}'
             if os.path.isfile(timelinePath):
                 try:
                     timestamp = os.path.getmtime(timelinePath)
-                    if timestamp > self._ui.prjFile.timestamp:
+                    if timestamp > self._ui.model.timestamp:
                         cmp = _('newer')
                     else:
                         cmp = _('older')
@@ -152,8 +152,8 @@ class Plugin():
     def _import_to_novx(self):
         """Update novelyst from timeline.
         """
-        if self._ui.prjFile:
-            timelinePath = f'{os.path.splitext(self._ui.prjFile.filePath)[0]}{TlFile.EXTENSION}'
+        if self._ui.model:
+            timelinePath = f'{os.path.splitext(self._ui.model.filePath)[0]}{TlFile.EXTENSION}'
             if not os.path.isfile(timelinePath):
                 self._ui.set_info_how(_('!No {} file available for this project.').format(APPLICATION))
                 return
@@ -162,13 +162,13 @@ class Plugin():
                 self._ui.save_project()
                 kwargs = self._get_configuration(timelinePath)
                 sourceFile = TlFile(timelinePath, **kwargs)
-                self._converter.import_to_novx(sourceFile, self._ui.prjFile)
+                self._converter.import_to_novx(sourceFile, self._ui.model)
                 message = self._ui.infoHowText
 
                 # Reopen the project.
                 self._ui.reloading = True
                 # avoid popup message (novelyst v0.52+)
-                self._ui.open_project(self._ui.prjFile.filePath)
+                self._ui.open_project(self._ui.model.filePath)
                 self._ui.set_info_how(message)
 
     def _get_configuration(self, sourcePath):
