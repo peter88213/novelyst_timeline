@@ -13,17 +13,15 @@ from novxlib.novx_globals import *
 from novxlib.file.file import File
 from novxlib.model.novel import Novel
 from novxlib.model.chapter import Chapter
+from novxlib.model.section import Section
 from novxlib.xml.xml_indent import indent
 from nvtimelinelib.section_event import SectionEvent
 from nvtimelinelib.dt_helper import fix_iso_dt
+from novxlib.model.nv_tree import NvTree
 
 
 class TlFile(File):
     """Timeline project file representation.
-
-    Public methods:
-        read() -- parse the file and get the instance variables.
-        write() -- write instance variables to the file.
 
     This class represents a file containing a timeline with additional 
     attributes and structural information (a full set or a subset
@@ -66,7 +64,7 @@ class TlFile(File):
         Extends the superclass constructor.
         """
         super().__init__(filePath, **kwargs)
-        self._tree = None
+        self._xmlTree = None
         self._sectionMarker = kwargs['section_label']
         self._ignoreUnspecific = kwargs['ignore_unspecific']
         self._dateTimeToDhm = kwargs['datetime_to_dhm']
@@ -110,10 +108,10 @@ class TlFile(File):
             isOutline = False
 
         try:
-            self._tree = ET.parse(self.filePath)
+            self._xmlTree = ET.parse(self.filePath)
         except:
             raise Error(f'{_("Can not process file")}: "{norm_path(self.filePath)}".')
-        root = self._tree.getroot()
+        root = self._xmlTree.getroot()
         sectionCount = 0
         scIdsByDate = {}
         for event in root.iter('event'):
@@ -134,7 +132,7 @@ class TlFile(File):
                 sectionMarker = sectionMatch.group()
                 scId = str(sectionCount)
                 event.find('labels').text = labels.replace(sectionMarker, f'ScID:{scId}')
-                self.novel.sections[scId] = SectionEvent()
+                self.novel.sections[scId] = SectionEvent(Section())
                 self.novel.sections[scId].status = 1
             else:
                 try:
@@ -184,11 +182,11 @@ class TlFile(File):
             self.novel.srtChapters = [chId]
             for __, scList in srtSections:
                 for scId in scList:
-                    self.novel.chapters[chId].srtSections.append(scId)
+                    self.novel.tree.append(chId, scId)
             # Rewrite the timeline with section IDs inserted.
             os.replace(self.filePath, f'{self.filePath}.bak')
             try:
-                self._tree.write(self.filePath, xml_declaration=True, encoding='utf-8')
+                self._xmlTree.write(self.filePath, xml_declaration=True, encoding='utf-8')
             except:
                 os.replace(f'{self.filePath}.bak', self.filePath)
                 raise Error(f'{_("Cannot write file")}: "{norm_path(self.filePath)}".')
@@ -255,24 +253,24 @@ class TlFile(File):
 
         #--- Merge first.
         source = self.novel
-        self.novel = Novel()
+        self.novel = Novel(tree=NvTree())
         if os.path.isfile(self.filePath):
             self.read()
             # initialize data
 
         self.novel.chapters = {}
         self.novel.srtChapters = []
-        for chId in source.get_tree_elements(CH_ROOT):
+        for chId in source.tree.get_children(CH_ROOT):
             self.novel.chapters[chId] = Chapter()
             self.novel.srtChapters.append(chId)
-            for scId in source.get_tree_elements(chId):
+            for scId in source.tree.get_children(chId):
                 if self._ignoreUnspecific and source.sections[scId].date is None and source.sections[scId].time is None:
                     # Skip sections with unspecific date/time stamps.
                     continue
 
                 if not scId in self.novel.sections:
-                    self.novel.sections[scId] = SectionEvent()
-                self.novel.chapters[chId].srtSections.append(scId)
+                    self.novel.sections[scId] = SectionEvent(Section())
+                self.novel.tree.append(chId, scId)
                 if source.sections[scId].title:
                     title = source.sections[scId].title
                     title = self._convert_from_novelyst(title)
@@ -297,9 +295,9 @@ class TlFile(File):
             for scId in self.novel.tree.get_children(chId):
                 if self.novel.sections[scId].scType == 0:
                     srtSections.append(scId)
-        if self._tree is not None:
-            #--- Update an existing XML _tree.
-            root = self._tree.getroot()
+        if self._xmlTree is not None:
+            #--- Update an existing XML _xmlTree.
+            root = self._xmlTree.getroot()
             events = root.find('events')
             trash = []
             scIds = []
@@ -336,7 +334,7 @@ class TlFile(File):
             period.find('start').text = dtMin
             period.find('end').text = dtMax
         else:
-            #--- Create a new XML _tree.
+            #--- Create a new XML _xmlTree.
             root = ET.Element('timeline')
             ET.SubElement(root, 'version').text = '2.4.0 (3f207fbb63f0 2021-04-07)'
             ET.SubElement(root, 'timetype').text = 'gregoriantime'
@@ -353,7 +351,7 @@ class TlFile(File):
             ET.SubElement(period, 'start').text = dtMin
             ET.SubElement(period, 'end').text = dtMax
         indent(root)
-        self._tree = ET.ElementTree(root)
+        self._xmlTree = ET.ElementTree(root)
 
         #--- Back up the old timeline and write a new file.
         backedUp = False
@@ -365,7 +363,7 @@ class TlFile(File):
             else:
                 backedUp = True
         try:
-            self._tree.write(self.filePath, xml_declaration=True, encoding='utf-8')
+            self._xmlTree.write(self.filePath, xml_declaration=True, encoding='utf-8')
         except:
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)

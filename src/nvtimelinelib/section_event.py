@@ -12,11 +12,6 @@ from novxlib.model.section import Section
 class SectionEvent(Section):
     """Timeline section event representation.
 
-    Public methods:
-        set_date_time(startDateTime, endDateTime, isUnspecific) -- set date/time and, if applicable, duration.
-        merge_date_time(source) -- get date/time related variables from a novelyst-generated source section.
-        build_subtree(xmlEvent, scId, dtMin, dtMax) -- build a Timeline XML event subtree. 
-
     Public instance variables:
         contId: str -- container ID.
     """
@@ -39,18 +34,15 @@ class SectionEvent(Section):
         self.goal = section.goal
         self.conflict = section.conflict
         self.outcome = section.outcome
-        self.characters = section.characters
-        self.locations = section.locations
-        self.items = section.items
         self.date = section.date
         self.time = section.time
         self.day = section.day
         self.lastsMinutes = section.lastsMinutes
         self.lastsHours = section.lastsHours
         self.lastsDays = section.lastsDays
-        self.image = section.image
-        self.arcs = section.arcs
-        self.scMode = section.scMode
+        self.characters = section.characters
+        self.locations = section.locations
+        self.items = section.items
 
         self.contId = None
         self._startDateTime = None

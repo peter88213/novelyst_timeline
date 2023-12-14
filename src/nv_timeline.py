@@ -1,8 +1,8 @@
-"""Timeline sync plugin for novelyst.
+"""Timeline sync plugin for noveltree.
 
 Version @release
 Requires Python 3.6+
-Copyright (c) 2022 Peter Triesberger
+Copyright (c) 2023 Peter Triesberger
 For further information see https://github.com/peter88213/noveltree_timeline
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 
@@ -44,7 +44,7 @@ except:
 
 APPLICATION = 'Timeline'
 PLUGIN = f'{APPLICATION} plugin v@release'
-INI_FILENAME = 'nv-timeline.ini'
+INI_FILENAME = 'nv_timeline.ini'
 INI_FILEPATH = '.kalliope/nv-timeline/config'
 
 
@@ -59,8 +59,8 @@ class Plugin():
     VERSION = '@release'
     NOVELYST_API = '0.1'
     DESCRIPTION = 'Synchronize with Timeline'
-    URL = 'https://peter88213.github.io/novelyst_timeline'
-    _HELP_URL = 'https://peter88213.github.io/novelyst_timeline/usage'
+    URL = 'https://peter88213.github.io/nv_timeline'
+    _HELP_URL = 'https://peter88213.github.io/nv_timeline/usage'
 
     SETTINGS = dict(
         section_label='Section',
