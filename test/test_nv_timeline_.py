@@ -74,7 +74,7 @@ class NormalOperation(unittest.TestCase):
     def test_tl_to_new_yw(self):
         copyfile(TEST_DATA_PATH + 'outline.timeline', TEST_TL)
         os.chdir(TEST_EXEC_PATH)
-        yw_timeline_.run(TEST_TL, silentMode=True)
+        novx_timeline.run(TEST_TL, silentMode=True)
         self.assertEqual(read_file(TEST_NOVX), read_file(TEST_DATA_PATH + 'normal.novx'))
         self.assertEqual(read_file(TEST_TL), read_file(TEST_DATA_PATH + 'rewritten.timeline'))
 
@@ -83,7 +83,7 @@ class NormalOperation(unittest.TestCase):
         copyfile(TEST_DATA_PATH + 'normal.timeline', TEST_TL)
         copyfile(TEST_DATA_PATH + 'modified.novx', TEST_NOVX)
         os.chdir(TEST_EXEC_PATH)
-        yw_timeline_.run(TEST_NOVX, silentMode=True)
+        novx_timeline.run(TEST_NOVX, silentMode=True)
         self.assertEqual(read_file(TEST_TL), read_file(TEST_DATA_PATH + 'modified.timeline'))
         self.assertEqual(read_file(TEST_TL_BAK), read_file(TEST_DATA_PATH + 'normal.timeline'))
 
@@ -92,7 +92,7 @@ class NormalOperation(unittest.TestCase):
         copyfile(TEST_DATA_PATH + 'modified2.timeline', TEST_TL)
         copyfile(TEST_DATA_PATH + 'modified.novx', TEST_NOVX)
         os.chdir(TEST_EXEC_PATH)
-        yw_timeline_.run(TEST_TL, silentMode=True)
+        novx_timeline.run(TEST_TL, silentMode=True)
         self.assertEqual(read_file(TEST_NOVX), read_file(TEST_DATA_PATH + 'modified2.novx'))
         self.assertEqual(read_file(TEST_YW_BAK), read_file(TEST_DATA_PATH + 'modified.novx'))
 
@@ -100,7 +100,7 @@ class NormalOperation(unittest.TestCase):
     def test_modified_yw_to_new_tl(self):
         copyfile(TEST_DATA_PATH + 'modified.novx', TEST_NOVX)
         os.chdir(TEST_EXEC_PATH)
-        yw_timeline_.run(TEST_NOVX, silentMode=True)
+        novx_timeline.run(TEST_NOVX, silentMode=True)
         self.assertEqual(read_file(TEST_TL), read_file(TEST_DATA_PATH + 'new.timeline'))
 
     # @unittest.skip('')
@@ -108,8 +108,8 @@ class NormalOperation(unittest.TestCase):
         copyfile(TEST_DATA_PATH + 'normal.novx', TEST_NOVX)
         copyfile(TEST_DATA_PATH + 'dateTimeToDhm.ini', TEST_EXEC_PATH + INI_FILE)
         os.chdir(TEST_EXEC_PATH)
-        yw_timeline_.run(TEST_NOVX, silentMode=True)
-        yw_timeline_.run(TEST_TL, silentMode=True)
+        novx_timeline.run(TEST_NOVX, silentMode=True)
+        novx_timeline.run(TEST_TL, silentMode=True)
         self.assertEqual(read_file(TEST_NOVX), read_file(TEST_DATA_PATH + 'dateTimeToDhm.novx'))
 
     # @unittest.skip('')
@@ -117,8 +117,8 @@ class NormalOperation(unittest.TestCase):
         copyfile(TEST_DATA_PATH + 'dateTimeToDhm.novx', TEST_NOVX)
         copyfile(TEST_DATA_PATH + 'dhmToDateTime.ini', TEST_EXEC_PATH + INI_FILE)
         os.chdir(TEST_EXEC_PATH)
-        yw_timeline_.run(TEST_NOVX, silentMode=True)
-        yw_timeline_.run(TEST_TL, silentMode=True)
+        novx_timeline.run(TEST_NOVX, silentMode=True)
+        novx_timeline.run(TEST_TL, silentMode=True)
         self.assertEqual(read_file(TEST_NOVX), read_file(TEST_DATA_PATH + 'dhmToDateTime.novx'))
 
     def tearDown(self):
