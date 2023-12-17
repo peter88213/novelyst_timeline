@@ -1,10 +1,10 @@
-# novelyst_timeline Dictionary
+# nv_timeline Dictionary
 # Copyright (C) 2023 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: unknown\n"
-"POT-Creation-Date: 2023-10-29 10:44:04\n"
+"Project-Id-Version: 5.0.0\n"
+"POT-Creation-Date: 2023-12-17 10:26:44\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -20,16 +20,28 @@ msgstr ""
 msgid "Action canceled by user"
 msgstr ""
 
+msgid "Can not process file"
+msgstr ""
+
 msgid "Cannot determine file date."
 msgstr ""
 
-msgid "Create a novelyst project file from {0}\nNew project: \"{1}\""
+msgid "Cannot overwrite file"
+msgstr ""
+
+msgid "Cannot write file"
+msgstr ""
+
+msgid "Create a noveltree project file from {0}\nNew project: \"{1}\""
 msgstr ""
 
 msgid "Create or update the timeline"
 msgstr ""
 
 msgid "Edit the timeline"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already exists"
@@ -44,13 +56,16 @@ msgstr ""
 msgid "File written"
 msgstr ""
 
+msgid "Friday"
+msgstr ""
+
 msgid "Information"
 msgstr ""
 
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr ""
 
-msgid "New sections created during conversion"
+msgid "Monday"
 msgstr ""
 
 msgid "No {} file available for this project."
@@ -62,16 +77,34 @@ msgstr ""
 msgid "Please close the document first"
 msgstr ""
 
+msgid "Saturday"
+msgstr ""
+
 msgid "Save the project and update it?"
 msgstr ""
 
 msgid "Save the project and {} the timeline?"
 msgstr ""
 
+msgid "Source document deleted"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
 msgid "Timeline plugin Online help"
 msgstr ""
 
+msgid "Tuesday"
+msgstr ""
+
 msgid "Update the project"
+msgstr ""
+
+msgid "Wednesday"
 msgstr ""
 
 msgid "create"

@@ -22,7 +22,7 @@ TARGET_FILE = f'{BUILD}nv_timeline.py'
 
 
 def main():
-    inliner.run(SOURCE_FILE, TARGET_FILE, 'ywtimelinelib', '../../nv-timeline/src/')
+    inliner.run(SOURCE_FILE, TARGET_FILE, 'nvtimelinelib', '../../novelyst_timeline/src/')
     inliner.run(TARGET_FILE, TARGET_FILE, 'novxlib', '../../novxlib-Alpha/src/')
     print('Done.')
 

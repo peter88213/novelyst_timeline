@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="nv_timeline" basedir=".">
-	<property name="version" value="4.1.1" />
-	<property name="test-app" value="novelyst_timeline" />
-	<property name="novelyst-plugin" value="novelyst_timeline" />
+	<property name="version" value="5.0.0" />
+	<property name="test-app" value="nv_timeline" />
+	<property name="novelyst-plugin" value="nv_timeline" />
 	
 	<property name="source-path" location="../src" />
 	<property name="test-path" location="../test" />

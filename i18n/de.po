@@ -1,11 +1,11 @@
-# novelyst_timeline Dictionary (English-German)
+# nv_timeline Dictionary (English-German)
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: unknown\n"
-"POT-Creation-Date: 2023-10-29 10:44:04\n"
-"PO-Revision-Date: 2023-10-29 10:44:10\n"
+"Project-Id-Version: 5.0.0\n"
+"POT-Creation-Date: 2023-12-17 10:26:44\n"
+"PO-Revision-Date: 2023-12-17 10:26:44\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -19,17 +19,29 @@ msgstr "!Keine {}-Datei für dieses Projekt vorhanden."
 msgid "Action canceled by user"
 msgstr "Vorgang vom Benutzer abgebrochen"
 
+msgid "Can not process file"
+msgstr "Kann Datei nicht verarbeiten"
+
 msgid "Cannot determine file date."
 msgstr "Das Dateidatum ist nicht zu ermitteln."
 
-msgid "Create a novelyst project file from {0}\nNew project: \"{1}\""
-msgstr "Erzeuge eine novelyst-Projektdatei aus {0}\nNeues Projekt: \"{1}\""
+msgid "Cannot overwrite file"
+msgstr "Kann Datei nicht überschreiben"
+
+msgid "Cannot write file"
+msgstr "Kann Datei nicht schreiben"
+
+msgid "Create a noveltree project file from {0}\nNew project: \"{1}\""
+msgstr "Erzeuge eine noveltree-Projektdatei aus {0}\nNeues Projekt: \"{1}\""
 
 msgid "Create or update the timeline"
 msgstr "Die Zeitleiste erzeugen oder aktualisieren"
 
 msgid "Edit the timeline"
 msgstr "Die Zeitleiste bearbeiten"
+
+msgid "File"
+msgstr "Datei"
 
 msgid "File already exists"
 msgstr "Datei existiert bereits"
@@ -43,14 +55,17 @@ msgstr "Dateityp wird nicht unterstützt"
 msgid "File written"
 msgstr "Datei gespeichert"
 
+msgid "Friday"
+msgstr "Freitag"
+
 msgid "Information"
 msgstr "Information"
 
 msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
 msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
 
-msgid "New sections created during conversion"
-msgstr "Während der Konvertierung wurden neue Abschnitte erzeugt"
+msgid "Monday"
+msgstr "Montag"
 
 msgid "No {} file available for this project."
 msgstr "Keine {}-Datei für dieses Projekt vorhanden."
@@ -61,17 +76,35 @@ msgstr "Bestehende Datei \"{}\" überschreiben?"
 msgid "Please close the document first"
 msgstr "Bitte zuerst das Dokument schließen"
 
+msgid "Saturday"
+msgstr "Samstag"
+
 msgid "Save the project and update it?"
 msgstr "Projekt speichern und aktualisieren?"
 
 msgid "Save the project and {} the timeline?"
 msgstr "Projekt sichern und die Zeitleiste {}?"
 
+msgid "Source document deleted"
+msgstr "Quelldokument gelöscht"
+
+msgid "Sunday"
+msgstr "Sonntag"
+
+msgid "Thursday"
+msgstr "Donnerstag"
+
 msgid "Timeline plugin Online help"
 msgstr "Timeline-Plugin Online-Hilfe"
 
+msgid "Tuesday"
+msgstr "Dienstag"
+
 msgid "Update the project"
 msgstr "Das Projekt aktualisieren"
+
+msgid "Wednesday"
+msgstr "Mittwoch"
 
 msgid "create"
 msgstr "erzeugen"

@@ -13,14 +13,14 @@ The *novelyst_timeline* plugin synchronizes novelyst projects with [Timeline](ht
 ## Requirements
 
 - [Timeline 2.4+](https://sourceforge.net/projects/thetimelineproj/). Versions below 2.4 do not support labels, which are necessary for synchronization with yWriter.
-- [novelyst](https://peter88213.github.io/novelyst/) version 4.0+
+- [noveltree](https://peter88213.github.io/noveltree/) version 1.0+
 
 
 ## Download and install
 
-[Download the latest release (version 4.1.1)](https://github.com/peter88213/noveltree_timeline/raw/main/dist/novelyst_timeline_v4.1.1.zip)
+[Download the latest release (version 5.0.0)](https://github.com/peter88213/noveltree_timeline/raw/main/dist/novelyst_timeline_v5.0.0.zip)
 
-- Extract the "novelyst_timeline_v4.1.1" folder from the downloaded zipfile "novelyst_timeline_v4.1.1.zip".
+- Extract the "novelyst_timeline_v5.0.0" folder from the downloaded zipfile "novelyst_timeline_v5.0.0.zip".
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
 
 ---
