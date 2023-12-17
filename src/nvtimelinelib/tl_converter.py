@@ -13,11 +13,7 @@ from nvtimelinelib.tl_file import TlFile
 
 
 class TlConverter(Converter):
-    """A converter class for novelyst and Timeline.
-    
-    Public methods:
-        run(sourcePath, **kwargs) -- create source and target objects and run conversion.
-    """
+    """A converter class for novelyst and Timeline."""
 
     def run(self, sourcePath, **kwargs):
         """Create source and target objects and run conversion.

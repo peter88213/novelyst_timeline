@@ -49,15 +49,9 @@ INI_FILEPATH = '.kalliope/nv-timeline/config'
 
 
 class Plugin():
-    """Plugin class for synchronization with Timeline.
-    
-    Public methods:
-        disable_menu() -- disable menu entries when no project is open.
-        enable_menu() -- enable menu entries when a project is open.
-        
-    """
+    """Plugin class for synchronization with Timeline."""
     VERSION = '@release'
-    NOVELYST_API = '0.1'
+    NOVELYST_API = '0.6'
     DESCRIPTION = 'Synchronize with Timeline'
     URL = 'https://peter88213.github.io/nv_timeline'
     _HELP_URL = 'https://peter88213.github.io/nv_timeline/usage'
@@ -73,12 +67,14 @@ class Plugin():
         datetime_to_dhm=False,
     )
 
-    def install(self, ui):
+    def install(self, controller, ui):
         """Add a submenu to the main menu.
         
         Positional arguments:
-            ui -- reference to the NoveltreeUi instance of the application.
+            controller -- reference to the main controller instance of the application.
+            ui -- reference to the main view instance of the application.
         """
+        self._controller = controller
         self._ui = ui
         self._converter = Converter()
         self._converter.ui = ui
@@ -192,11 +188,7 @@ class Plugin():
 
 
 class Converter(Converter):
-    """A file converter class that overwrites without asking. 
-
-    Public methods:
-        convert(sourceFile, targetFile) -- Convert sourceFile into targetFile.
-    """
+    """A file converter class that overwrites without asking."""
 
     def _confirm_overwrite(self, fileName):
         """Return boolean permission to overwrite the target file.
