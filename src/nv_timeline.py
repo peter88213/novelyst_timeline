@@ -16,20 +16,21 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 """
-import os
-import sys
-from pathlib import Path
-import tkinter as tk
-import locale
-import gettext
-import webbrowser
-from tkinter import messagebox
 from datetime import datetime
-from novxlib.novx_globals import *
+import gettext
+import locale
+import os
+from pathlib import Path
+import sys
+from tkinter import messagebox
+import webbrowser
+
 from novxlib.config.configuration import Configuration
-from novxlib.file.doc_open import open_document
 from novxlib.converter.converter import Converter
+from novxlib.file.doc_open import open_document
+from novxlib.novx_globals import _
 from nvtimelinelib.tl_file import TlFile
+import tkinter as tk
 
 # Initialize localization.
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
@@ -38,9 +39,7 @@ try:
     t = gettext.translation('nv_timeline', LOCALE_PATH, languages=[CURRENT_LANGUAGE])
     _ = t.gettext
 except:
-
-    def _(message):
-        return message
+    pass
 
 APPLICATION = 'Timeline'
 PLUGIN = f'{APPLICATION} plugin v@release'
@@ -67,7 +66,7 @@ class Plugin():
         datetime_to_dhm=False,
     )
 
-    def install(self, controller, ui):
+    def install(self, controller, ui, prefs):
         """Add a submenu to the main menu.
         
         Positional arguments:
@@ -103,8 +102,8 @@ class Plugin():
 
     def _launch_application(self):
         """Launch Timeline with the current project."""
-        if self._ui.model:
-            timelinePath = f'{os.path.splitext(self._ui.model.filePath)[0]}{TlFile.EXTENSION}'
+        if self._controller.model:
+            timelinePath = f'{os.path.splitext(self._controller.model.filePath)[0]}{TlFile.EXTENSION}'
             if os.path.isfile(timelinePath):
                 if self._ui.lock():
                     open_document(timelinePath)
@@ -114,26 +113,26 @@ class Plugin():
     def _export_from_novx(self):
         """Update timeline from novelyst.
         """
-        if self._ui.model:
-            timelinePath = f'{os.path.splitext(self._ui.model.filePath)[0]}{TlFile.EXTENSION}'
+        if self._controller.model:
+            timelinePath = f'{os.path.splitext(self._controller.model.filePath)[0]}{TlFile.EXTENSION}'
             if os.path.isfile(timelinePath):
                 action = _('update')
             else:
                 action = _('create')
             if self._ui.ask_yes_no(_('Save the project and {} the timeline?').format(action)):
                 self._ui.save_project()
-                kwargs = self._get_configuration(self._ui.model.filePath)
+                kwargs = self._get_configuration(self._controller.model.filePath)
                 targetFile = TlFile(timelinePath, **kwargs)
-                self._converter.export_from_novx(self._ui.model, targetFile)
+                self._converter.export_from_novx(self._controller.model, targetFile)
 
     def _info(self):
         """Show information about the Timeline file."""
-        if self._ui.model:
-            timelinePath = f'{os.path.splitext(self._ui.model.filePath)[0]}{TlFile.EXTENSION}'
+        if self._controller.model:
+            timelinePath = f'{os.path.splitext(self._controller.model.filePath)[0]}{TlFile.EXTENSION}'
             if os.path.isfile(timelinePath):
                 try:
                     timestamp = os.path.getmtime(timelinePath)
-                    if timestamp > self._ui.model.timestamp:
+                    if timestamp > self._controller.model.timestamp:
                         cmp = _('newer')
                     else:
                         cmp = _('older')
@@ -148,8 +147,8 @@ class Plugin():
     def _import_to_novx(self):
         """Update novelyst from timeline.
         """
-        if self._ui.model:
-            timelinePath = f'{os.path.splitext(self._ui.model.filePath)[0]}{TlFile.EXTENSION}'
+        if self._controller.model:
+            timelinePath = f'{os.path.splitext(self._controller.model.filePath)[0]}{TlFile.EXTENSION}'
             if not os.path.isfile(timelinePath):
                 self._ui.set_info_how(_('!No {} file available for this project.').format(APPLICATION))
                 return
@@ -158,13 +157,13 @@ class Plugin():
                 self._ui.save_project()
                 kwargs = self._get_configuration(timelinePath)
                 sourceFile = TlFile(timelinePath, **kwargs)
-                self._converter.import_to_novx(sourceFile, self._ui.model)
+                self._converter.import_to_novx(sourceFile, self._controller.model)
                 message = self._ui.infoHowText
 
                 # Reopen the project.
                 self._ui.reloading = True
                 # avoid popup message (novelyst v0.52+)
-                self._ui.open_project(fileName=self._ui.model.filePath)
+                self._ui.open_project(fileName=self._controller.model.filePath)
                 self._ui.set_info_how(message)
 
     def _get_configuration(self, sourcePath):

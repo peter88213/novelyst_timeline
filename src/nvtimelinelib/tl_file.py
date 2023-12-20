@@ -4,20 +4,24 @@ Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv-timeline
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-import os
-import re
-import xml.etree.ElementTree as ET
 from datetime import datetime
 from datetime import timedelta
-from novxlib.novx_globals import *
+import os
+import re
+
 from novxlib.file.file import File
-from novxlib.model.novel import Novel
 from novxlib.model.chapter import Chapter
-from novxlib.model.section import Section
-from novxlib.xml.xml_indent import indent
-from nvtimelinelib.section_event import SectionEvent
-from nvtimelinelib.dt_helper import fix_iso_dt
+from novxlib.model.novel import Novel
 from novxlib.model.nv_tree import NvTree
+from novxlib.model.section import Section
+from novxlib.novx_globals import CH_ROOT
+from novxlib.novx_globals import Error
+from novxlib.novx_globals import _
+from novxlib.novx_globals import norm_path
+from novxlib.xml.xml_indent import indent
+from nvtimelinelib.dt_helper import fix_iso_dt
+from nvtimelinelib.section_event import SectionEvent
+import xml.etree.ElementTree as ET
 
 
 class TlFile(File):

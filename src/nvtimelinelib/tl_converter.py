@@ -5,10 +5,11 @@ For further information see https://github.com/peter88213/nv-timeline
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
-from novxlib.novx_globals import *
+
 from novxlib.converter.converter import Converter
 from novxlib.novx.novx_file import NovxFile
-from novxlib.model.novel import Novel
+from novxlib.novx_globals import _
+from novxlib.novx_globals import norm_path
 from nvtimelinelib.tl_file import TlFile
 
 

@@ -7,14 +7,15 @@ Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv_timeline
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-import os
 import argparse
+import os
 from pathlib import Path
-from novxlib.novx_globals import *
+
+from novxlib.config.configuration import Configuration
+from novxlib.novx_globals import _
+from novxlib.ui.set_icon_tk import set_icon
 from novxlib.ui.ui import Ui
 from novxlib.ui.ui_tk import UiTk
-from novxlib.ui.set_icon_tk import *
-from novxlib.config.configuration import Configuration
 from nvtimelinelib.tl_converter import TlConverter
 
 SUFFIX = ''
