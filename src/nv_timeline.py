@@ -66,7 +66,7 @@ class Plugin():
         datetime_to_dhm=False,
     )
 
-    def install(self, controller, ui, prefs):
+    def install(self, model, ui, controller, prefs):
         """Add a submenu to the main menu.
         
         Positional arguments:
