@@ -27,7 +27,7 @@ class TlConverter(Converter):
         """
         self.newFile = None
         if not os.path.isfile(sourcePath):
-            self.ui.set_info_how(f'!{_("File not found")}: "{norm_path(sourcePath)}".')
+            self.ui.set_status(f'!{_("File not found")}: "{norm_path(sourcePath)}".')
             return
 
         fileName, fileExtension = os.path.splitext(sourcePath)
@@ -48,5 +48,5 @@ class TlConverter(Converter):
             self.export_from_novx(sourceFile, targetFile)
         else:
             # Source file format is not supported
-            self.ui.set_info_how(f'!{_("File type is not supported")}: "{norm_path(sourcePath)}".')
+            self.ui.set_status(f'!{_("File type is not supported")}: "{norm_path(sourcePath)}".')
 

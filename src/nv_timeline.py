@@ -108,7 +108,7 @@ class Plugin():
                 if self._ui.lock():
                     open_document(timelinePath)
             else:
-                self._ui.set_info_how(_('!No {} file available for this project.').format(APPLICATION))
+                self._ui.set_status(_('!No {} file available for this project.').format(APPLICATION))
 
     def _export_from_novx(self):
         """Update timeline from novelyst.
@@ -150,7 +150,7 @@ class Plugin():
         if self._controller.model:
             timelinePath = f'{os.path.splitext(self._controller.model.filePath)[0]}{TlFile.EXTENSION}'
             if not os.path.isfile(timelinePath):
-                self._ui.set_info_how(_('!No {} file available for this project.').format(APPLICATION))
+                self._ui.set_status(_('!No {} file available for this project.').format(APPLICATION))
                 return
 
             if self._ui.ask_yes_no(_('Save the project and update it?')):
@@ -164,7 +164,7 @@ class Plugin():
                 self._ui.reloading = True
                 # avoid popup message (novelyst v0.52+)
                 self._ui.open_project(fileName=self._controller.model.filePath)
-                self._ui.set_info_how(message)
+                self._ui.set_status(message)
 
     def _get_configuration(self, sourcePath):
         #--- Try to get persistent configuration data
