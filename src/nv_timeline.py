@@ -50,7 +50,7 @@ INI_FILEPATH = '.kalliope/nv-timeline/config'
 class Plugin():
     """Plugin class for synchronization with Timeline."""
     VERSION = '@release'
-    NOVELYST_API = '0.6'
+    NOVELYST_API = '0.7'
     DESCRIPTION = 'Synchronize with Timeline'
     URL = 'https://peter88213.github.io/nv_timeline'
     _HELP_URL = 'https://peter88213.github.io/nv_timeline/usage'
@@ -120,7 +120,7 @@ class Plugin():
             else:
                 action = _('create')
             if self._ui.ask_yes_no(_('Save the project and {} the timeline?').format(action)):
-                self._ui.save_project()
+                self._ui.c_save_project()
                 kwargs = self._get_configuration(self._controller.model.filePath)
                 targetFile = TlFile(timelinePath, **kwargs)
                 self._converter.export_from_novx(self._controller.model, targetFile)
@@ -154,16 +154,16 @@ class Plugin():
                 return
 
             if self._ui.ask_yes_no(_('Save the project and update it?')):
-                self._ui.save_project()
+                self._ui.c_save_project()
                 kwargs = self._get_configuration(timelinePath)
                 sourceFile = TlFile(timelinePath, **kwargs)
                 self._converter.import_to_novx(sourceFile, self._controller.model)
                 message = self._ui.infoHowText
 
                 # Reopen the project.
-                self._ui.reloading = True
-                # avoid popup message (novelyst v0.52+)
-                self._ui.open_project(fileName=self._controller.model.filePath)
+                self._model.doNotSave = True
+                # avoid popup message
+                self._ui.c_open_project(fileName=self._controller.model.filePath)
                 self._ui.set_status(message)
 
     def _get_configuration(self, sourcePath):
