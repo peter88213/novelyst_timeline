@@ -66,17 +66,17 @@ class Plugin():
         datetime_to_dhm=False,
     )
 
-    def install(self, model, ui, controller, prefs):
+    def install(self, model, view, controller, prefs):
         """Add a submenu to the main menu.
         
         Positional arguments:
             controller -- reference to the main controller instance of the application.
-            ui -- reference to the main view instance of the application.
+            view -- reference to the main view instance of the application.
         """
         self._ctrl = controller
-        self._ui = ui
+        self._ui = view
         self._converter = Converter()
-        self._converter.ui = ui
+        self._converter.ui = view
 
         # Create a submenu
         self._pluginMenu = tk.Menu(self._ui.toolsMenu, tearoff=0)
