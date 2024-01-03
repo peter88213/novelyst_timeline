@@ -15,6 +15,7 @@ from novxlib.model.novel import Novel
 from novxlib.model.nv_tree import NvTree
 from novxlib.model.section import Section
 from novxlib.novx_globals import CH_ROOT
+from novxlib.novx_globals import SECTION_PREFIX
 from novxlib.novx_globals import Error
 from novxlib.novx_globals import _
 from novxlib.novx_globals import norm_path
@@ -123,7 +124,7 @@ class TlFile(File):
             sectionMatch = None
             if event.find('labels') is not None:
                 labels = event.find('labels').text
-                sectionMatch = re.search('ScID\:([0-9]+)', labels)
+                sectionMatch = re.search(f'{SECTION_PREFIX}[0-9]+', labels)
                 if isOutline and sectionMatch is None:
                     sectionMatch = re.search(self._sectionMarker, labels)
             if sectionMatch is None:
@@ -135,12 +136,12 @@ class TlFile(File):
                 sectionCount += 1
                 sectionMarker = sectionMatch.group()
                 scId = str(sectionCount)
-                event.find('labels').text = labels.replace(sectionMarker, f'ScID:{scId}')
+                event.find('labels').text = labels.replace(sectionMarker, scId)
                 self.novel.sections[scId] = SectionEvent(Section())
                 self.novel.sections[scId].status = 1
             else:
                 try:
-                    scId = sectionMatch.group(1)
+                    scId = sectionMatch.group()
                     sectionDate = self.novel.sections[scId].date
                     self.novel.sections[scId] = SectionEvent(self.novel.sections[scId])
                 except:
@@ -257,10 +258,9 @@ class TlFile(File):
 
         #--- Merge first.
         self.novel.chapters = {}
-        self.novel.srtChapters = []
         for chId in source.tree.get_children(CH_ROOT):
             self.novel.chapters[chId] = Chapter()
-            self.novel.srtChapters.append(chId)
+            self.novel.tree.append(CH_ROOT, chId)
             for scId in source.tree.get_children(chId):
                 if self._ignoreUnspecific and source.sections[scId].date is None and source.sections[scId].time is None:
                     # Skip sections with unspecific date/time stamps.
@@ -304,12 +304,12 @@ class TlFile(File):
             for event in events.iter('event'):
                 if event.find('labels') is not None:
                     labels = event.find('labels').text
-                    sectionMatch = re.search('ScID\:([0-9]+)', labels)
+                    sectionMatch = re.search(f'{SECTION_PREFIX}[0-9]+', labels)
                 else:
                     continue
 
                 if sectionMatch is not None:
-                    scId = sectionMatch.group(1)
+                    scId = sectionMatch.group()
                     if scId in srtSections:
                         scIds.append(scId)
                         dtMin, dtMax = self.novel.sections[scId].build_subtree(event, scId, dtMin, dtMax)

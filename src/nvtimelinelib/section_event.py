@@ -235,7 +235,7 @@ class SectionEvent(Section):
         elif xmlEvent.find('description') is not None:
             xmlEvent.remove(xmlEvent.find('description'))
         if xmlEvent.find('labels') is None:
-            ET.SubElement(xmlEvent, 'labels').text = f'ScID:{scId}'
+            ET.SubElement(xmlEvent, 'labels').text = scId
         if xmlEvent.find('default_color') is None:
             ET.SubElement(xmlEvent, 'default_color').text = self.sectionColor
         return dtMin, dtMax
