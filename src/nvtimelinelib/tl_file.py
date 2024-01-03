@@ -43,25 +43,25 @@ class TlFile(File):
             
         Required keyword arguments:
             section_label: str -- event label marking "section" events.
-            ignore_unspecific: bool -- ignore novelyst sections with unspecific date/time. 
-            datetime_to_dhm: bool -- convert novelyst specific date/time to unspecific D/H/M.
-            dhm_to_datetime: bool -- convert novelyst unspecific D/H/M to specific date/time.
-            default_date_time: str -- date/time stamp for undated novelyst sections.
-            section_color: str -- color for events imported as sections from novelyst.
+            ignore_unspecific: bool -- ignore noveltree sections with unspecific date/time. 
+            datetime_to_dhm: bool -- convert noveltree specific date/time to unspecific D/H/M.
+            dhm_to_datetime: bool -- convert noveltree unspecific D/H/M to specific date/time.
+            default_date_time: str -- date/time stamp for undated noveltree sections.
+            section_color: str -- color for events imported as sections from noveltree.
         
         If ignore_unspecific is True, only transfer Sections with a specific 
-            date/time stamp from novelyst to Timeline.
+            date/time stamp from noveltree to Timeline.
             
-        If ignore_unspecific is False, transfer all Sections from novelyst to Timeline. 
+        If ignore_unspecific is False, transfer all Sections from noveltree to Timeline. 
             Events assigned to sections having no specific date/time stamp
             get the default date plus the unspecific 'D' as start date, 
             and 'H':'M' as start time.
             
-        If datetime_to_dhm is True, convert novelyst specific date to unspecific Day
+        If datetime_to_dhm is True, convert noveltree specific date to unspecific Day
             when synchronizing from Timeline. Use the date from default_date_time as a reference. 
             Precondition: dhm_to_datetime is False.
         
-        If dhm_to_datetime is True, convert novelyst unspecific Day to specific date
+        If dhm_to_datetime is True, convert noveltree unspecific Day to specific date
             when synchronizing from Timeline. Use the date from default_date_time as a reference.
             Precondition: datetime_to_dhm is False.
             
@@ -75,7 +75,7 @@ class TlFile(File):
         self._dhmToDateTime = kwargs['dhm_to_datetime']
         SectionEvent.defaultDateTime = kwargs['default_date_time']
         SectionEvent.sectionColor = kwargs['section_color']
-        # The existing novelyst target project, if any.
+        # The existing noveltree target project, if any.
         # To be set by the calling converter class.
 
     def read(self):
@@ -149,7 +149,7 @@ class TlFile(File):
             try:
                 title = event.find('text').text
                 title = remove_contId(self.novel.sections[scId], title)
-                title = self._convert_to_novelyst(title)
+                title = self._convert_to_noveltree(title)
                 self.novel.sections[scId].title = title
             except:
                 self.novel.sections[scId].title = f'Section {scId}'
@@ -195,7 +195,7 @@ class TlFile(File):
                 os.replace(f'{self.filePath}.bak', self.filePath)
                 raise Error(f'{_("Cannot write file")}: "{norm_path(self.filePath)}".')
 
-    def write(self):
+    def write(self, source):
         """Write instance variables to the file.
         
         Raise the "Error" exception in case of error. 
@@ -256,12 +256,6 @@ class TlFile(File):
             return dtMin, dtMax
 
         #--- Merge first.
-        source = self.novel
-        self.novel = Novel(tree=NvTree())
-        if os.path.isfile(self.filePath):
-            self.read()
-            # initialize data
-
         self.novel.chapters = {}
         self.novel.srtChapters = []
         for chId in source.tree.get_children(CH_ROOT):
@@ -277,7 +271,7 @@ class TlFile(File):
                 self.novel.tree.append(chId, scId)
                 if source.sections[scId].title:
                     title = source.sections[scId].title
-                    title = self._convert_from_novelyst(title)
+                    title = self._convert_from_noveltree(title)
                     title = add_contId(self.novel.sections[scId], title)
                     self.novel.sections[scId].title = title
                 self.novel.sections[scId].desc = source.sections[scId].desc
@@ -373,8 +367,8 @@ class TlFile(File):
                 os.replace(f'{self.filePath}.bak', self.filePath)
             raise Error(f'{_("Cannot write file")}: "{norm_path(self.filePath)}".')
 
-    def _convert_to_novelyst(self, text):
-        """Unmask brackets in novelyst section titles.
+    def _convert_to_noveltree(self, text):
+        """Unmask brackets in noveltree section titles.
         
         Positional arguments:
             text -- string to convert.
@@ -389,8 +383,8 @@ class TlFile(File):
                 text = text.lstrip()
         return text
 
-    def _convert_from_novelyst(self, text, quick=False):
-        """Mask brackets in novelyst section titles.
+    def _convert_from_noveltree(self, text, quick=False):
+        """Mask brackets in noveltree section titles.
         
         Positional arguments:
             text -- string to convert.

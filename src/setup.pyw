@@ -19,7 +19,7 @@ except ModuleNotFoundError:
     sys.exit(1)
 
 PLUGIN = 'nv_timeline.py'
-OLD_PLUGIN = 'yw_timeline_novelyst.py'
+OLD_PLUGIN = 'yw_timeline_noveltree.py'
 APPNAME = 'nv-timeline'
 VERSION = ' @release'
 APP = f'{APPNAME}.py'
@@ -82,11 +82,11 @@ def install(novxlibPath):
 
 
 def install_plugin(novxlibPath):
-    """Install a novelyst plugin if novelyst is installed."""
+    """Install a noveltree plugin if noveltree is installed."""
     if os.path.isfile(f'./{PLUGIN}'):
-        novelystDir = f'{novxlibPath}novelyst'
-        pluginDir = f'{novelystDir}/plugin'
-        output(f'Installing novelyst plugin at "{os.path.normpath(pluginDir)}"')
+        noveltreeDir = f'{novxlibPath}noveltree'
+        pluginDir = f'{noveltreeDir}/plugin'
+        output(f'Installing noveltree plugin at "{os.path.normpath(pluginDir)}"')
         os.makedirs(pluginDir, exist_ok=True)
         try:
             os.remove(f'{pluginDir}/{OLD_PLUGIN}')
@@ -96,10 +96,10 @@ def install_plugin(novxlibPath):
         copyfile(PLUGIN, f'{pluginDir}/{PLUGIN}')
         output(f'Copying "{PLUGIN}"')
     else:
-        output('Error: novelyst plugin file not found.')
+        output('Error: noveltree plugin file not found.')
 
     # Install the localization files.
-    copytree('locale', f'{novelystDir}/locale', dirs_exist_ok=True)
+    copytree('locale', f'{noveltreeDir}/locale', dirs_exist_ok=True)
     output(f'Copying "locale"')
 
 
@@ -120,15 +120,15 @@ if __name__ == '__main__':
     # Run the installation.
     homePath = str(Path.home()).replace('\\', '/')
     novxlibPath = f'{homePath}/.novxlib/'
-    novelystDir = f'{novxlibPath}novelyst'
-    if os.path.isdir(novelystDir):
+    noveltreeDir = f'{novxlibPath}noveltree'
+    if os.path.isdir(noveltreeDir):
         try:
             install_plugin(novxlibPath)
             install(novxlibPath)
         except Exception as ex:
             output(str(ex))
     else:
-        messagebox.showwarning('The novelyst applilcation seems not to be installed. please install first.')
+        messagebox.showwarning('The noveltree applilcation seems not to be installed. please install first.')
 
     root.quitButton = Button(text="Quit", command=quit)
     root.quitButton.config(height=1, width=30)

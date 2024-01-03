@@ -9,7 +9,7 @@
 
 - Update German translations.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 Based on PyWriter v12.14.0
 Based on nv-timeline v3.0.5
 
@@ -17,7 +17,7 @@ Based on nv-timeline v3.0.5
 
 - Add a menu entry for the online help.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 Based on PyWriter v12.14.0
 Based on nv-timeline v3.0.5
 
@@ -25,7 +25,7 @@ Based on nv-timeline v3.0.5
 
 - Library update.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 Based on PyWriter v12.4.1
 Based on nv-timeline v3.0.5
 
@@ -33,7 +33,7 @@ Based on nv-timeline v3.0.5
 
 - Reduce the memory use by discarding the docstrings on building.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 Based on PyWriter v12.1.2
 Based on nv-timeline v3.0.3
 
@@ -41,7 +41,7 @@ Based on nv-timeline v3.0.3
 
 - Update for new libraries.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 Based on PyWriter v11.0.2
 Based on nv-timeline v3.0.3
 
@@ -49,7 +49,7 @@ Based on nv-timeline v3.0.3
 
 Rebuild with restructured build environment and defined dependencies.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 Based on PyWriter v8.0.11
 Based on nv-timeline v2.0.4
 
@@ -57,7 +57,7 @@ Based on nv-timeline v2.0.4
 
 - Provide online help.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 Based on PyWriter v8.0.11
 Based on nv-timeline v2.0.4
 
@@ -66,7 +66,7 @@ Based on nv-timeline v2.0.4
 - Make it run on old Windows versions.
 - Update the setup script.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 Based on PyWriter v8.0.11
 Based on nv-timeline v2.0.4
 
@@ -74,7 +74,7 @@ Based on nv-timeline v2.0.4
 
 Downgrade from v4.0.1 due to a regression that takes some time to fix.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 Based on PyWriter v8.0.10
 Based on nv-timeline v2.0.3
 
@@ -82,19 +82,19 @@ Based on nv-timeline v2.0.3
 
 - Make the setup script run with Python 3.11 under Windows.
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 
 ### v4.0.0
 
 - API update. 
 
-Compatibility: novelyst v4.0 API
+Compatibility: noveltree v4.0 API
 
 ### v3.0.0
 
 - Code optimization and library update. 
 
-Compatibility: novelyst v3.0 API
+Compatibility: noveltree v3.0 API
 Based on PyWriter v9.0.4
 Based on nv-timeline v3.0.1
 
@@ -103,17 +103,17 @@ Based on nv-timeline v3.0.1
 - Code optimization and library update. 
 - Fix a bug where attempting to save a write-protected file raises an uncaught exception.
 
-Compatibility: novelyst v2.0 API
+Compatibility: noveltree v2.0 API
 Based on PyWriter v8.0.8
 Based on nv-timeline v2.0.2
 
 ### v1.0.0
 
-- Revise the wording: use "novelyst project" instead of "yWriter project."
+- Revise the wording: use "noveltree project" instead of "yWriter project."
 - Extend the instructions for use.
 - Provide a sample ini file.
 
-Compatibility: novelyst v1.0.0 API
+Compatibility: noveltree v1.0.0 API
 Based on PyWriter v7.4.9
 Based on nv-timeline v1.4.1
 
@@ -121,15 +121,15 @@ Based on nv-timeline v1.4.1
 
 - Release under the GPLv3 license.
 
-Compatibility: novelyst v1.0.0 API
+Compatibility: noveltree v1.0.0 API
 Based on PyWriter v7.4.9
 Based on nv-timeline v1.4.1
 
 ### v0.4.0 Beta test release
 
-- Provide information for the novelyst v0.50+ Plugin Manager.
+- Provide information for the noveltree v0.50+ Plugin Manager.
 
-Compatibility: novelyst v0.46 API
+Compatibility: noveltree v0.46 API
 Based on PyWriter v7.4.9
 Based on nv-timeline v1.4.1
 

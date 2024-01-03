@@ -15,7 +15,7 @@ import standalone
 # where this script is placed and executed
 TEST_PATH = os.getcwd() + '/../test'
 TEST_DATA_PATH = TEST_PATH + '/data/'
-TEST_EXEC_PATH = TEST_PATH + '/'
+TEST_EXEC_PATH = TEST_PATH + '/temp/'
 
 # Test data
 TEST_NOVX = TEST_EXEC_PATH + 'yw7 Sample Project.novx'

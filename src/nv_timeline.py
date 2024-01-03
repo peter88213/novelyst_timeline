@@ -26,9 +26,9 @@ from tkinter import messagebox
 import webbrowser
 
 from novxlib.config.configuration import Configuration
-from novxlib.converter.converter import Converter
 from novxlib.file.doc_open import open_document
 from novxlib.novx_globals import _
+from nvtimelinelib.tl_converter import TlConverter
 from nvtimelinelib.tl_file import TlFile
 import tkinter as tk
 
@@ -44,7 +44,7 @@ except:
 APPLICATION = 'Timeline'
 PLUGIN = f'{APPLICATION} plugin v@release'
 INI_FILENAME = 'nv_timeline.ini'
-INI_FILEPATH = '.kalliope/nv-timeline/config'
+INI_FILEPATH = '.noveltree/config'
 
 
 class Plugin():
@@ -73,9 +73,10 @@ class Plugin():
             controller -- reference to the main controller instance of the application.
             view -- reference to the main view instance of the application.
         """
-        self._ctrl = controller
+        self._mdl = model
         self._ui = view
-        self._converter = Converter()
+        self._ctrl = controller
+        self._converter = NvTlConverter()
         self._converter.ui = view
 
         # Create a submenu
@@ -102,42 +103,42 @@ class Plugin():
 
     def _launch_application(self):
         """Launch Timeline with the current project."""
-        if self._ctrl.model:
-            timelinePath = f'{os.path.splitext(self._ctrl.model.filePath)[0]}{TlFile.EXTENSION}'
+        if self._mdl.prjFile:
+            timelinePath = f'{os.path.splitext(self._mdl.prjFile.filePath)[0]}{TlFile.EXTENSION}'
             if os.path.isfile(timelinePath):
-                if self._ui.lock():
+                if self._ctrl.lock():
                     open_document(timelinePath)
             else:
                 self._ui.set_status(_('!No {} file available for this project.').format(APPLICATION))
 
     def _export_from_novx(self):
-        """Update timeline from novelyst.
+        """Update timeline from noveltree.
         """
-        if self._ctrl.model:
-            timelinePath = f'{os.path.splitext(self._ctrl.model.filePath)[0]}{TlFile.EXTENSION}'
+        if self._mdl.prjFile:
+            timelinePath = f'{os.path.splitext(self._mdl.prjFile.filePath)[0]}{TlFile.EXTENSION}'
             if os.path.isfile(timelinePath):
                 action = _('update')
             else:
                 action = _('create')
             if self._ui.ask_yes_no(_('Save the project and {} the timeline?').format(action)):
-                self._ui.c_save_project()
-                kwargs = self._get_configuration(self._ctrl.model.filePath)
+                self._ctrl.c_save_project()
+                kwargs = self._get_configuration(self._mdl.prjFile.filePath)
                 targetFile = TlFile(timelinePath, **kwargs)
-                self._converter.export_from_novx(self._ctrl.model, targetFile)
+                self._converter.export_from_novx(self._mdl.prjFile, targetFile)
 
     def _info(self):
         """Show information about the Timeline file."""
-        if self._ctrl.model:
-            timelinePath = f'{os.path.splitext(self._ctrl.model.filePath)[0]}{TlFile.EXTENSION}'
+        if self._mdl.prjFile:
+            timelinePath = f'{os.path.splitext(self._mdl.prjFile.filePath)[0]}{TlFile.EXTENSION}'
             if os.path.isfile(timelinePath):
                 try:
                     timestamp = os.path.getmtime(timelinePath)
-                    if timestamp > self._ctrl.model.timestamp:
+                    if timestamp > self._mdl.prjFile.timestamp:
                         cmp = _('newer')
                     else:
                         cmp = _('older')
                     fileDate = datetime.fromtimestamp(timestamp).replace(microsecond=0).isoformat(sep=' ')
-                    message = _('{0} file is {1} than the novelyst project.\n (last saved on {2})').format(APPLICATION, cmp, fileDate)
+                    message = _('{0} file is {1} than the noveltree project.\n (last saved on {2})').format(APPLICATION, cmp, fileDate)
                 except:
                     message = _('Cannot determine file date.')
             else:
@@ -145,25 +146,25 @@ class Plugin():
             messagebox.showinfo(PLUGIN, message)
 
     def _import_to_novx(self):
-        """Update novelyst from timeline.
+        """Update noveltree from timeline.
         """
-        if self._ctrl.model:
-            timelinePath = f'{os.path.splitext(self._ctrl.model.filePath)[0]}{TlFile.EXTENSION}'
+        if self._mdl.prjFile:
+            timelinePath = f'{os.path.splitext(self._mdl.prjFile.filePath)[0]}{TlFile.EXTENSION}'
             if not os.path.isfile(timelinePath):
                 self._ui.set_status(_('!No {} file available for this project.').format(APPLICATION))
                 return
 
             if self._ui.ask_yes_no(_('Save the project and update it?')):
-                self._ui.c_save_project()
+                self._ctrl.c_save_project()
                 kwargs = self._get_configuration(timelinePath)
                 sourceFile = TlFile(timelinePath, **kwargs)
-                self._converter.import_to_novx(sourceFile, self._ctrl.model)
+                self._converter.import_to_novx(sourceFile, self._mdl.prjFile)
                 message = self._ui.infoHowText
 
                 # Reopen the project.
                 self._mdl.doNotSave = True
                 # avoid popup message
-                self._ui.c_open_project(fileName=self._ctrl.model.filePath)
+                self._ctrl.c_open_project(filePath=self._mdl.prjFile.filePath, doNotSave=True)
                 self._ui.set_status(message)
 
     def _get_configuration(self, sourcePath):
@@ -186,7 +187,7 @@ class Plugin():
         return kwargs
 
 
-class Converter(Converter):
+class NvTlConverter(TlConverter):
     """A file converter class that overwrites without asking."""
 
     def _confirm_overwrite(self, fileName):
