@@ -181,7 +181,7 @@ class TlFile(File):
         srtSections = sorted(scIdsByDate.items())
         if isOutline:
             # Create a single chapter and assign all sections to it.
-            chId = '1'
+            chId = 'ch1'
             self.novel.chapters[chId] = Chapter()
             self.novel.chapters[chId].title = 'Chapter 1'
             self.novel.srtChapters = [chId]
