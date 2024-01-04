@@ -11,7 +11,7 @@
         <Day>18</Day>
         <Time>11:00:00</Time>
         <LastsHours>4</LastsHours>
-        <LastsMinutes>53</LastsMinutes>
+        <LastsMinutes>54</LastsMinutes>
       </SECTION>
       <SECTION id="sc3">
         <Title>(6)Die dritte Szene</Title>
@@ -39,8 +39,11 @@
       </SECTION>
       <SECTION id="sc4">
         <Title>Die vierte Szene</Title>
-        <Date>0001-01-01</Date>
-        <Time>00:00:00</Time>
+        <Date>0052-05-08</Date>
+        <Time>02:20:00</Time>
+        <LastsDays>419169</LastsDays>
+        <LastsHours>21</LastsHours>
+        <LastsMinutes>40</LastsMinutes>
       </SECTION>
       <SECTION id="sc6">
         <Title>An other scene</Title>

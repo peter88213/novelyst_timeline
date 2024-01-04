@@ -12,6 +12,7 @@
       <fuzzy>False</fuzzy>
       <locked>False</locked>
       <ends_today>False</ends_today>
+      <description />
       <labels>sc5</labels>
       <default_color>170,240,160</default_color>
     </event>
@@ -47,6 +48,7 @@
       <fuzzy>False</fuzzy>
       <locked>False</locked>
       <ends_today>False</ends_today>
+      <description />
       <labels>sc1</labels>
       <default_color>170,240,160</default_color>
     </event>
@@ -58,6 +60,7 @@
       <fuzzy>False</fuzzy>
       <locked>False</locked>
       <ends_today>False</ends_today>
+      <description />
       <labels>sc4</labels>
       <default_color>170,240,160</default_color>
     </event>

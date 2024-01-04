@@ -79,6 +79,8 @@ class TlConverter(Converter):
             source.novel = Novel(tree=NvTree())
             target.novel = Novel(tree=NvTree())
             source.read()
+            if os.path.isfile(target.filePath):
+                target.read()
             target.write(source.novel)
         except Error as ex:
             message = f'!{str(ex)}'

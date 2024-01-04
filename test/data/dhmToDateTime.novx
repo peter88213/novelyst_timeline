@@ -21,8 +21,9 @@
       </SECTION>
       <SECTION id="sc4">
         <Title>Die vierte Szene</Title>
-        <Date>2021-07-26</Date>
-        <Time>00:00:00</Time>
+        <Date>0052-05-08</Date>
+        <Time>02:20:00</Time>
+        <LastsDays>2</LastsDays>
       </SECTION>
       <SECTION id="sc2">
         <Title>Die erste Szene</Title>
@@ -35,7 +36,7 @@
       <SECTION id="sc1">
         <Title>(3)Die &lt;zweite&gt; Szene</Title>
         <Date>2016-12-26</Date>
-        <Time>14:11:00</Time>
+        <Time>14:11:16</Time>
       </SECTION>
     </CHAPTER>
   </CHAPTERS>

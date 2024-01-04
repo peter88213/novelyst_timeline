@@ -11,11 +11,10 @@ import re
 
 from novxlib.file.file import File
 from novxlib.model.chapter import Chapter
-from novxlib.model.novel import Novel
-from novxlib.model.nv_tree import NvTree
 from novxlib.model.section import Section
 from novxlib.novx_globals import CH_ROOT
 from novxlib.novx_globals import SECTION_PREFIX
+from novxlib.novx_globals import CHAPTER_PREFIX
 from novxlib.novx_globals import Error
 from novxlib.novx_globals import _
 from novxlib.novx_globals import norm_path
@@ -135,9 +134,9 @@ class TlFile(File):
             if isOutline:
                 sectionCount += 1
                 sectionMarker = sectionMatch.group()
-                scId = str(sectionCount)
+                scId = f'{SECTION_PREFIX}{sectionCount}'
                 event.find('labels').text = labels.replace(sectionMarker, scId)
-                self.novel.sections[scId] = SectionEvent(Section())
+                self.novel.sections[scId] = SectionEvent(Section(scType=0, status=1, scPacing=0))
                 self.novel.sections[scId].status = 1
             else:
                 try:
@@ -181,10 +180,10 @@ class TlFile(File):
         srtSections = sorted(scIdsByDate.items())
         if isOutline:
             # Create a single chapter and assign all sections to it.
-            chId = 'ch1'
-            self.novel.chapters[chId] = Chapter()
-            self.novel.chapters[chId].title = 'Chapter 1'
-            self.novel.srtChapters = [chId]
+            chId = f'{CHAPTER_PREFIX}1'
+            self.novel.chapters[chId] = Chapter(chType=0)
+            self.novel.chapters[chId].title = f'{_("Chapter")} 1'
+            self.novel.tree.append(CH_ROOT, chId)
             for __, scList in srtSections:
                 for scId in scList:
                     self.novel.tree.append(chId, scId)

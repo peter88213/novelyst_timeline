@@ -78,8 +78,8 @@
       <default_color>170,240,160</default_color>
     </event>
     <event>
-      <start>2021-08-13 11:00:58</start>
-      <end>2021-08-13 15:54:49</end>
+      <start>2021-08-13 11:00:00</start>
+      <end>2021-08-13 15:54:00</end>
       <text>New Scene</text>
       <progress>0</progress>
       <fuzzy>False</fuzzy>
