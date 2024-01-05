@@ -2,7 +2,9 @@
 <!DOCTYPE novx SYSTEM "novx_1_0.dtd">
 <?xml-stylesheet href="novx.css" type="text/css"?>
 <novx version="1.0" xml:lang="None-None">
-  <PROJECT />
+  <PROJECT>
+    <ReferenceDate>2021-07-26</ReferenceDate>
+  </PROJECT>
   <CHAPTERS>
     <CHAPTER id="ch1">
       <Title>Chapter 1</Title>

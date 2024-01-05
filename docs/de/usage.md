@@ -59,13 +59,6 @@ section_label = Section
 # Events with this label become sections in a newly created 
 # noveltree project. 
 
-default_date_time = 2021-07-26 00:00:00
-
-# Date/time stamp for imported noveltree sections without
-# date/time set. When converting between specific
-# date/time and unspecific D/H/M, this time stamp is used
-# as a reference.
-
 section_color = 170,240,160
 
 # Color for events imported as sections from noveltree.
@@ -85,7 +78,7 @@ dhm_to_datetime = No
 
 # Yes: Convert noveltree unspecific D/H/M to specific date/time
 #      when synchronizing from Timeline.
-#      Use the date from default_date_time as a reference.
+#      Use the source's reference date.
 #      Time is 'H':'M'.
 # Precondition:
 #      datetime_to_dhm = No
@@ -93,8 +86,9 @@ dhm_to_datetime = No
 datetime_to_dhm = No
 
 # Yes: Convert noveltree spcific date/time to unspecific D/H/M
-#      when synchronizing from Timeline. Use the date from
-#      default_date_time as a reference. H, M are taken from
+#      when synchronizing from Timeline.
+#      Use the source's reference date.
+#	   H, M are taken from
 #      the section time.
 # Precondition:
 #      dhm_to_datetime = No

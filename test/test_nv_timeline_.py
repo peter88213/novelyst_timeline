@@ -74,7 +74,7 @@ class NormalOperation(unittest.TestCase):
         copyfile(TEST_DATA_PATH + 'outline.timeline', TEST_TL)
         os.chdir(TEST_EXEC_PATH)
         standalone.run(TEST_TL, silentMode=True)
-        self.assertEqual(read_file(TEST_NOVX), read_file(TEST_DATA_PATH + 'normal.novx'))
+        self.assertEqual(read_file(TEST_NOVX), read_file(TEST_DATA_PATH + 'new.novx'))
         self.assertEqual(read_file(TEST_TL), read_file(TEST_DATA_PATH + 'rewritten.timeline'))
 
     # @unittest.skip('')

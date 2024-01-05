@@ -47,7 +47,6 @@ class TlFile(File):
             ignore_unspecific: bool -- ignore noveltree sections with unspecific date/time. 
             datetime_to_dhm: bool -- convert noveltree specific date/time to unspecific D/H/M.
             dhm_to_datetime: bool -- convert noveltree unspecific D/H/M to specific date/time.
-            default_date_time: str -- date/time stamp for undated noveltree sections.
             section_color: str -- color for events imported as sections from noveltree.
         
         If ignore_unspecific is True, only transfer Sections with a specific 
@@ -59,11 +58,11 @@ class TlFile(File):
             and 'H':'M' as start time.
             
         If datetime_to_dhm is True, convert noveltree specific date to unspecific Day
-            when synchronizing from Timeline. Use the date from default_date_time as a reference. 
+            when synchronizing from Timeline. Use the source's reference date. 
             Precondition: dhm_to_datetime is False.
         
         If dhm_to_datetime is True, convert noveltree unspecific Day to specific date
-            when synchronizing from Timeline. Use the date from default_date_time as a reference.
+            when synchronizing from Timeline. Use the source's reference date. 
             Precondition: datetime_to_dhm is False.
             
         Extends the superclass constructor.
@@ -74,7 +73,6 @@ class TlFile(File):
         self._ignoreUnspecific = kwargs['ignore_unspecific']
         self._dateTimeToDhm = kwargs['datetime_to_dhm']
         self._dhmToDateTime = kwargs['dhm_to_datetime']
-        SectionEvent.defaultDateTime = kwargs['default_date_time']
         SectionEvent.sectionColor = kwargs['section_color']
         # The existing noveltree target project, if any.
         # To be set by the calling converter class.
@@ -260,6 +258,11 @@ class TlFile(File):
         self.novel.chapters = {}
         self.novel.tree = NvTree()
         # resetting the target structure, just keeping the sections
+
+        if source.referenceDate is not None:
+            SectionEvent.defaultDateTime = f'{source.referenceDate} 00:00:00'
+        else:
+            SectionEvent.defaultDateTime = datetime.today().isoformat(' ', 'seconds')
 
         for chId in source.tree.get_children(CH_ROOT):
             self.novel.chapters[chId] = Chapter()

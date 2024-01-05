@@ -59,13 +59,6 @@ section_label = Section
 # Events with this label become sections in a newly created 
 # noveltree project. 
 
-default_date_time = 2021-07-26 00:00:00
-
-# Date/time stamp for imported noveltree sections without
-# date/time set. When converting between specific
-# date/time and unspecific D/H/M, this time stamp is used
-# as a reference.
-
 section_color = 170,240,160
 
 # Color for events imported as sections from noveltree.

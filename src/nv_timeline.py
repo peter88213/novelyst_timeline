@@ -57,7 +57,6 @@ class Plugin():
 
     SETTINGS = dict(
         section_label='Section',
-        default_date_time='2021-07-26 00:00:00',
         section_color='170,240,160',
     )
     OPTIONS = dict(
