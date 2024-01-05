@@ -165,8 +165,8 @@ class SectionEvent(Section):
         if self._startDateTime > self._endDateTime:
             self._endDateTime = self._startDateTime
 
-    def build_subtree(self, xmlEvent, scId, dtMin, dtMax):
-        """Build a Timeline XML event subtree.
+    def build_branch(self, xmlEvent, scId, dtMin, dtMax):
+        """Build a Timeline XML event branch.
         
         Positional arguments:
             xmlEvent: elementTree.SubElement -- Timeline event XML subtree.

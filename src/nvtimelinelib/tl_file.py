@@ -11,11 +11,12 @@ import re
 
 from novxlib.file.file import File
 from novxlib.model.chapter import Chapter
+from novxlib.model.nv_tree import NvTree
 from novxlib.model.section import Section
-from novxlib.novx_globals import CH_ROOT
-from novxlib.novx_globals import SECTION_PREFIX
 from novxlib.novx_globals import CHAPTER_PREFIX
+from novxlib.novx_globals import CH_ROOT
 from novxlib.novx_globals import Error
+from novxlib.novx_globals import SECTION_PREFIX
 from novxlib.novx_globals import _
 from novxlib.novx_globals import norm_path
 from novxlib.xml.xml_indent import indent
@@ -257,6 +258,9 @@ class TlFile(File):
 
         #--- Merge first.
         self.novel.chapters = {}
+        self.novel.tree = NvTree()
+        # resetting the target structure, just keeping the sections
+
         for chId in source.tree.get_children(CH_ROOT):
             self.novel.chapters[chId] = Chapter()
             self.novel.tree.append(CH_ROOT, chId)
@@ -311,7 +315,7 @@ class TlFile(File):
                     scId = sectionMatch.group()
                     if scId in srtSections:
                         scIds.append(scId)
-                        dtMin, dtMax = self.novel.sections[scId].build_subtree(event, scId, dtMin, dtMax)
+                        dtMin, dtMax = self.novel.sections[scId].build_branch(event, scId, dtMin, dtMax)
                     else:
                         trash.append(event)
 
@@ -319,7 +323,7 @@ class TlFile(File):
             for scId in srtSections:
                 if not scId in scIds:
                     event = ET.SubElement(events, 'event')
-                    dtMin, dtMax = self.novel.sections[scId].build_subtree(event, scId, dtMin, dtMax)
+                    dtMin, dtMax = self.novel.sections[scId].build_branch(event, scId, dtMin, dtMax)
             # Remove events that are assigned to missing sections.
             for event in trash:
                 events.remove(event)
@@ -339,7 +343,7 @@ class TlFile(File):
             events = ET.SubElement(root, 'events')
             for scId in srtSections:
                 event = ET.SubElement(events, 'event')
-                dtMin, dtMax = self.novel.sections[scId].build_subtree(event, scId, dtMin, dtMax)
+                dtMin, dtMax = self.novel.sections[scId].build_branch(event, scId, dtMin, dtMax)
 
             # Set the view range.
             dtMin, dtMax = set_view_range(dtMin, dtMax)
