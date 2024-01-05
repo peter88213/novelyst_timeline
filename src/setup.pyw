@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Install the nv_timeline blugin. 
+"""Install the nv_timeline plugin. 
 
 Version @release
 
@@ -19,8 +19,7 @@ except ModuleNotFoundError:
     sys.exit(1)
 
 PLUGIN = 'nv_timeline.py'
-OLD_PLUGIN = 'yw_timeline_noveltree.py'
-APPNAME = 'nv-timeline'
+APPNAME = 'nv_timeline'
 VERSION = ' @release'
 APP = f'{APPNAME}.py'
 INI_FILE = f'{APPNAME}.ini'
@@ -88,11 +87,6 @@ def install_plugin(novxlibPath):
         pluginDir = f'{noveltreeDir}/plugin'
         output(f'Installing noveltree plugin at "{os.path.normpath(pluginDir)}"')
         os.makedirs(pluginDir, exist_ok=True)
-        try:
-            os.remove(f'{pluginDir}/{OLD_PLUGIN}')
-            output('Removing old version')
-        except:
-            pass
         copyfile(PLUGIN, f'{pluginDir}/{PLUGIN}')
         output(f'Copying "{PLUGIN}"')
     else:
@@ -117,18 +111,24 @@ if __name__ == '__main__':
     # Prepare the messaging area.
     processInfo.pack(padx=5, pady=5)
 
-    # Run the installation.
+    # Install the plugin.
     homePath = str(Path.home()).replace('\\', '/')
-    novxlibPath = f'{homePath}/.novxlib/'
-    noveltreeDir = f'{novxlibPath}noveltree'
-    if os.path.isdir(noveltreeDir):
-        try:
-            install_plugin(novxlibPath)
-            install(novxlibPath)
-        except Exception as ex:
-            output(str(ex))
+    novelystDir = f'{homePath}/.noveltree'
+    if os.path.isdir(novelystDir):
+        if os.path.isfile(f'./{PLUGIN}'):
+            pluginDir = f'{novelystDir}/plugin'
+            os.makedirs(pluginDir, exist_ok=True)
+            copyfile(PLUGIN, f'{pluginDir}/{PLUGIN}')
+            output(f'Sucessfully installed "{PLUGIN}" at "{os.path.normpath(pluginDir)}"')
+        else:
+            output(f'ERROR: file "{PLUGIN}" not found.')
+
+        # Install the localization files.
+        copytree('locale', f'{novelystDir}/locale', dirs_exist_ok=True)
+        output(f'Copying "locale"')
+
     else:
-        messagebox.showwarning('The noveltree applilcation seems not to be installed. please install first.')
+        output(f'ERROR: Cannot find a novelyst installation at "{novelystDir}"')
 
     root.quitButton = Button(text="Quit", command=quit)
     root.quitButton.config(height=1, width=30)

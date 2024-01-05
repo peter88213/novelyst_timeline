@@ -14,7 +14,7 @@ File structure:
 │   └── src/
 │       ├── translations.py
 │       └── msgfmt.py
-└── noveltree_timeline/
+└── nv_timeline/
     ├── src/ 
     │   └── translate_de.py
     └── i18n/
@@ -23,7 +23,7 @@ File structure:
         └── locale/
             └─ de/
                └─ LC_MESSAGES/
-                  └─ noveltree_timeline.mo
+                  └─ nv_timeline.mo
     
 Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv-timeline
@@ -38,7 +38,7 @@ import msgfmt
 
 APP_NAME = 'nv_timeline'
 PO_PATH = '../i18n/de.po'
-MO_PATH = '../i18n/locale/de/LC_MESSAGES/noveltree_timeline.mo'
+MO_PATH = '../i18n/locale/de/LC_MESSAGES/nv_timeline.mo'
 MO_COPY = f'../../kalliope/src/locale/de/LC_MESSAGES/{APP_NAME}.mo'
 
 

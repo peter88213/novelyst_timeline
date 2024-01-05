@@ -57,7 +57,7 @@ class TlConverter(Converter):
         """Convert from noveltree project to other file format.
 
         Positional arguments:
-            source -- YwFile subclass instance.
+            source -- NovxFile subclass instance.
             target -- Any Novel subclass instance.
 
         Operation:

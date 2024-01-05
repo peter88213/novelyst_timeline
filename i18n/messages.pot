@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 5.0.0\n"
-"POT-Creation-Date: 2023-12-17 10:26:44\n"
+"POT-Creation-Date: 2024-01-05 22:28:59\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -15,9 +15,6 @@ msgstr ""
 
 
 msgid "!No {} file available for this project."
-msgstr ""
-
-msgid "Action canceled by user"
 msgstr ""
 
 msgid "Can not process file"
@@ -32,7 +29,10 @@ msgstr ""
 msgid "Cannot write file"
 msgstr ""
 
-msgid "Create a noveltree project file from {0}\nNew project: \"{1}\""
+msgid "Chapter"
+msgstr ""
+
+msgid "Create from Timeline"
 msgstr ""
 
 msgid "Create or update the timeline"
@@ -47,12 +47,6 @@ msgstr ""
 msgid "File already exists"
 msgstr ""
 
-msgid "File not found"
-msgstr ""
-
-msgid "File type is not supported"
-msgstr ""
-
 msgid "File written"
 msgstr ""
 
@@ -62,19 +56,13 @@ msgstr ""
 msgid "Information"
 msgstr ""
 
-msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
-msgstr ""
-
 msgid "Monday"
 msgstr ""
 
+msgid "No valid version found in file"
+msgstr ""
+
 msgid "No {} file available for this project."
-msgstr ""
-
-msgid "Overwrite existing file \"{}\"?"
-msgstr ""
-
-msgid "Please close the document first"
 msgstr ""
 
 msgid "Saturday"
@@ -86,10 +74,13 @@ msgstr ""
 msgid "Save the project and {} the timeline?"
 msgstr ""
 
-msgid "Source document deleted"
+msgid "Sunday"
 msgstr ""
 
-msgid "Sunday"
+msgid "The project \"{}\" was created with a newer noveltree version."
+msgstr ""
+
+msgid "The project \"{}\" was created with an outdated noveltree version."
 msgstr ""
 
 msgid "Thursday"
@@ -111,6 +102,9 @@ msgid "create"
 msgstr ""
 
 msgid "newer"
+msgstr ""
+
+msgid "noveltree project"
 msgstr ""
 
 msgid "older"

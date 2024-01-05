@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 5.0.0\n"
-"POT-Creation-Date: 2023-12-17 10:26:44\n"
-"PO-Revision-Date: 2023-12-17 10:26:44\n"
+"POT-Creation-Date: 2024-01-05 22:28:59\n"
+"PO-Revision-Date: 2024-01-05 22:29:00\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -15,9 +15,6 @@ msgstr ""
 
 msgid "!No {} file available for this project."
 msgstr "!Keine {}-Datei für dieses Projekt vorhanden."
-
-msgid "Action canceled by user"
-msgstr "Vorgang vom Benutzer abgebrochen"
 
 msgid "Can not process file"
 msgstr "Kann Datei nicht verarbeiten"
@@ -31,8 +28,11 @@ msgstr "Kann Datei nicht überschreiben"
 msgid "Cannot write file"
 msgstr "Kann Datei nicht schreiben"
 
-msgid "Create a noveltree project file from {0}\nNew project: \"{1}\""
-msgstr "Erzeuge eine noveltree-Projektdatei aus {0}\nNeues Projekt: \"{1}\""
+msgid "Chapter"
+msgstr "Kapitel"
+
+msgid "Create from Timeline"
+msgstr "Aus Timeline erzeugen"
 
 msgid "Create or update the timeline"
 msgstr "Die Zeitleiste erzeugen oder aktualisieren"
@@ -46,12 +46,6 @@ msgstr "Datei"
 msgid "File already exists"
 msgstr "Datei existiert bereits"
 
-msgid "File not found"
-msgstr "Datei nicht gefunden"
-
-msgid "File type is not supported"
-msgstr "Dateityp wird nicht unterstützt"
-
 msgid "File written"
 msgstr "Datei gespeichert"
 
@@ -61,20 +55,14 @@ msgstr "Freitag"
 msgid "Information"
 msgstr "Information"
 
-msgid "Input: {0} \"{1}\"\nOutput: {2} \"{3}\""
-msgstr "Quelle: {0} \"{1}\"\nZiel: {2} \"{3}\""
-
 msgid "Monday"
 msgstr "Montag"
 
+msgid "No valid version found in file"
+msgstr "Keine gültige Versionsangabe in der Datei gefunden"
+
 msgid "No {} file available for this project."
 msgstr "Keine {}-Datei für dieses Projekt vorhanden."
-
-msgid "Overwrite existing file \"{}\"?"
-msgstr "Bestehende Datei \"{}\" überschreiben?"
-
-msgid "Please close the document first"
-msgstr "Bitte zuerst das Dokument schließen"
 
 msgid "Saturday"
 msgstr "Samstag"
@@ -85,11 +73,14 @@ msgstr "Projekt speichern und aktualisieren?"
 msgid "Save the project and {} the timeline?"
 msgstr "Projekt sichern und die Zeitleiste {}?"
 
-msgid "Source document deleted"
-msgstr "Quelldokument gelöscht"
-
 msgid "Sunday"
 msgstr "Sonntag"
+
+msgid "The project \"{}\" was created with a newer noveltree version."
+msgstr "Das Projekt \"{}\" wurde mit einer neueren Version von noveltree erzeugt."
+
+msgid "The project \"{}\" was created with an outdated noveltree version."
+msgstr "Das Projekt \"{}\" wurde mit einer veralteten Version von noveltree erzeugt."
 
 msgid "Thursday"
 msgstr "Donnerstag"
@@ -111,6 +102,9 @@ msgstr "erzeugen"
 
 msgid "newer"
 msgstr "neuer"
+
+msgid "noveltree project"
+msgstr "noveltree-Projekt"
 
 msgid "older"
 msgstr "älter"

@@ -259,7 +259,7 @@ class TlFile(File):
         self.novel.tree = NvTree()
         # resetting the target structure, just keeping the sections
 
-        if source.referenceDate is not None:
+        if source.referenceDate:
             SectionEvent.defaultDateTime = f'{source.referenceDate} 00:00:00'
         else:
             SectionEvent.defaultDateTime = datetime.today().isoformat(' ', 'seconds')

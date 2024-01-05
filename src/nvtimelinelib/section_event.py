@@ -15,7 +15,7 @@ class SectionEvent(Section):
     Public instance variables:
         contId: str -- container ID.
     """
-    defaultDateTime = '2021-07-26 00:00:00'
+    defaultDateTime = '1900-01-01 00:00:00'
     sectionColor = '170,240,160'
 
     def __init__(self, section):
@@ -73,7 +73,7 @@ class SectionEvent(Section):
         if dt[0].startswith('-'):
             startYear = -1 * int(dt[0].split('-')[1])
             dtIsValid = False
-            # "BC" year (yWriter won't process it).
+            # "BC" year (noveltree won't process it).
         else:
             startYear = int(dt[0].split('-')[0])
         if startYear < MINYEAR:
@@ -81,7 +81,6 @@ class SectionEvent(Section):
             self.date = Section.NULL_DATE
             self.time = Section.NULL_TIME
             dtIsValid = False
-            # Two-figure year.
         else:
             self.date = dt[0]
             self.time = dt[1]
