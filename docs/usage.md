@@ -13,18 +13,29 @@ A [noveltree](https://peter88213.github.io/noveltree/) plugin providing synchron
 
 *Note: If you install noveltree at a later time, you can always install the plugin afterwards by running the noveltree_timeline setup script again.*
 
-The plugin adds a **Timeline** entry to the *noveltree* **Tools** menu, and a **Timeline plugin Online Help** entry to the **Help** menu. 
+The plugin adds a **Timeline** entry to the *noveltree* main menu, a **Create from Timeline** to the **File > New** submenu, and a **Timeline plugin Online Help** entry to the **Help** menu. 
 
-### Launch from noveltree
+## Command reference
 
-The plugin's features are accessible via the **Tools > Timeline** submenu in *noveltree*.
+### Timeline > Information 
 
-The submenu has the following entries:
+- Show information about an existing Timeline project, if any. Timeline and noveltree file dates are compared.
 
-- Information (compare noveltree and timeline file dates)
-- Update timeline from noveltree
-- Update noveltree from timeline
-- Edit timeline (launch Timeline)
+### Timeline > Create or update the timeline
+
+If a timeline exists, update it from noveltree, otherwise  createa new timeline.
+
+### Timeline > Update the project
+
+Update the noveltree project from the timeline, if existing. 
+
+### Timeline > Edit the timeline
+
+Open the project's timeline, if existing, with the Timeline application. Lock the project.
+
+## File > New > Create from Timeline
+
+If no noveltree project with the timeline's file name exists, create a new one from the timeline.
 
 ## Custom configuration
 
@@ -46,7 +57,6 @@ An optional project configuration file named `yw-nv-timelinei` can be placed in 
 The noveltree_timeline distribution comes with a sample configuration file located in the `sample` subfolder. It contains noveltree_timeline's default settings and options. This file is also automatically copied to the global configuration folder during installation. You best make a copy and edit it.
 
 - The SETTINGS section comprises the program "constants". If you change them, the program might behave differently than described in the documentation. So only touch them if you are clear about the consequences.
-- The OPTIONS section comprises options for regular program execution. 
 - Comment lines begin with a `#` number sign. In the example, they refer to the code line immediately above.
 
 This is the configuration explained: 
@@ -63,34 +73,9 @@ section_color = 170,240,160
 
 # Color for events imported as sections from noveltree.
 
-[OPTIONS]
+new_event_spacing = 1
 
-ignore_unspecific = No
-
-# No:  Transfer all Sections from noveltree to Timeline. Events
-#      assigned to sections having no specific date/time stamp
-#      get the default date plus the unspecific 'D' as start
-#      date, and 'H':'M' as start time.
-# Yes: Only transfer Sections with a specific date/time stamp
-#      from noveltree to Timeline.
-
-dhm_to_datetime = No
-
-# Yes: Convert noveltree unspecific D/H/M to specific date/time
-#      when synchronizing from Timeline.
-#      Use the date from default_date_time as a reference.
-#      Time is 'H':'M'.
-# Precondition:
-#      datetime_to_dhm = No
-
-datetime_to_dhm = No
-
-# Yes: Convert noveltree spcific date/time to unspecific D/H/M
-#      when synchronizing from Timeline. Use the date from
-#      default_date_time as a reference. H, M are taken from
-#      the section time.
-# Precondition:
-#      dhm_to_datetime = No
+# Days between events with automatically generated dates.  
 
 ```
 
@@ -112,8 +97,8 @@ Just delete your global and local configuration files.
 
 ### On the noveltree side
 
-- Only normal sections are synchronized with Timeline, or exported to Timeline. Unused sections, "Notes" sections, and "Todo" sections will not show up in the timeline.
-- Optionally, sections with an unspecific time stamp (day, hours, minutes) are not transferred to the timeline.
+- Only normal sections are synchronized with Timeline, or exported to Timeline. Unused sections will not show up in the timeline.
+- Sections with an unspecific time stamp (day, hours, minutes) are synchronized with the timeline, if a reference date is set.
 - Changes to the section date/time affect the event start date/time during synchronization.
 - Changes to the section title affect the event text during synchronization.
 - Changes to the section description affect the event description during synchronization.
@@ -123,34 +108,22 @@ Just delete your global and local configuration files.
 
 ### On the Timeline side
 
-- A section ID is a string looking like "ScID:1". It is auto-generated and must not be changed manually.
+- A section ID is a string looking like "sc1". It is auto-generated and must not be changed manually.
 - Only events with a label containing the string "Section" (user input) or a section ID (auto-generated) are exported as sections to a new noveltree project.
-- When generating a new noveltree project from a timeline the first time, "Section" labels are replaced with section ID labels.
+- When creating a new noveltree project from a timeline the first time, "Section" labels are replaced with section ID labels.
 - If a new noveltree project is generated again with the same timeline, the section ID labels may change.
 - Only events with a label containing a section ID are synchronized with an existing noveltree project.
 - Changes to the event start date/time affect the section date/time during synchronization.
 - Changes to the event text affect the section title during synchronization.
 - Changes to the event description affect the section description during synchronization.
 - The section structure of an existing noveltree project can not be changed in Timeline. Adding/removing events, or adding/removing section IDs from event labels will *not* add or remove the corresponding section during synchronization. 
-
-### Synchronization of unspecific date/time in noveltree with specific date/time in Timeline.
-
-Day/Hour/Minute is converted to specific Timeline start/end date/time stamps, using the duration and the default date/time.
-
-The other way around (Timeline to noveltree), there are three options:
-
-- Retain each section's date/time mode (default).
-- Overwrite D/H/M with specific date/time stamps (**dhm_to_datetime** option).
-- Convert specific Timeline date/time stamps to D/H/M (**datetime_to_dhm** option)
-
-D/H/M refers to the default date/time stamp that can be set in the configuration.
+- When creating events from sections without date/time information, the dates are automatically generated with a one-day difference, starting from the noveltree project's reference date. 
 
 
 ### Known limitations
 
-- Section events that begin before 0100-01-01 in the timeline, will not be synchronized with noveltree, because noveltree can not handle these dates.
+- Section events that begin before 0001-01-01 in the timeline, will not be synchronized with noveltree, because noveltree can not handle these dates.
 - The same applies to the section duration in this case, i.e. the event duration in Timeline and the section duration in noveltree may differ.
-- Sections that begin before 0100-01-01 in the timeline, can not have the D/H/M information converted to a date/time stamp and vice versa.
 - If a section event ends after 9999-12-31 in the timeline, the section duration is not synchronized with noveltree.
 
 ---

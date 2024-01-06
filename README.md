@@ -63,12 +63,11 @@ Add a subdirectory tree to **noveltree/locale**, and place *noveltree_timeline.m
 
 ```
 <your home directory>
-└── .novxlib/
-    └── noveltree/
-        └── locale/
-            └─ <language code>/
-               └─ LC_MESSAGES/
-                  └─ noveltree_timeline.mo
+└── .noveltree/
+    └── locale/
+        └─ <language code>/
+           └─ LC_MESSAGES/
+              └─ noveltree_timeline.mo
 ```
 
 Then start *noveltree* and see whether your translation works. 
@@ -97,11 +96,9 @@ An easy way may be to put a posting in the [noveltree forum](https://github.com/
 ├── novxlib/
 │   └── src/
 │       └── novxlib/
-├── nv-timeline/
-│   └── src/
-│      └── ywtimelinelib/
 └── noveltree_timeline/
     ├── src/
+    │   └── nvtimelinelib/
     ├── test/
     └── tools/ 
         └── build.xml
@@ -113,7 +110,7 @@ See https://github.com/peter88213/novxlib/blob/main/docs/conventions.md
 
 ## Development tools
 
-- [Python](https://python.org) version 3.10.
+- [Python](https://python.org) version 3.11.
 - [Eclipse IDE](https://eclipse.org) with [PyDev](https://pydev.org) and *EGit*.
 - *Apache Ant* is used for building the application.
 

@@ -6,9 +6,10 @@ The *noveltree_timeline* plugin synchronizes noveltree projects with [Timeline](
 
 ## Features
 
-- Generate a *Timeline* project from a *noveltree* project.
+- Create a *Timeline* project from a *noveltree* project.
+- Create a new *noveltree* project from a timeline.
 - Synchronize *noveltree* sections with corresponding *Timeline* events in both directions.
-- When synchronizing a noveltree project with a timeline, optionally change unspecific section "Day/Hour/Minute" to specific "date/time" and vice versa.
+
 
 ## Requirements
 

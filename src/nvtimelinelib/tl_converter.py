@@ -1,4 +1,4 @@
-"""Provide a converter class for noveltree and Timeline.
+"""Provide a converter class for test_nv_timeline.
 
 Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv-timeline
