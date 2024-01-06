@@ -57,8 +57,8 @@ class Plugin():
     VERSION = '@release'
     NOVELYST_API = '0.7'
     DESCRIPTION = 'Synchronize with Timeline'
-    URL = 'https://peter88213.github.io/nv_timeline'
-    _HELP_URL = 'https://peter88213.github.io/nv_timeline/usage'
+    URL = 'https://peter88213.github.io/noveltree_timeline'
+    _HELP_URL = 'https://peter88213.github.io/noveltree_timeline/usage'
 
     SETTINGS = dict(
         section_label='Section',
