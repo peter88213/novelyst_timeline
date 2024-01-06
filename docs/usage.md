@@ -33,9 +33,9 @@ Update the noveltree project from the timeline, if existing.
 
 Open the project's timeline, if existing, with the Timeline application. Lock the project.
 
-## File > New > Create from Timeline
+## File > New > Create from Timeline...
 
-If no noveltree project with the timeline's file name exists, create a new one from the timeline.
+Open a file dialog to select a timeline. If no noveltree project with the timeline's file name exists, create a new one from the timeline.
 
 ## Custom configuration
 

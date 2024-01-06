@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.1.0\n"
-"POT-Creation-Date: 2024-01-06 13:15:49\n"
+"Project-Id-Version: 5.1.1\n"
+"POT-Creation-Date: 2024-01-06 14:32:39\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Chapter"
 msgstr ""
 
-msgid "Create from Timeline"
+msgid "Create from Timeline..."
 msgstr ""
 
 msgid "Create or update the timeline"

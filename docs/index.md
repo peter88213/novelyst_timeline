@@ -6,9 +6,10 @@ The *noveltree_timeline* plugin synchronizes noveltree projects with [Timeline](
 
 ## Features
 
-- Generate a *Timeline* project from a *noveltree* project.
-- Synchronize *noveltree* sections with corresponding *Timeline* events in both directions.
-- When synchronizing a noveltree project with a timeline, optionally change unspecific section "Day/Hour/Minute" to specific "date/time" and vice versa.
+- Create a timeline from a *noveltree* project.
+- Create a new *noveltree* project from a timeline.
+- Synchronize *noveltree* sections with corresponding timeline events in both directions.
+
 
 ## Requirements
 
@@ -18,9 +19,9 @@ The *noveltree_timeline* plugin synchronizes noveltree projects with [Timeline](
 
 ## Download and install
 
-[Download the latest release (version 5.1.0)](https://github.com/peter88213/noveltree_timeline/raw/main/dist/noveltree_timeline_v5.1.0.zip)
+[Download the latest release (version 5.1.1)](https://github.com/peter88213/noveltree_timeline/raw/main/dist/noveltree_timeline_v5.1.1.zip)
 
-- Extract the "noveltree_timeline_v5.1.0" folder from the downloaded zipfile "noveltree_timeline_v5.1.0.zip".
+- Extract the "noveltree_timeline_v5.1.1" folder from the downloaded zipfile "noveltree_timeline_v5.1.1.zip".
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
 
 ---

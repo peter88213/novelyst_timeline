@@ -90,7 +90,7 @@ class Plugin():
         self._pluginMenu.add_command(label=_('Edit the timeline'), command=self._launch_application)
 
         # Add an entry to the "File > New" menu.
-        self._ui.newMenu.add_command(label=_('Create from Timeline'), command=self._create_novx)
+        self._ui.newMenu.add_command(label=_('Create from Timeline...'), command=self._create_novx)
 
         # Add an entry to the Help menu.
         self._ui.helpMenu.add_command(label=_('Timeline plugin Online help'), command=lambda: webbrowser.open(self._HELP_URL))

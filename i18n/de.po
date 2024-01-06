@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.1.0\n"
-"POT-Creation-Date: 2024-01-06 13:15:49\n"
-"PO-Revision-Date: 2024-01-06 13:15:49\n"
+"Project-Id-Version: 5.1.1\n"
+"POT-Creation-Date: 2024-01-06 14:32:39\n"
+"PO-Revision-Date: 2024-01-06 14:32:39\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -31,8 +31,8 @@ msgstr "Kann Datei nicht schreiben"
 msgid "Chapter"
 msgstr "Kapitel"
 
-msgid "Create from Timeline"
-msgstr "Aus Timeline erzeugen"
+msgid "Create from Timeline..."
+msgstr "Aus Timeline erzeugen..."
 
 msgid "Create or update the timeline"
 msgstr "Die Zeitleiste erzeugen oder aktualisieren"
