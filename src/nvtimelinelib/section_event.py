@@ -105,12 +105,14 @@ class SectionEvent(Section):
                     self.day = None
                 self.date = None
 
-    def merge_date_time(self, source):
+    def merge_date_time(self, source, defaultDay=0):
         """Set date/time related variables from a noveltree-generated source section.
                 
         Positional arguments:
             source -- Section instance with date/time to merge.
         
+        Optional arguments:
+            defaultDay -- The day to be set if the section does not have a date or a day.
         """
         #--- Set start date/time.
         if source.date is not None and source.date != Section.NULL_DATE:
@@ -124,7 +126,8 @@ class SectionEvent(Section):
             if source.day:
                 dayInt = int(source.day)
             else:
-                dayInt = 0
+                # The section has neither date nor day.
+                dayInt = defaultDay
             if source.time:
                 startTime = source.time
             else:

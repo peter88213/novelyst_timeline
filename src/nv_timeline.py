@@ -63,12 +63,9 @@ class Plugin():
     SETTINGS = dict(
         section_label='Section',
         section_color='170,240,160',
+        new_event_spacing='1'
     )
-    OPTIONS = dict(
-        ignore_unspecific=False,
-        dhm_to_datetime=False,
-        datetime_to_dhm=False,
-    )
+    OPTIONS = {}
 
     def install(self, model, view, controller, prefs):
         """Add a submenu to the main menu.
@@ -82,9 +79,9 @@ class Plugin():
         self._ctrl = controller
 
         # Create a submenu
-        self._pluginMenu = tk.Menu(self._ui.toolsMenu, tearoff=0)
-        self._ui.toolsMenu.add_cascade(label=APPLICATION, menu=self._pluginMenu)
-        self._ui.toolsMenu.entryconfig(APPLICATION, state='disabled')
+        self._pluginMenu = tk.Menu(self._ui.mainMenu, tearoff=0)
+        position = self._ui.mainMenu.index('end')
+        self._ui.mainMenu.insert_cascade(position, label=APPLICATION, menu=self._pluginMenu)
         self._pluginMenu.add_command(label=_('Information'), command=self._info)
         self._pluginMenu.add_separator()
         self._pluginMenu.add_command(label=_('Create or update the timeline'), command=self._export_from_novx)
@@ -93,33 +90,78 @@ class Plugin():
         self._pluginMenu.add_command(label=_('Edit the timeline'), command=self._launch_application)
 
         # Add an entry to the "File > New" menu.
-        self._ui.newMenu.add_command(label=_('Create from Timeline'), command=self._new_project)
+        self._ui.newMenu.add_command(label=_('Create from Timeline'), command=self._create_novx)
 
         # Add an entry to the Help menu.
         self._ui.helpMenu.add_command(label=_('Timeline plugin Online help'), command=lambda: webbrowser.open(self._HELP_URL))
 
     def disable_menu(self):
         """Disable menu entries when no project is open."""
-        self._ui.toolsMenu.entryconfig(APPLICATION, state='disabled')
+        self._ui.mainMenu.entryconfig(APPLICATION, state='disabled')
 
     def enable_menu(self):
         """Enable menu entries when a project is open."""
-        self._ui.toolsMenu.entryconfig(APPLICATION, state='normal')
+        self._ui.mainMenu.entryconfig(APPLICATION, state='normal')
+
+    def _create_novx(self):
+        """Create a noveltree project from a timeline."""
+        timelinePath = filedialog.askopenfilename(
+            filetypes=[(TlFile.DESCRIPTION, TlFile.EXTENSION)],
+            defaultextension=TlFile.EXTENSION,
+            )
+        if not timelinePath:
+            return
+
+        self._ctrl.c_close_project()
+        root, __ = os.path.splitext(timelinePath)
+        novxPath = f'{root}{NovxFile.EXTENSION}'
+        kwargs = self._get_configuration(timelinePath)
+        source = TlFile(timelinePath, **kwargs)
+        target = NovxFile(novxPath)
+
+        if os.path.isfile(target.filePath):
+            self._ui.set_status(f'!{_("File already exists")}: "{norm_path(target.filePath)}".')
+            return
+
+        message = ''
+        try:
+            source.novel = Novel(tree=NvTree())
+            source.read()
+            target.novel = source.novel
+            target.write()
+        except Error as ex:
+            message = f'!{str(ex)}'
+        else:
+            message = f'{_("File written")}: "{norm_path(target.filePath)}".'
+            self._ctrl.c_open_project(filePath=target.filePath, doNotSave=True)
+        finally:
+            self._ui.set_status(message)
 
     def _export_from_novx(self):
         """Update or create a timeline from the noveltree project."""
         if not self._mdl.prjFile:
             return
 
+        self._ui.restore_status()
+        self._ui.propertiesView.apply_changes()
+        if not self._mdl.prjFile.filePath:
+            if not self._ctrl.c_save_project():
+                return
+
         timelinePath = f'{os.path.splitext(self._mdl.prjFile.filePath)[0]}{TlFile.EXTENSION}'
         if os.path.isfile(timelinePath):
             action = _('update')
         else:
             action = _('create')
-        if not self._ui.ask_yes_no(_('Save the project and {} the timeline?').format(action)):
-            return
+        if self._mdl.isModified:
+            if not self._ui.ask_yes_no(_('Save the project and {} the timeline?').format(action)):
+                return
 
-        self._ctrl.c_save_project()
+            self._ctrl.c_save_project()
+        elif action == _('update'):
+            if not self._ui.ask_yes_no(_('Update the timeline?')):
+                return
+
         kwargs = self._get_configuration(self._mdl.prjFile.filePath)
         target = TlFile(timelinePath, **kwargs)
         source = self._mdl.prjFile
@@ -162,12 +204,14 @@ class Plugin():
         if not self._mdl.prjFile:
             return
 
+        self._ui.restore_status()
+        self._ui.propertiesView.apply_changes()
         timelinePath = f'{os.path.splitext(self._mdl.prjFile.filePath)[0]}{TlFile.EXTENSION}'
         if not os.path.isfile(timelinePath):
             self._ui.set_status(_('!No {} file available for this project.').format(APPLICATION))
             return
 
-        if not self._ui.ask_yes_no(_('Save the project and update it?')):
+        if self._mdl.isModified and not self._ui.ask_yes_no(_('Save the project and update it?')):
             return
 
         self._ctrl.c_save_project()
@@ -222,38 +266,4 @@ class Plugin():
                 open_document(timelinePath)
         else:
             self._ui.set_status(_('!No {} file available for this project.').format(APPLICATION))
-
-    def _new_project(self):
-        """Create a noveltree project from a timeline."""
-        timelinePath = filedialog.askopenfilename(
-            filetypes=[(TlFile.DESCRIPTION, TlFile.EXTENSION)],
-            defaultextension=TlFile.EXTENSION,
-            )
-        if not timelinePath:
-            return
-
-        self._ctrl.c_close_project()
-        root, __ = os.path.splitext(timelinePath)
-        novxPath = f'{root}{NovxFile.EXTENSION}'
-        kwargs = self._get_configuration(timelinePath)
-        source = TlFile(timelinePath, **kwargs)
-        target = NovxFile(novxPath)
-
-        if os.path.isfile(target.filePath):
-            self._ui.set_status(f'!{_("File already exists")}: "{norm_path(target.filePath)}".')
-            return
-
-        message = ''
-        try:
-            source.novel = Novel(tree=NvTree())
-            source.read()
-            target.novel = source.novel
-            target.write()
-        except Error as ex:
-            message = f'!{str(ex)}'
-        else:
-            message = f'{_("File written")}: "{norm_path(target.filePath)}".'
-            self._ctrl.c_open_project(filePath=target.filePath, doNotSave=True)
-        finally:
-            self._ui.set_status(message)
 

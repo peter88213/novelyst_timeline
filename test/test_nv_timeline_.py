@@ -102,24 +102,6 @@ class NormalOperation(unittest.TestCase):
         standalone.run(TEST_NOVX, silentMode=True)
         self.assertEqual(read_file(TEST_TL), read_file(TEST_DATA_PATH + 'new.timeline'))
 
-    # @unittest.skip('')
-    def test_dateTimeToDhm(self):
-        copyfile(TEST_DATA_PATH + 'normal.novx', TEST_NOVX)
-        copyfile(TEST_DATA_PATH + 'dateTimeToDhm.ini', TEST_EXEC_PATH + INI_FILE)
-        os.chdir(TEST_EXEC_PATH)
-        standalone.run(TEST_NOVX, silentMode=True)
-        standalone.run(TEST_TL, silentMode=True)
-        self.assertEqual(read_file(TEST_NOVX), read_file(TEST_DATA_PATH + 'dateTimeToDhm.novx'))
-
-    # @unittest.skip('')
-    def test_dhmToDateTime(self):
-        copyfile(TEST_DATA_PATH + 'dateTimeToDhm.novx', TEST_NOVX)
-        copyfile(TEST_DATA_PATH + 'dhmToDateTime.ini', TEST_EXEC_PATH + INI_FILE)
-        os.chdir(TEST_EXEC_PATH)
-        standalone.run(TEST_NOVX, silentMode=True)
-        standalone.run(TEST_TL, silentMode=True)
-        self.assertEqual(read_file(TEST_NOVX), read_file(TEST_DATA_PATH + 'dhmToDateTime.novx'))
-
     def tearDown(self):
         remove_all_testfiles()
 

@@ -44,38 +44,20 @@ class TlFile(File):
             
         Required keyword arguments:
             section_label: str -- event label marking "section" events.
-            ignore_unspecific: bool -- ignore noveltree sections with unspecific date/time. 
-            datetime_to_dhm: bool -- convert noveltree specific date/time to unspecific D/H/M.
-            dhm_to_datetime: bool -- convert noveltree unspecific D/H/M to specific date/time.
             section_color: str -- color for events imported as sections from noveltree.
+            new_event_spacing: str -- Days between events with automatically generated dates.  
         
-        If ignore_unspecific is True, only transfer Sections with a specific 
-            date/time stamp from noveltree to Timeline.
-            
-        If ignore_unspecific is False, transfer all Sections from noveltree to Timeline. 
-            Events assigned to sections having no specific date/time stamp
-            get the default date plus the unspecific 'D' as start date, 
-            and 'H':'M' as start time.
-            
-        If datetime_to_dhm is True, convert noveltree specific date to unspecific Day
-            when synchronizing from Timeline. Use the source's reference date. 
-            Precondition: dhm_to_datetime is False.
-        
-        If dhm_to_datetime is True, convert noveltree unspecific Day to specific date
-            when synchronizing from Timeline. Use the source's reference date. 
-            Precondition: datetime_to_dhm is False.
-            
         Extends the superclass constructor.
         """
         super().__init__(filePath, **kwargs)
         self._xmlTree = None
         self._sectionMarker = kwargs['section_label']
-        self._ignoreUnspecific = kwargs['ignore_unspecific']
-        self._dateTimeToDhm = kwargs['datetime_to_dhm']
-        self._dhmToDateTime = kwargs['dhm_to_datetime']
         SectionEvent.sectionColor = kwargs['section_color']
-        # The existing noveltree target project, if any.
-        # To be set by the calling converter class.
+
+        try:
+            self._newEventSpacing = int(kwargs['new_event_spacing'])
+        except:
+            self._newEventSpacing = 0
 
     def read(self):
         """Parse the file and get the instance variables.
@@ -104,6 +86,10 @@ class TlFile(File):
             return text
 
         #--- Parse the Timeline file.
+        if self.novel.referenceDate:
+            SectionEvent.defaultDateTime = f'{self.novel.referenceDate} 00:00:00'
+        else:
+            SectionEvent.defaultDateTime = datetime.today().isoformat(' ', 'seconds')
 
         if not self.novel.sections:
             isOutline = True
@@ -140,7 +126,6 @@ class TlFile(File):
             else:
                 try:
                     scId = sectionMatch.group()
-                    sectionDate = self.novel.sections[scId].date
                     self.novel.sections[scId] = SectionEvent(self.novel.sections[scId])
                 except:
                     continue
@@ -162,14 +147,13 @@ class TlFile(File):
             endDateTime = fix_iso_dt(event.find('end').text)
 
             # Consider unspecific date/time in the target file.
-            if self._dateTimeToDhm and not self._dhmToDateTime:
-                isUnspecific = True
-            elif self._dhmToDateTime and not self._dateTimeToDhm:
+            if isOutline:
                 isUnspecific = False
-            elif not isOutline and sectionDate is None:
-                isUnspecific = True
             else:
-                isUnspecific = False
+                if self.novel.sections[scId].day is not None:
+                    isUnspecific = True
+                else:
+                    isUnspecific = False
             self.novel.sections[scId].set_date_time(startDateTime, endDateTime, isUnspecific)
             if not startDateTime in scIdsByDate:
                 scIdsByDate[startDateTime] = []
@@ -261,15 +245,18 @@ class TlFile(File):
 
         if source.referenceDate:
             SectionEvent.defaultDateTime = f'{source.referenceDate} 00:00:00'
+            ignoreUnspecific = False
         else:
             SectionEvent.defaultDateTime = datetime.today().isoformat(' ', 'seconds')
+            ignoreUnspecific = True
 
+        defaultDay = 0
         for chId in source.tree.get_children(CH_ROOT):
             self.novel.chapters[chId] = Chapter()
             self.novel.tree.append(CH_ROOT, chId)
             for scId in source.tree.get_children(chId):
-                if self._ignoreUnspecific and source.sections[scId].date is None and source.sections[scId].time is None:
-                    # Skip sections with unspecific date/time stamps.
+                if ignoreUnspecific and source.sections[scId].date is None:
+                    # Skip sections without specific date information.
                     continue
 
                 if not scId in self.novel.sections:
@@ -281,7 +268,8 @@ class TlFile(File):
                     title = add_contId(self.novel.sections[scId], title)
                     self.novel.sections[scId].title = title
                 self.novel.sections[scId].desc = source.sections[scId].desc
-                self.novel.sections[scId].merge_date_time(source.sections[scId])
+                defaultDay += self._newEventSpacing
+                self.novel.sections[scId].merge_date_time(source.sections[scId], defaultDay=defaultDay)
                 self.novel.sections[scId].scType = source.sections[scId].scType
         sections = list(self.novel.sections)
         for scId in sections:
