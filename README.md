@@ -54,12 +54,12 @@ Before you distribute your translations, you can convert and install the message
 The plugin needs the message catalog in binary format. This is easily achieved using the **msgfmt.py** converter script. 
 You find it in your Python installation, in the **Tools/i18n** subdirectory. If not, you can download the code from [here](https://github.com/python/cpython/blob/main/Tools/i18n/msgfmt.py)
 
-Name the binary file **noveltree_timeline.mo**. 
+Name the binary file **nv_timeline.mo**. 
 
 
 ### Install your translation for testing
 
-Add a subdirectory tree to **noveltree/locale**, and place *noveltree_timeline.mo* there, like this:
+Add a subdirectory tree to **.noveltree/locale**, and place *nv_timeline.mo* there, like this:
 
 ```
 <your home directory>
@@ -67,7 +67,7 @@ Add a subdirectory tree to **noveltree/locale**, and place *noveltree_timeline.m
     └── locale/
         └─ <language code>/
            └─ LC_MESSAGES/
-              └─ noveltree_timeline.mo
+              └─ nv_timeline.mo
 ```
 
 Then start *noveltree* and see whether your translation works. 
