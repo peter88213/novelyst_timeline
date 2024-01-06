@@ -112,7 +112,7 @@ class Plugin():
         if not timelinePath:
             return
 
-        self._ctrl.c_close_project()
+        self._ctrl.close_project()
         root, __ = os.path.splitext(timelinePath)
         novxPath = f'{root}{NovxFile.EXTENSION}'
         kwargs = self._get_configuration(timelinePath)
@@ -133,7 +133,7 @@ class Plugin():
             message = f'!{str(ex)}'
         else:
             message = f'{_("File written")}: "{norm_path(target.filePath)}".'
-            self._ctrl.c_open_project(filePath=target.filePath, doNotSave=True)
+            self._ctrl.open_project(filePath=target.filePath, doNotSave=True)
         finally:
             self._ui.set_status(message)
 
@@ -145,7 +145,7 @@ class Plugin():
         self._ui.restore_status()
         self._ui.propertiesView.apply_changes()
         if not self._mdl.prjFile.filePath:
-            if not self._ctrl.c_save_project():
+            if not self._ctrl.save_project():
                 return
 
         timelinePath = f'{os.path.splitext(self._mdl.prjFile.filePath)[0]}{TlFile.EXTENSION}'
@@ -157,7 +157,7 @@ class Plugin():
             if not self._ui.ask_yes_no(_('Save the project and {} the timeline?').format(action)):
                 return
 
-            self._ctrl.c_save_project()
+            self._ctrl.save_project()
         elif action == _('update'):
             if not self._ui.ask_yes_no(_('Update the timeline?')):
                 return
@@ -214,7 +214,7 @@ class Plugin():
         if self._mdl.isModified and not self._ui.ask_yes_no(_('Save the project and update it?')):
             return
 
-        self._ctrl.c_save_project()
+        self._ctrl.save_project()
         kwargs = self._get_configuration(timelinePath)
         source = TlFile(timelinePath, **kwargs)
         target = self._mdl.prjFile
@@ -230,7 +230,7 @@ class Plugin():
             message = f'!{str(ex)}'
         else:
             message = f'{_("File written")}: "{norm_path(target.filePath)}".'
-            self._ctrl.c_open_project(filePath=self._mdl.prjFile.filePath, doNotSave=True)
+            self._ctrl.open_project(filePath=self._mdl.prjFile.filePath, doNotSave=True)
         finally:
             self._ui.set_status(f'{message}')
 
