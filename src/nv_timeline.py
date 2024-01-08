@@ -55,7 +55,7 @@ INI_FILEPATH = '.noveltree/config'
 class Plugin():
     """Plugin class for synchronization with Timeline."""
     VERSION = '@release'
-    NOVELYST_API = '0.7'
+    NOVELYST_API = '1.0'
     DESCRIPTION = 'Synchronize with Timeline'
     URL = 'https://peter88213.github.io/noveltree_timeline'
     _HELP_URL = 'https://peter88213.github.io/noveltree_timeline/usage'
@@ -143,7 +143,6 @@ class Plugin():
             return
 
         self._ui.restore_status()
-        self._ui.propertiesView.apply_changes()
         if not self._mdl.prjFile.filePath:
             if not self._ctrl.save_project():
                 return

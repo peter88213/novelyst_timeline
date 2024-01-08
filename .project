@@ -3,7 +3,7 @@
 	<name>noveltree_timeline</name>
 	<comment></comment>
 	<projects>
-		<project>novxlib-Alpha</project>
+		<project>novxlib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
